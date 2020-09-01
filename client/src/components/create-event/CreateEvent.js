@@ -14,6 +14,7 @@ class CreateEvent extends Component{
     constructor(props){
         super(props);
         this.state = {
+            id: null,
             nameofevent: '',
             typeofsport: '',
             numberofplayer: '',
@@ -33,6 +34,7 @@ class CreateEvent extends Component{
             const event = this.props.event.event;
 
             this.setState({
+                id: event._id,
                 nameofevent: event.nameofevent,
                 typeofsport: event.typeofsport,
                 numberofplayer: event.numberofplayer,
@@ -54,6 +56,7 @@ class CreateEvent extends Component{
         e.preventDefault();
         
         const eventData = {
+            id:this.state.id,
             nameofevent: this.state.nameofevent,
             typeofsport: this.state.typeofsport,
             numberofplayer: this.state.numberofplayer,

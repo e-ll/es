@@ -35,9 +35,9 @@ router.get('/:id', (req, res) => {
 // POST /api/events
 // create or update an event
 router.post('/', passport.authenticate('jwt', {session: false}),(req, res) => {
+    const event_Id = req.body.id;
+    console.log(event_Id);
     const {errors, isValid} = validateEventInput(req.body);
-    const event_Id = req.query.eventId;
-    
     if(!isValid){
         return res.status(400).json(errors);
     }

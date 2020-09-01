@@ -12,7 +12,7 @@ import SideDrawer from './SideDrawer';
 import NotificationList from '../../notification/NotificationList';
 import UserMenu from '../UserMenu';
 
-import Logo from '../../../img/logo.png';
+import Logo from '../../../img/logo.jpg';
 
 class Navbar extends Component {
   constructor(props){
@@ -91,7 +91,7 @@ class Navbar extends Component {
         <Container>
           <Toolbar disableGutters className="toolbar">
             <Link component={RouterLink} to="/">
-              <img src={Logo} className="logo" alt="Logo" />
+              <img src={Logo} style={{height: "50px", width: "50px"}}className="logo" alt="Logo" />
             </Link>
 
             <div className="hiddenDesk">

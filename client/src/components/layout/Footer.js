@@ -6,7 +6,7 @@ export default() => {
         <footer>
             <AppBar className="primary-color marginT-3 pad-2" position="static">
                 <Typography align="center">
-                    Copyright &copy;{new Date().getFullYear()} FindSport2Play
+                    Copyright &copy;{new Date().getFullYear()} Festyline
                 </Typography>
             </AppBar>
         </footer>
