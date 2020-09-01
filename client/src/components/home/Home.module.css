@@ -1,0 +1,148 @@
+.header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin: 5rem 0;
+}
+
+.header__text{
+    font-weight: bold;
+}
+
+.header__text h1{
+    margin: 2rem 0;
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.header__text p{
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #615656;
+}
+
+.header__img{
+    transform: translateX(3rem);
+    width: 100%;
+}
+
+.howItWork{
+    margin: 8rem 0;
+}
+
+.howItWork__container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem 3rem;
+}
+
+.howItWork__container img{
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+}
+
+.howItWork__imgReverse{
+    width: 100%;
+    order: 2;
+}
+
+.howItWork__text{
+    padding: 2rem;
+}
+
+.howItWork__text h2{
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.howItWork__text p{
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.steps__text h2{
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.steps__list {
+    margin: 0;
+}
+
+.steps__list li{
+    font-size: 1.4rem;
+}
+
+@media(max-width: 900px){
+    .header{
+        grid-template-columns: 1fr;
+        margin: 1rem 0;
+    }
+
+    .header__text{
+        margin: 0 2rem;
+        z-index: 4;
+    }
+
+    .header__text h1{
+        grid-row: 2;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 2.2rem;
+    }
+
+    .header__text p{
+        font-size: 1.2rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+
+    .header__buttons{
+        grid-row: 3;
+    }
+
+    .header__img{
+        grid-row: 1;
+        margin: auto;
+        margin-top: .4rem;
+        width: 90%;
+        transform: translateX(0);
+    }
+
+    .howItWork{
+        margin: 6rem 1rem;
+    }
+
+    .howItWork__imgReverse{
+        order: 0;
+    }
+
+    .howItWork__container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .howItWork__text{
+        padding: 0;
+    }
+
+    .howItWork__text h2{
+        font-size: 2.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .howItWork__text p{
+        margin-bottom: 1rem;
+    }
+
+    .steps__text h2{
+        font-size: 2rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }
+}

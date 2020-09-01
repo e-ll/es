@@ -1,0 +1,14 @@
+.register{
+    min-height: 90vh;
+}
+
+.register__card{
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+@media(max-width: 900px){
+    .register__card{
+        padding: .5rem;
+    }
+}

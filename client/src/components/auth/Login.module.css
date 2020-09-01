@@ -1,0 +1,19 @@
+.login{
+    min-height: 85vh;
+}
+
+.login__card{
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+.login__info{
+    display: block;
+    margin-top: 1rem !important;
+}
+
+@media(max-width: 900px){
+    .login__card{
+        padding: .5rem;
+    }
+}
