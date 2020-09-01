@@ -1,7 +1,7 @@
 {
-  "name": "findsport2play",
+  "name": "festyline",
   "version": "2.0.0",
-  "description": "A website for meetup to play sport together",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -10,12 +10,13 @@
     "client": "npm start --prefix client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "author": "song",
+  "author": "ellpm",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "faker": "^5.1.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.7",
     "node-geocoder": "^3.27.0",

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, CircularProgress } from "@material-ui/core";
 
 import EventsList from "./EventsList";
 import SelectFieldGroup from "../common/SelectFieldGroup";
 import Spinner from "../common/Spinner";
 import { getEvents } from "../../actions/eventActions";
 import Expo from "./Expo";
-const sportList = [
+const standList = [
   "All Sports",
   "Badminton",
   "Tennis",
@@ -24,7 +24,7 @@ class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      typeofsport: "",
+      standType: "",
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -65,26 +65,15 @@ class Events extends Component {
           {/* <Grid item xs={12} sm={6} md={6}>
             <SelectFieldGroup
               label="Search"
-              name="typeofsport"
+              name="standType"
               type="name"
-              value={this.state.typeofsport}
+              value={this.state.standType}
               onChange={this.onChange}
-              sportList={sportList}
+              standList={standList}
             />
           </Grid> */}
         </Grid>
-        {events.length ? (
-          eventContent
-        ) : (
-          <Typography
-            className="marginT-2"
-            variant="subtitle1"
-            color="secondary"
-            component="p"
-          >
-            No Events Yet
-          </Typography>
-        )}
+        {events.length ? eventContent : <CircularProgress />}
       </div>
     );
   }

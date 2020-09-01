@@ -11,7 +11,7 @@ import Foodtrack from "../../canvas/foodtrack";
 class EventsList extends Component{
     render(){
         const {events} = this.props;
-        
+        const trans = "translate(index*5, index*5)"
         return (
           <>
             <TransformWrapper
@@ -46,8 +46,8 @@ class EventsList extends Component{
                     <TransformComponent>
                       <div
                         style={{
-                          width: "100vw",
-                          height: "500",
+                          width: "1000px",
+                          height: "500px",
                           border: "1px solid",
                         }}
                       >
@@ -63,7 +63,12 @@ class EventsList extends Component{
                           {events.map((event, index) => (
                             <Tooltip title={`Стенд № ${index}`} interactive>
                               <Link to={`/event/${event._id}`}>
-                                <IconButton aria-label="delete">
+                                <IconButton
+                                  style={{
+                                    transform: { trans },
+                                  }}
+                                  aria-label="delete"
+                                >
                                   <Market />
                                 </IconButton>
                               </Link>

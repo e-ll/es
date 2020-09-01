@@ -1,94 +1,103 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const geocoder = require("../config/geocoder");
 
 const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
-    user: {
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "users",
+  },
+  partisipantName: {
+    type: String,
+    required: true,
+  },
+  standType: {
+    type: String,
+    required: true,
+  },
+  logoUrl: {
+    type: String,
+  },
+  youTubeCode: {
+    type: String,
+  },
+  galeryUrl:{
+    type: Array
+  },
+  numberofplayer: {
+    type: Number,
+    required: true,
+  },
+  listofplayer: [
+    {
+      id: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  location: {
+    type: String,
+  },
+  address: {
+    type: {
+      type: String,
+      enum: ["Point"],
+    },
+    coordinates: {
+      type: [Number],
+      index: "2dsphere",
+    },
+  },
+  description: {
+    type: String,
+  },
+  imageURL: {
+    type: String,
+  },
+  comments: [
+    {
+      user: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
-    nameofevent: {
+        ref: "users",
+      },
+      text: {
         type: String,
-        required: true
-    },
-    typeofsport: {
+        required: true,
+      },
+      name: {
         type: String,
-        required: true
-    },
-    numberofplayer: {
-        type: Number,
-        required: true
-    },
-    listofplayer: [
-        {
-            id: {
-                type: String,
-                required: true
-            },
-            name: {
-                type: String,
-                required: true
-            }
-        }
-    ],
-    location: {
-        type: String
-    },
-    address: {
-        type: {
-            type: String,
-            enum: ["Point"]
-        },
-        coordinates: {
-            type: [Number],
-            index: "2dsphere"
-        }
-    },
-    description: {
-        type: String
-    },
-    imageURL: {
-        type: String
-    },
-    comments: [
-        {
-            user: {
-                type: Schema.Types.ObjectId,
-                ref: 'users'
-            },
-            text: {
-                type: String,
-                required: true
-            },
-            name: {
-                type: String
-            },
-            date:{
-                type: Date,
-                default: Date.now
-            }
-        }
-    ],
-    date:{
+      },
+      date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+      },
     },
-    start: {
-        type: Date,
-    }
+  ],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  start: {
+    type: Date,
+  },
 });
 
-EventSchema.pre("save", async function(next){
-    if(this.location){
-        const data = await geocoder.geocode(this.location);
-        this.address = {
-            type: "Point",
-            coordinates: [data[0].longitude, data[0].latitude]
-        }
-    }
-    
-    next();
-})
+EventSchema.pre("save", async function (next) {
+  if (this.location) {
+    const data = await geocoder.geocode(this.location);
+    this.address = {
+      type: "Point",
+      coordinates: [data[0].longitude, data[0].latitude],
+    };
+  }
 
-module.exports = Event = mongoose.model('event', EventSchema);
+  next();
+});
+
+module.exports = Event = mongoose.model("event", EventSchema);
