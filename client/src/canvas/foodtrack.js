@@ -722,7 +722,7 @@ function FoodTrack(props) {
         className="prefix__st21"
         d="M241.7 337.98c.16-5.58 4.67-6.42 4.67-6.42l.07 21.01-1.87.51c-1.63.45-2.74 1.42-2.76-2.73.01-.01-.28-6.42-.11-12.37z"
       />
-      <g id="prefix__XMLID_5010_">
+      <g id="prefix__XMLID_5010_" style={{ backgroundColor: "red" }}>
         <g id="prefix__XMLID_5012_">
           <path
             id="prefix__XMLID_5019_"
@@ -820,7 +820,7 @@ function FoodTrack(props) {
           d="M394.32 244.89l.88.24-31.23 18.1v-.83z"
         />
       </g>
-      <g id="prefix__XMLID_5002_">
+      <g id="prefix__XMLID_5002_" style={{ background: "red" }}>
         <g id="prefix__XMLID_5004_">
           <path
             id="prefix__XMLID_5009_"
