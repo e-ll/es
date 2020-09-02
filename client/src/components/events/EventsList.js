@@ -16,7 +16,7 @@ class EventsList extends Component{
           <>
             <TransformWrapper
               wheel={{
-                step: 480,
+                step: 10,
               }}
             >
               {({
@@ -49,6 +49,7 @@ class EventsList extends Component{
                           width: "1000px",
                           height: "500px",
                           border: "1px solid",
+                          background: ""
                         }}
                       >
                         <h1>Выставка</h1>

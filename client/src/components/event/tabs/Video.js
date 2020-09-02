@@ -12,7 +12,7 @@ export default class Video extends React.Component {
 			}
 		};
 
-		return <YouTube videoId="hFPoPPX2s_4" opts={opts} onReady={this._onReady} />;
+		return <YouTube videoId={this.props.videoId} opts={opts} onReady={this._onReady} />;
 	}
 
 	_onReady(event) {

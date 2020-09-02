@@ -10,6 +10,9 @@ import Box from "@material-ui/core/Box";
 import MapView from '../map/MapView'
 import Store from "../store/Store"
 import Video from './Video'
+import { JitsiMeet } from "../conference/JitsiMeet";
+import { JitsiCalling } from "../conference/JitsiMeet";
+;
 function TabPanel(props) {
   const { children, value, index,event, ...other } = props;
 
@@ -46,7 +49,7 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 800,
+    width: 1200,
   },
 }));
 
@@ -79,6 +82,7 @@ export default function FullWidthTabs(props) {
           <Tab label="Видео/Трансляции" {...a11yProps(1)} />
           <Tab label="Интернет-магазин" {...a11yProps(2)} />
           <Tab label="Контакты" {...a11yProps(3)} />
+          <Tab label="Видеоконференция" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -90,7 +94,7 @@ export default function FullWidthTabs(props) {
           {event.description}
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Video videoId={event.videoId} />
+          <Video videoId={event.youTubeCode} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           <Store event={event} />
@@ -102,6 +106,9 @@ export default function FullWidthTabs(props) {
               location={event.location}
             />
           ) : null}
+        </TabPanel>
+        <TabPanel value={value} index={4} dir={theme.direction}>
+          <JitsiCalling event={event} />
         </TabPanel>
       </SwipeableViews>
     </div>
