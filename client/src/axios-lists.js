@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-let serverURL = 'http://localhost:8081';
+let serverURL = "https://elprojectr.herokuapp.com";
 
 if(process.env.NODE_ENV === 'production'){
-    serverURL = "http://localhost:8081";
+    serverURL = process.env.SERVER_URL;
 }
 
 const instance = axios.create({
