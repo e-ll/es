@@ -1,20 +1,18 @@
 const faker = require("faker/locale/ru");
 const geocoder = require("./config/geocoder");
 const mongoose = require("mongoose");
+const db = require("./config/keys_dev").prodMongoUrl;
 // mongoose.pluralize(null);
 const User = require("./models/User");
 
 const Event = require("./models/Event");
 
 async function createBase() {
-  await mongoose.connect("mongodb://localhost:27017/ecofest", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  mongoose.connection.on(
-    "error",
-    console.error.bind(console, "Ошибка соединения с MongoDB:")
-  );
+  await mongoose
+    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("MongoDB Connected"))
+    .catch((err) => console.log(err));
+  
 
   // placemarkColors = [
   //   '#DB425A', '#4C4DA2', '#00DEAD', '#D73AD2',

@@ -12,10 +12,10 @@ const notification = require('./routes/api/notification');
 
 const app = express();
 
-const db = require('./config/keys').mongoURI;
-
+// const db = require('./config/keys').mongoURI;
+const dbLoc = require("./config/keys_dev").prodMongoUrl;
 mongoose
-    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(process.env.MONGODB_URI || dbLoc, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
@@ -56,6 +56,7 @@ let port = 8081;
 
 if(process.env.NODE_ENV === 'production'){
     port = process.env.PORT;
+    
 }
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

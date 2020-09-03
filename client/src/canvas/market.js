@@ -6,8 +6,8 @@ function market(props) {
       id="prefix__\u0421\u043B\u043E\u0439_1"
       x={0}
       y={0}
-    width="70"
-    height="70"
+      width="70"
+      height="70"
       viewBox="0 0 547 531"
       xmlSpace="preserve"
       {...props}
@@ -1224,6 +1224,13 @@ function market(props) {
         <path
           fill="#ba807b"
           d="M179.39 405.29l11.99-6.47v-16.35l-11.99 6.47z"
+        />
+        <image
+          x="100"
+          y="100"
+          width="100"
+          height="100"
+          href="https://i.pinimg.com/originals/76/6c/f7/766cf770ea8dd3529bd8e0c41d6784be.jpg"
         />
       </g>
     </svg>

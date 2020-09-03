@@ -5,10 +5,12 @@
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
+    "build": "cd client && npm run build",
     "start": "nodemon server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-start": "npm run client-install && npm run build"
   },
   "author": "ellpm",
   "license": "ISC",
@@ -26,5 +28,8 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.3"
+  },
+  "engines": {
+    "node": ">=9.0.0"
   }
 }
