@@ -3,7 +3,7 @@ import axios from 'axios';
 let serverURL = 'http://localhost:8081';
 
 if(process.env.NODE_ENV === 'production'){
-    serverURL = 'https://findsport2play.herokuapp.com/';
+    serverURL = "http://localhost:8081";
 }
 
 const instance = axios.create({

@@ -35,7 +35,7 @@ router.post('/register', (req, res) => {
                 
                 const newNotification = new Notification({
                     userID: newUser._id,
-                    text: "Welcome to FindSport2Play, please create your profile."
+                    text: "Welcome to Festyline, please create your profile."
                 });
                 
                 bcrypt.genSalt(10, (err, salt) => {
