@@ -19,7 +19,11 @@ body {
   background-color: #22435A !important;
   color: #26374D !important;
 }
-
+.eco-color{
+  color: #26374D !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EAF0F5 100%);
+box-shadow: 0px 8px 16px rgba(12, 24, 55, 0.05);
+}
 .secondary-color{
   background-color: #035aa6 !important;
   color: #26374D !important;
@@ -54,7 +58,12 @@ body {
   margin-top: .4rem;
   margin-bottom: .4rem;
 }
-
+/* .footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+} */
 .marginX-2{
   margin-top: 1rem !important;
   margin-bottom: 1rem !important;

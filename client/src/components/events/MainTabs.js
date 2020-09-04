@@ -1,4 +1,5 @@
 import React from "react";
+import Video from "../event/tabs/Video"
 import {
   Grid,
   Paper,
@@ -6,7 +7,11 @@ import {
   ListSubheader,
   ListItemText,
   List,
+  Chip,
+  Avatar,
+  Typography,
 } from "@material-ui/core";
+import PeopleIcon from "@material-ui/icons/People";
 import { FixedSizeList } from "react-window";
 const header = {
   color: "#26374D",
@@ -19,32 +24,50 @@ const header = {
   fontWeight: "bold",
   padding: "1vh 0",
 };
+const tabHeight = "200px"
+const contentList = { padding: 4, overflow: "auto", maxHeight: tabHeight};
+
 export default function UniTable() {
-  const items = ["Item1", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7"];
+  const items = ["Мега Екатеринбург", "Ельцин-центр", "Ашан", "Item4", "Item5", "Item6", "Item7"];
+  const handleClick = () => {
+    console.info("You clicked the Chip.");
+  };
   return (
     <div
       style={{
-        width: "100%", marginTop: "1vh"
+        width: "100%",
+        marginTop: "1vh",
       }}
     >
       <Grid container spacing={1}>
-        <Grid
-          item
-          xs={3}
-          style={{ padding: 4, overflow: "auto", maxHeight: 200 }}
-        >
+        <Grid item xs={3} style={contentList}>
           <Paper style={header}>Расписание онлайн</Paper>
           {items.map((item) => (
-            <ListItem button>{item}</ListItem>
+            <ListItem button>
+              <Avatar src="https://static.rfstat.com/renderforest/images/v2/logo-homepage/flat_3.png" />
+              <Typography>{item}</Typography>
+            </ListItem>
           ))}
         </Grid>
-        <Grid item xs={3}>
-          <Paper style={header}>Участники</Paper>
-          <div>
-            <div>Privet</div>
-            <div>Privet</div>
-            <div>Privet</div>
-          </div>
+        <Grid item xs={3} style={contentList}>
+          <Paper style={header}>
+            <Grid style={{ display: "flex" }} spacing={2}>
+              <Grid item>
+                <PeopleIcon
+                  style={{ marginLeft: "25px", marginRight: "10px" }}
+                />
+              </Grid>
+              <Grid>
+                <Typography>Участники</Typography>
+              </Grid>
+            </Grid>
+          </Paper>
+          {items.map((item) => (
+            <ListItem button>
+              <Avatar src="https://static.rfstat.com/renderforest/images/v2/logo-homepage/flat_3.png" />
+              <Typography>{item}</Typography>
+            </ListItem>
+          ))}
         </Grid>
         <Grid item xs={3}>
           <Paper style={header}>Общий чат</Paper>
@@ -52,7 +75,12 @@ export default function UniTable() {
         </Grid>
         <Grid item xs={3}>
           <Paper style={header}>Трансляции</Paper>
-          <div>hello</div>
+          <Video
+            videoId="ZKo7PP4WTpc"
+            width="300px"
+            height={tabHeight}
+            style={{ marginTop: "20vh" }}
+          />
         </Grid>
       </Grid>
     </div>
