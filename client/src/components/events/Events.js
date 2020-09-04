@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import MainTabs from "./MainTabs"
 import { connect } from "react-redux";
-import { Grid, Typography, CircularProgress } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  CircularProgress,
+  LinearProgress,
+} from "@material-ui/core";
 
 import EventsList from "./EventsList";
 import SelectFieldGroup from "../common/SelectFieldGroup";
@@ -43,26 +49,20 @@ class Events extends Component {
     let eventContent;
 
     if (events === null || loading) {
-      eventContent = <Spinner />;
+      eventContent = <LinearProgress />;
     } else {
-      eventContent = (
-        <>
-          <Grid container spacing={2}>
-            <EventsList events={events} />
-          </Grid>
-        </>
-      );
+      eventContent = <EventsList events={events} />;
     }
 
     return (
-      <div>
-        <Grid container className="marginX-1">
-          <Grid item xs={12} sm={6} md={6}>
+      <>
+        {/* <Grid container className="marginX-1">
+          {/* <Grid item xs={12} sm={6} md={6}>
             <Typography className="marginT-2" variant="h3" component="h1">
               Экофест
-            </Typography>
-          </Grid>
-          {/* <Grid item xs={12} sm={6} md={6}>
+            </Typography> */}
+        {/* </Grid> */}
+        {/* <Grid item xs={12} sm={6} md={6}>
             <SelectFieldGroup
               label="Search"
               name="standType"
@@ -72,9 +72,10 @@ class Events extends Component {
               standList={standList}
             />
           </Grid> */}
-        </Grid>
-        {events.length ? eventContent : <CircularProgress />}
-      </div>
+        {/* </Grid> */}
+        {events.length ? eventContent : <LinearProgress />}
+      <MainTabs />
+      </>
     );
   }
 }

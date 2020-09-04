@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .map{
@@ -17,19 +17,19 @@ body {
 
 .primary-color{
   background-color: #22435A !important;
-  color: white !important;
+  color: #26374D !important;
 }
 
 .secondary-color{
   background-color: #035aa6 !important;
-  color: white !important;
+  color: #26374D !important;
 }
 
 .white-link,
 .white-link:link,
 .white-link:visited{
   text-decoration: inherit !important;
-  color: white;
+  color: #26374D;
   margin: 0 .7rem;
 }
 
