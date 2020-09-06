@@ -8,10 +8,13 @@ import {
   ListItemText,
   List,
   Chip,
+  IconButton,
   Avatar,
   Typography,
 } from "@material-ui/core";
 import PeopleIcon from "@material-ui/icons/People";
+import ArrowLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
+import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
 import { FixedSizeList } from "react-window";
 const header = {
   color: "#26374D",
@@ -58,7 +61,7 @@ export default function UniTable() {
                 />
               </Grid>
               <Grid>
-                <Typography>Участники</Typography>
+                <Typography variant="h5">Участники</Typography>
               </Grid>
             </Grid>
           </Paper>
@@ -74,13 +77,14 @@ export default function UniTable() {
           <div>hello</div>
         </Grid>
         <Grid item xs={3}>
-          <Paper style={header}>Трансляции</Paper>
-          <Video
-            videoId="ZKo7PP4WTpc"
-            width="300px"
-            height={tabHeight}
-            style={{ marginTop: "20vh" }}
-          />
+          <Paper style={header}>
+            <div style={{ display: "flex" }}>
+              <ArrowLeftRoundedIcon />
+              <Typography variant="h5">Трансляции</Typography>
+              <ArrowRightRoundedIcon />
+            </div>
+          </Paper>
+          <Video videoId="ZKo7PP4WTpc" width="300px" height={tabHeight} />
         </Grid>
       </Grid>
     </div>

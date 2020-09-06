@@ -25,9 +25,7 @@ class EventsList extends Component {
             wheel={{
               step: 10,
             }}
-            defaultScale={1}
-            defaultPositionX={0}
-            defaultPositionY={0}
+            defaultScale={2}
           >
             {({
               zoomIn,
@@ -39,35 +37,44 @@ class EventsList extends Component {
               previousScale,
             }) => (
               <>
-                <div className="tools">
-                  <ButtonGroup
-                    color="primary"
-                    aria-label="vertical contained primary button group"
-                    variant="text"
-                  >
-                    <Button variant="outlined" onClick={zoomIn}>
-                      +
-                    </Button>
-                    <Button variant="outlined" onClick={zoomOut}>
-                      -
-                    </Button>
-                    <Button variant="outlined" onClick={resetTransform}>
-                      Reset
-                    </Button>
-                  </ButtonGroup>
-                </div>
+                <div
+                className="tools"
+              >
+                <ButtonGroup
+                  color="primary"
+                  aria-label="vertical contained primary button group"
+                  variant="text"
+                >
+                  <Button variant="outlined" onClick={zoomIn}>
+                    +
+                  </Button>
+                  <Button variant="outlined" onClick={zoomOut}>
+                    -
+                  </Button>
+                  <Button variant="outlined" onClick={resetTransform}>
+                    Reset
+                  </Button>
+                </ButtonGroup>
+              </div>
                 <div
                   className="element"
                   style={{
                     width: "100%",
                     border: "1px solid red",
+                    // maxWidth: "calc(100vw - 60px)",
                   }}
                 >
                   <TransformComponent>
                     <div
                       className="coverf"
                       style={{
+                        marginLeft: "10px",
+                        width: "900px",
                         height: "400px",
+                        border: "1px solid black",
+                        position: "relative",
+
+                        // objectFit: "cover",
                       }}
                     >
                       <div>
@@ -81,7 +88,7 @@ class EventsList extends Component {
                           const yCoordinate = intervalD * Math.sin(radian);
                           const left = index * xCoordinate;
                           const top = index * yCoordinate;
-                          console.log(left, top);
+
                           return (
                             <Tooltip title={`Стенд № ${index}`} interactive>
                               <Link to={`/event/${event._id}`}>
@@ -118,7 +125,7 @@ class EventsList extends Component {
                           const yCoordinate = intervalD * Math.sin(radian);
                           const left = index * xCoordinate;
                           const top = index * yCoordinate;
-                          console.log(left, top);
+
                           return (
                             <Tooltip title={`Стенд № ${event._id}`} interactive>
                               <Link to={`/event/${event._id}`}>

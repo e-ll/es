@@ -8,7 +8,7 @@ import {
   LinearProgress,
 } from "@material-ui/core";
 
-import EventsList from "./EventsList";
+import EventsList from "./EventsList old";
 import SelectFieldGroup from "../common/SelectFieldGroup";
 import Spinner from "../common/Spinner";
 import { getEvents } from "../../actions/eventActions";

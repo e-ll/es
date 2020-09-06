@@ -84,7 +84,7 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, notifications } = this.props.auth;
-
+console.log(this.props);
     const handleDrawerOpen = () => {
       this.setState({ toggleDrawer: true });
     };
@@ -92,7 +92,7 @@ class Navbar extends Component {
     const handleDrawerClose = () => {
       this.setState({ toggleDrawer: false });
     };
-
+const megalogo = "https://logosklad.ru/photo/logos/213/1282272538.jpg";
     const notificationsList = (
       <Badge
         badgeContent={notifications.unread}
@@ -110,7 +110,7 @@ class Navbar extends Component {
           <Toolbar disableGutters className="toolbar">
             <Link component={RouterLink} to="/">
               <img
-                src={Logo}
+                src={this.props.event ? this.props.event.logoUrl : megalogo}
                 style={{ height: "50px", width: "50px" }}
                 className="logo"
                 alt="Logo"
@@ -119,10 +119,10 @@ class Navbar extends Component {
 
             <div className="hiddenDesk">
               <Link className="white-link" component={RouterLink} to="/events">
-                Events List
+                На карту
               </Link>
 
-              {isAuthenticated ? (
+              {/* {isAuthenticated ? (
                 <Link
                   className="white-link"
                   component={RouterLink}
@@ -130,7 +130,7 @@ class Navbar extends Component {
                 >
                   Create Event
                 </Link>
-              ) : null}
+              ) : null} */}
             </div>
             <div style={{ display: "flex", margin: "0 auto" }}>
               <Avatar
@@ -199,6 +199,7 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  event: state.events.event,
 });
 
 export default connect(mapStateToProps, { logoutUser, checkNotification })(
