@@ -41,18 +41,17 @@ class EventsList extends Component {
               <>
                 <div className="tools">
                   <ButtonGroup
-                    color="primary"
-                    aria-label="vertical contained primary button group"
+                    
                     variant="text"
                   >
                     <Button variant="outlined" onClick={zoomIn}>
-                      +
+                      Увеличить +
                     </Button>
                     <Button variant="outlined" onClick={zoomOut}>
-                      -
+                      Уменьшить -
                     </Button>
                     <Button variant="outlined" onClick={resetTransform}>
-                      Reset
+                      Сбросить
                     </Button>
                   </ButtonGroup>
                 </div>
@@ -60,7 +59,7 @@ class EventsList extends Component {
                   className="element"
                   style={{
                     width: "100%",
-                    border: "1px solid red",
+                    border: "1px dashed #000000",
                   }}
                 >
                   <TransformComponent>

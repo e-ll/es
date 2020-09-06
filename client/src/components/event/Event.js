@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Paper, List } from "@material-ui/core";
+import { Paper, List, IconButton, Grid } from "@material-ui/core";
 
 import Spinner from "../common/Spinner";
 import EventItem from "../event/EventItem";
 import Comments from "./comments/Comments";
 import CommentForm from "./comments/CommentForm";
 import { getEvent } from "../../actions/eventActions";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 class Event extends Component {
   componentDidMount() {
@@ -51,7 +52,13 @@ class Event extends Component {
     return (
       <div className="post">
         <div className="container">
-          <h1>{event.partisipantName}</h1>
+          <Grid container direction="row" spacing={3}>
+            <IconButton>
+              <ArrowBackIcon />
+            </IconButton>
+            <h1>{event.partisipantName}</h1>{" "}
+          </Grid>
+
           <List>{eventContent}</List>
         </div>
       </div>

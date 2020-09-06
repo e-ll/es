@@ -60,6 +60,7 @@ class EventItem extends Component {
   render() {
     const { event, snackbarMessage, auth } = this.props;
     return (
+      
       <Paper className="pad-2">
         <Grid container>
           <Grid item xs={12} md={6}>
