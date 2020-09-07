@@ -53,7 +53,7 @@ class Event extends Component {
       <div className="post">
         <div className="container">
           <Grid container direction="row" spacing={3}>
-            <IconButton>
+            <IconButton component={Link} to="/events">
               <ArrowBackIcon />
             </IconButton>
             <h1>{event.partisipantName}</h1>{" "}

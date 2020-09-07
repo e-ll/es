@@ -49,13 +49,13 @@ const myStore = `my-store-${mag}`
 	});
 
 	return (
-		<div>
-			<div id={mySearch}></div>
-			<div id={myCat}></div>
-			<div id={myStore} ref={storeDiv}></div>
-			<div className="ec-cart-widget"></div>
-		</div>
-	);
+    <div style={{ height: "300px" }}>
+      <div id={mySearch}></div>
+      <div style={{ height: "300px" }}  id={myCat}></div>
+      <div id={myStore} ref={storeDiv}></div>
+      <div className="ec-cart-widget"></div>
+    </div>
+  );
 }
 
 export default Store;

@@ -17,25 +17,25 @@ class ProfileAbout extends Component{
             <Grid item xs={12} sm={6}>
               <Card>
                 <CardContent>
-                  <p><strong>Name:</strong> {profile.user.name}</p>
-                  <p><strong>From: </strong> {profile.location}</p>
-                  <p><strong>Join on: </strong><Moment format="MM/DD/YYYY">{profile.date}</Moment></p>
+                  <p><strong>Название:</strong> {profile.user.name}</p>
+                  <p><strong>Локация: </strong> {profile.location}</p>
+                  {/* <p><strong>Join on: </strong><Moment format="MM/DD/YYYY">{profile.date}</Moment></p> */}
                 </CardContent>
               </Card>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Card>
-                <CardContent>
+                {/* <CardContent>
                   <h3 >Favorite Sports</h3>
                   {favoriteSport}
-                </CardContent>
+                </CardContent> */}
               </Card>
             </Grid>
             <Grid item xs={12} xl={3}>
               <Card>
                 <CardContent>
-                  <h3>Bio</h3>
-                  <p>{isEmpty(profile.bio) ? (<span>No bio</span>) : (<span>{profile.bio}</span>)}</p>
+                  <h3>Описание</h3>
+                  <p>{isEmpty(profile.bio) ? (<span>Нет описания</span>) : (<span>{profile.bio}</span>)}</p>
                 </CardContent>
               </Card>
             </Grid>

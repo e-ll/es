@@ -57,18 +57,18 @@ class Register extends Component{
         register__card,
         register__info } = styles;
       
-      return(
+      return (
         <Grid className={register} container justify="center">
           <Grid item xs={12} sm={8} md={6}>
             <Card className={register__card}>
               <CardContent>
                 <Typography variant="h5" paragraph>
-                  Sign Up
+                  Регистрация
                 </Typography>
                 <form noValidate onSubmit={this.onSubmit} className="mb-2">
                   <TextFieldGroup
-                    label="Name"
-                    placeholder="Name"
+                    label="Имя"
+                    placeholder="Имя"
                     name="name"
                     value={this.state.name}
                     onChange={this.onChange}
@@ -84,8 +84,8 @@ class Register extends Component{
                     error={errors.email}
                   />
                   <TextFieldGroup
-                    label="Password"
-                    placeholder="Password"
+                    label="Пароль"
+                    placeholder="Пароль"
                     name="password"
                     type="password"
                     value={this.state.password}
@@ -93,20 +93,24 @@ class Register extends Component{
                     error={errors.password}
                   />
                   <TextFieldGroup
-                    label="Confirm Password"
-                    placeholder="Confirm Password"
+                    label="Повторите пароль"
+                    placeholder="Повторите пароль"
                     name="password2"
                     type="password"
                     value={this.state.password2}
                     onChange={this.onChange}
                     error={errors.password2}
                   />
-                  <Button className="primary-color marginT-1 marginB-1" type="submit" variant="contained">
-                    Submit
+                  <Button
+                    className="primary-color marginT-1 marginB-1"
+                    type="submit"
+                    variant="contained"
+                  >
+                    Принять
                   </Button>
                 </form>
                 <Typography variant="subtitle2" className={register__info}>
-                  Already have an account? <Link to="/login">Sign In</Link>
+                  У вас уже есть аккаунт? <Link to="/login">Войти</Link>
                 </Typography>
               </CardContent>
             </Card>

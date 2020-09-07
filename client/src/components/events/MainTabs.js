@@ -32,9 +32,7 @@ const contentList = { padding: 4, overflow: "auto", maxHeight: tabHeight};
 
 export default function UniTable() {
   const items = ["Мега Екатеринбург", "Ельцин-центр", "Ашан", "Item4", "Item5", "Item6", "Item7"];
-  const handleClick = () => {
-    console.info("You clicked the Chip.");
-  };
+  
   return (
     <div
       style={{

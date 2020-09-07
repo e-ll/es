@@ -90,7 +90,7 @@ class CreateEvent extends Component {
       <Grid container justify="center" className="marginX-1">
         <Grid item xs={12} sm={8} md={6}>
           <Typography variant="h3" component="h1" align="center" gutterBottom>
-            Host Your Event
+            Создайте свой стенд
           </Typography>
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup
@@ -103,7 +103,7 @@ class CreateEvent extends Component {
               error={errors.partisipantName}
             />
             <Grid container spacing={3}>
-              <Grid item xs={6}>
+              {/* <Grid item xs={6}>
                 <SelectFieldGroup
                   label="Type of Sport *"
                   name="standType"
@@ -112,9 +112,9 @@ class CreateEvent extends Component {
                   onChange={this.onChange}
                   standList={standList}
                   error={errors.standType}
-                />
+                /> */}
               </Grid>
-              <Grid item xs={6}>
+              {/* <Grid item xs={6}>
                 <TextFieldGroup
                   label="Number of Player *"
                   placeholder="2-100 Players"
@@ -124,8 +124,8 @@ class CreateEvent extends Component {
                   onChange={this.onChange}
                   error={errors.numberofplayer}
                 />
-              </Grid>
-            </Grid>
+              </Grid> */}
+            {/* </Grid> */}
             <TextFieldGroup
               label="Image URL"
               placeholder="EX: https://unsplash.com/photos/-JzHSIzNYnU"
@@ -166,7 +166,7 @@ class CreateEvent extends Component {
               variant="contained"
               fullWidth
             >
-              Submit
+              Принять
             </Button>
           </form>
         </Grid>

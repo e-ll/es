@@ -62,7 +62,7 @@ class Login extends Component{
                 <Card className={login__card}>
                   <CardContent>
                     <Typography variant="h5" paragraph>
-                      Log In
+                      Войти
                     </Typography>
                     <form onSubmit={this.onSubmit} className="mb-2">
                       <TextFieldGroup
@@ -75,8 +75,8 @@ class Login extends Component{
                         error={errors.email}
                       />
                       <TextFieldGroup
-                        label="Password"
-                        placeholder="Password"
+                        label="Пароль"
+                        placeholder="Пароль"
                         name="password"
                         type="password"
                         value={this.state.password}
@@ -84,11 +84,11 @@ class Login extends Component{
                         error={errors.password}
                       />
                       <Button className="primary-color marginT-1" type="submit" variant="contained">
-                        Submit
+                        Принять
                       </Button>
                     </form>
                     <Typography variant="subtitle2" className={login__info}>
-                      Dont have an account? <Link to="/register">Sign Up</Link>
+                      У вас еще нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
                     </Typography>
                   </CardContent>
                 </Card>

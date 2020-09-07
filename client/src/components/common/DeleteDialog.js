@@ -11,15 +11,15 @@ const DeleteDialog = ({ openDeleteDialog, handleClose, onDeleteClick }) => {
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure that you want to delete this event?
+            Вы уверены что хотите удалить этот стенд?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={onDeleteClick} color="primary">
-            Yes
+            Да
           </Button>
           <Button onClick={handleClose} color="primary">
-            No
+            Нет
           </Button>
         </DialogActions>
       </Dialog>

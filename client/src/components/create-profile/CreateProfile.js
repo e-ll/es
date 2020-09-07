@@ -50,7 +50,7 @@ class CreateProfile extends Component{
             <Grid container justify="center" className="marginX-1">
                 <Grid item xs={12} sm={8} md={6}>
                     <Typography variant="h3" component="h1" align="center" gutterBottom>
-                        Create Your Profile
+                        Заполните профиль
                     </Typography>
                     <form onSubmit={this.onSubmit}>
                         <TextFieldGroup

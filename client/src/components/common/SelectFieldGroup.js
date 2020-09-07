@@ -29,7 +29,7 @@ const SelectFieldGroup = ({
         error={error ? true : false}
       >
         <MenuItem value={value}>
-          <em>Choose Sport Type</em>
+          <em>Выберите тип</em>
         </MenuItem>
         {standList.map((sport) => {
           return (

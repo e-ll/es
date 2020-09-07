@@ -31,7 +31,7 @@ class UserProfile extends Component{
         profileContent = (
           <div className={styles.profile}>
             <Typography variant="p" component="p" gutterBottom>
-              This user did not setup a profile
+              Профиль не заполнен
             </Typography>
           </div>
         );

@@ -23,10 +23,10 @@ const Desktop = ({ isAuthenticated, notificationsUnread, onShowNotification, onS
     const guestLinks = (
         <div className="hiddenDesk">
             <Link className="white-link" component={RouterLink} to="/login">
-                Login
+                Войти
             </Link>
             <Button className="secondary-color white-link" component={RouterLink} to="/register" variant="contained">
-                Get Started
+                Зарегистрироваться
             </Button>
         </div>
     );

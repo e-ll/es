@@ -15,9 +15,6 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
-import Gallery from "./galery/Gallery";
-import Store from "./store/Store";
-import Video from "./tabs/Video";
 import CloseIcon from "@material-ui/icons/Close";
 import FullWidthTabs from "./tabs/FullWidthTabs";
 import MapView from "./map/MapView";
@@ -25,8 +22,6 @@ import DeleteDialog from "../common/DeleteDialog";
 import styles from "./Event.module.css";
 import sportImage from "../../img/noImage.svg";
 import { deleteEvent, joinEvent } from "../../actions/eventActions";
-import Plug from "./Plug.js";
-import { JitsiMeet } from "./conference/JitsiMeet"
 
 class EventItem extends Component {
   constructor() {
@@ -34,15 +29,10 @@ class EventItem extends Component {
     this.state = {
       openDeleteDialog: false,
       openSnackbar: false,
-      openVideo: false,
     };
   }
   handleClickOpen() {
     this.setState({ openDeleteDialog: true });
-  }
-  handleClickVideo() {
-    this.setState({ openVideo: true });
-    console.log("Video clicked");
   }
 
   handleClose() {
@@ -69,62 +59,11 @@ class EventItem extends Component {
 
   render() {
     const { event, snackbarMessage, auth } = this.props;
-    const header = {
-      color: "#26374D",
-      background: "linear-gradient(180deg, #85C497 8.06%, #85C497 100%)",
-      boxSizing: "border-box",
-      borderRadius:"8px",
-      fontSize: "2.3vh",
-      height: "5vh",
-      textAlign: "center",
-      fontStyle: "normal",
-      fontWeight: "bold",
-      padding: "1vh 0",
-    };
     return (
+      
       <Paper className="pad-2">
         <Grid container>
-          <Grid item xs={6}>
-            <Grid>
-              <Plug />
-            </Grid>
-            <Typography>Галерея</Typography>
-            <Grid>
-              <Gallery images={event.galeryUrl} />
-            </Grid>
-            {/* event.shopId */}
-            {event.shopId ? (
-              <>
-                <Typography>Интернет-магазин</Typography>
-                <Grid style={{ maxHeight: "300px" }}>
-                  <Store />
-                </Grid>
-              </>
-            ) : null}
-          </Grid>
-          <Grid item xs={6}>
-            <Grid>{event.description}</Grid>
-            <Grid container direction="row" justify="space-around">
-              <Grid style={{ width: "50%" }} item>
-                <Typography style={header}>Чат с участником</Typography>
-                <JitsiMeet
-                  roomName={event.partisipantName}
-                  style={{ height: "300px" }}
-                />
-              </Grid>
-              <Grid item style={{ width: "50%" }}>
-                <Typography style={header}>Как нас найти</Typography>
-                <MapView
-                  coordinates={event.address.coordinates}
-                  location={event.location}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        {/* <Grid container> */}
-        {/* <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6}>
             <Grid container spacing={6}>
               <Grid item xs={6}>
                 <span className={styles.labelInfo}>Type of Sport</span>
@@ -180,8 +119,8 @@ class EventItem extends Component {
                 </Button>
               </ButtonGroup>
             ) : null}
-          </Grid> */}
-        {/* <Grid container item xs={12} md={6}>
+          </Grid>
+          <Grid container item xs={12} md={6}>
             <img
               className="marginB-1"
               style={{ width: "100%" }}
@@ -251,7 +190,7 @@ class EventItem extends Component {
             </React.Fragment>
           }
         />
-        <FullWidthTabs event={event} /> */}
+        <FullWidthTabs event={event} />
       </Paper>
     );
   }
