@@ -80,7 +80,7 @@ class EventsList extends Component {
                           const yCoordinate = intervalD * Math.sin(radian);
                           const left = index * xCoordinate;
                           const top = index * yCoordinate;
-                          console.log(left, top);
+                          
                           return (
                             <Tooltip title={`Стенд № ${index}`} interactive>
                               <Link to={`/event/${event._id}`}>
@@ -117,7 +117,7 @@ class EventsList extends Component {
                           const yCoordinate = intervalD * Math.sin(radian);
                           const left = index * xCoordinate;
                           const top = index * yCoordinate;
-                          console.log(left, top);
+                          
                           return (
                             <Tooltip title={`Стенд № ${event._id}`} interactive>
                               <Link to={`/event/${event._id}`}>
