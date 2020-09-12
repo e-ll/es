@@ -10,14 +10,21 @@ const Notification = require("../../models/Notification");
 // POST /api/events/<:event_id>/comments
 // add comment
 router.post(
-  "/upload",
+  "/send",
   
   (req, res) => {
-    console.log(req.body);
-          return res.json("event");
+    
+          return res.json(req.body);
         });
       
-  
+  router.get(
+    "/all",
+
+    (req, res) => {
+      console.log(req.body);
+      return res.json("event");
+    }
+  );
 
 
 

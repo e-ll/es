@@ -204,7 +204,7 @@ class CreateEvent extends Component {
               Сохранить
             </Button>
           </form>
-          <RUG action="http://localhost:8081/api/upload" type="list">
+          <RUG action="http://localhost:8081/api/upload/send" type="list">
             <DragArea>
               {(image) => (
                 <div>
