@@ -6,21 +6,16 @@ import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectFieldGroup from "../common/SelectFieldGroup";
 import { createEvent } from "../../actions/eventActions";
-import RUG, { DragArea, DropArea, Card, List } from "react-upload-gallery";
+import DropzoneComponent from "react-dropzone-component";
 import "react-upload-gallery/dist/style.css";
+import Drop from "./Drop";
+
 // import { initialState } from "../upload/data";
 
-const standList = [
-  "Badminton",
-  "Tennis",
-  "Volleyball",
-  "Basketball",
-  "Baseball",
-  "Running",
-  "Table tennis",
-  "Football",
-  "Soccer",
-];
+// const standList = [
+//   "",
+//
+// ];
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -39,13 +34,14 @@ class CreateEvent extends Component {
       gallery: null,
       errors: {},
       shopId: null,
-      files: [],
+
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  }
  
+  }
 
+  
   componentDidMount() {
     window.scrollTo(0, 0);
 
@@ -104,7 +100,6 @@ class CreateEvent extends Component {
 
   render() {
     const { errors } = this.state;
-    
 
     return (
       <Grid container justify="center" className="marginX-1">
@@ -204,17 +199,7 @@ class CreateEvent extends Component {
               Сохранить
             </Button>
           </form>
-          <RUG action="http://localhost:8081/api/upload/send" type="list">
-            <DragArea>
-              {(image) => (
-                <div>
-                  <Card image={image} />
-
-                  <button onClick={image.select}>Загруженные фото</button>
-                </div>
-              )}
-            </DragArea>
-          </RUG>
+          <Drop />
         </Grid>
       </Grid>
     );

@@ -12,6 +12,8 @@
     "moment": "^2.22.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-dropzone-component": "^3.2.0",
+    "react-images-upload": "^1.2.8",
     "react-jutsu": "^2.2.0",
     "react-leaflet": "^2.7.0",
     "react-moment": "^0.7.9",
