@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-
+const cors = require("cors");
 const multer = require('multer');
+router.options("*", cors());
+
+
+
   const storage = multer.diskStorage({
     destination: './uploads/',
     filename: function (req, file, cb) {
@@ -24,7 +28,7 @@ const multer = require('multer');
   });
   const upload = multer({storage: storage});
 
-  router.post('/', upload.single('file'), function (req, res, next) {
+  router.post('/', cors(), upload.single('file'), function (req, res, next) {
     if (req.file && req.file.originalname) {
       console.log(`Received file ${req.file.originalname}`);
     }

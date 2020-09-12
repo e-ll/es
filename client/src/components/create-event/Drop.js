@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DropzoneComponent from "react-dropzone-component";
-
+import "./drop.css"
 export default class Example extends React.Component {
   constructor(props) {
     super(props);

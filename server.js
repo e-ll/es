@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-
+var cors = require("cors");
 const users = require('./routes/api/users');
 const events = require('./routes/api/events');
 const comments = require('./routes/api/comments');
@@ -21,7 +21,7 @@ mongoose
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use(function (req, res, next) {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
