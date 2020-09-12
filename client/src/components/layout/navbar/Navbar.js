@@ -122,15 +122,15 @@ const megalogo = "https://logosklad.ru/photo/logos/213/1282272538.jpg";
                 На карту
               </Link>
 
-              {/* {isAuthenticated ? (
+              {isAuthenticated ? (
                 <Link
                   className="white-link"
                   component={RouterLink}
                   to="/create-event"
                 >
-                  Create Event
+                  Создать стенд
                 </Link>
-              ) : null} */}
+              ) : null}
             </div>
             <div style={{ display: "flex", margin: "0 auto" }}>
               <Avatar

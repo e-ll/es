@@ -4,13 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-   "install-client": "cd client && npm install",
-"heroku-postbuild": "npm run install-client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
     "build": "cd client && npm run build",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "cd client && npm start",
-    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""   
+    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
   },
   "author": "ellpm",
   "license": "ISC",

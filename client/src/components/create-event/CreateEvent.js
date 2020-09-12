@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Grid, Typography, Button } from "@material-ui/core";
-
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectFieldGroup from "../common/SelectFieldGroup";
 import { createEvent } from "../../actions/eventActions";
+import RUG, { DragArea, DropArea, Card, List } from "react-upload-gallery";
+import "react-upload-gallery/dist/style.css";
+// import { initialState } from "../upload/data";
 
 const standList = [
   "Badminton",
@@ -27,16 +29,23 @@ class CreateEvent extends Component {
       id: null,
       partisipantName: "",
       standType: "",
+      logoUrl: null,
+      youTubeCode: null,
       numberofplayer: "",
       imageURL: "",
       location: "",
       start: "",
       description: "",
+      gallery: null,
       errors: {},
+      shopId: null,
+      files: [],
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+ 
+
   componentDidMount() {
     window.scrollTo(0, 0);
 
@@ -52,6 +61,12 @@ class CreateEvent extends Component {
         location: event.location,
         start: event.start,
         description: event.description,
+        logoUrl: event.logoUrl,
+        youTubeCode: event.youTubeCode,
+        gallery: event.gallery,
+        shopId: event.shopId,
+        files: [],
+        imagePreviewUrls: [],
       });
     }
   }
@@ -74,6 +89,10 @@ class CreateEvent extends Component {
       location: this.state.location,
       start: this.state.start,
       description: this.state.description,
+      logoUrl: this.state.logoUrl,
+      youTubeCode: this.state.youTubeCode,
+      gallery: this.state.gallery,
+      shopId: this.state.shopId,
     };
 
     this.props.createEvent(eventData, this.props.history);
@@ -85,6 +104,7 @@ class CreateEvent extends Component {
 
   render() {
     const { errors } = this.state;
+    
 
     return (
       <Grid container justify="center" className="marginX-1">
@@ -94,7 +114,7 @@ class CreateEvent extends Component {
           </Typography>
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup
-              label="Event Name *"
+              label="Название компании или проекта"
               placeholder=""
               name="partisipantName"
               type="name"
@@ -113,8 +133,8 @@ class CreateEvent extends Component {
                   standList={standList}
                   error={errors.standType}
                 /> */}
-              </Grid>
-              {/* <Grid item xs={6}>
+            </Grid>
+            {/* <Grid item xs={6}>
                 <TextFieldGroup
                   label="Number of Player *"
                   placeholder="2-100 Players"
@@ -126,8 +146,9 @@ class CreateEvent extends Component {
                 />
               </Grid> */}
             {/* </Grid> */}
+
             <TextFieldGroup
-              label="Image URL"
+              label="Ссылка на изображение"
               placeholder="EX: https://unsplash.com/photos/-JzHSIzNYnU"
               name="imageURL"
               type="name"
@@ -135,24 +156,19 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.imageURL}
             />
+
             <TextFieldGroup
-              label="Location"
-              placeholder="EX: West 96th Street, New York, NY 10025"
+              label="Адрес для карты"
+              placeholder="пример: Екатеринбург, ул.Бориса Ельцина, д.1"
               name="location"
               type="name"
               value={this.state.location}
               onChange={this.onChange}
               error={errors.location}
             />
-            <TextFieldGroup
-              name="start"
-              type="date"
-              value={this.state.start}
-              onChange={this.onChange}
-              error={errors.start}
-            />
+
             <TextAreaFieldGroup
-              label="Description"
+              label="Описание компании или проекта"
               placeholder="Details about this event"
               name="description"
               type="name"
@@ -160,15 +176,45 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.description}
             />
+            <TextFieldGroup
+              label="Код Youtube видео или трансляции для показа (если есть)"
+              placeholder="например I_GMll3HJpM"
+              name="youTubeCode"
+              type="name"
+              value={this.state.youTubeCode}
+              onChange={this.onChange}
+              error={errors.youTubeCode}
+            />
+            <TextFieldGroup
+              label="Код магазина в Ecwid (если есть)"
+              placeholder="например 34300034"
+              name="shopID"
+              type="name"
+              value={this.state.shopId}
+              onChange={this.onChange}
+              error={errors.shopId}
+            />
+
             <Button
               className="primary-color marginB-2"
               type="submit"
               variant="contained"
               fullWidth
             >
-              Принять
+              Сохранить
             </Button>
           </form>
+          <RUG action="http://localhost:8081/api/upload" type="list">
+            <DragArea>
+              {(image) => (
+                <div>
+                  <Card image={image} />
+
+                  <button onClick={image.select}>Загруженные фото</button>
+                </div>
+              )}
+            </DragArea>
+          </RUG>
         </Grid>
       </Grid>
     );

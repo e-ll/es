@@ -9,7 +9,7 @@ const events = require('./routes/api/events');
 const comments = require('./routes/api/comments');
 const profile = require('./routes/api/profile');
 const notification = require('./routes/api/notification');
-
+const upload = require('./routes/api/upload')
 const app = express();
 
 // const db = require('./config/keys').mongoURI;
@@ -43,6 +43,7 @@ app.use('/api/events', events);
 app.use('/api/events', comments);
 app.use('/api/profile', profile);
 app.use('/api/notification', notification);
+app.use("/api/upload", upload);
 
 
     app.use(express.static('client/build'));
