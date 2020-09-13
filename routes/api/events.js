@@ -50,27 +50,34 @@ router.post(
 
     if (req.body.partisipantName)
       eventFields.partisipantName = req.body.partisipantName;
-    if (req.body.standType) eventFields.standType = req.body.standType;
-    if (req.body.numberofplayer)
-      eventFields.numberofplayer = req.body.numberofplayer;
-    if (req.body.location) eventFields.location = req.body.location;
+      
+      if (req.body.imageURL) eventFields.imageURL = req.body.imageURL;
+    // if (req.body.standType) eventFields.standType = req.body.standType;
+    // if (req.body.numberofplayer)
+    //   eventFields.numberofplayer = req.body.numberofplayer;
+    if (req.body.location) {eventFields.location = req.body.location} else eventFields.location = "Екатеринбург";
     if (req.body.description) eventFields.description = req.body.description;
-    if (req.body.imageURL) eventFields.imageURL = req.body.imageURL;
-    if (req.body.start) eventFields.start = req.body.start;
+if (req.body.youTubeCode) eventFields.youTubeCode = req.body.youTubeCode;
+if (req.body.gallery) eventFields.gallery = req.body.gallery;
+if (req.body.shopId) eventFields.shopId = req.body.shopId;
+
+    // if (req.body.start) eventFields.start = req.body.start;
 
     Event.findById(event_Id).then((event) => {
       // update an event
       if (event) {
         if (req.body.partisipantName)
           event.partisipantName = req.body.partisipantName;
-        if (req.body.standType) event.standType = req.body.standType;
-        if (req.body.numberofplayer)
-          event.numberofplayer = req.body.numberofplayer;
+        // if (req.body.standType) event.standType = req.body.standType;
+        // if (req.body.numberofplayer)
+        //   event.numberofplayer = req.body.numberofplayer;
         if (req.body.location) event.location = req.body.location;
         if (req.body.description) event.description = req.body.description;
         if (req.body.imageURL) event.imageURL = req.body.imageURL;
-        if (req.body.start) event.start = req.body.start;
-
+        // if (req.body.start) event.start = req.body.start;
+if (req.body.youTubeCode) event.youTubeCode = req.body.youTubeCode;
+if (req.body.gallery) event.gallery = req.body.gallery;
+if (req.body.shopId) event.shopId = req.body.shopId;
         return event.save().then((event) => res.json(event));
       }
       // create a new event

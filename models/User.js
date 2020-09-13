@@ -18,6 +18,10 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    stand: {
+        type: Boolean,
+        default: false
+    }
 });
 
 module.exports = User = mongoose.model('users', UserSchema);

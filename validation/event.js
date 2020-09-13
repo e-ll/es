@@ -4,21 +4,21 @@ const isEmpty = require("./is-empty");
 module.exports = function validateProfileInput(data) {
   let errors = {};
 
-  data.partisipantName = !isEmpty(data.partisipantName)
-    ? data.partisipantName
-    : "";
-  data.standType = !isEmpty(data.standType) ? data.standType : "";
-  data.numberofplayer = !isEmpty(data.numberofplayer)
-    ? data.numberofplayer
-    : "";
+  // data.partisipantName = !isEmpty(data.partisipantName)
+  //   ? data.partisipantName
+  //   : "";
+  // data.standType = !isEmpty(data.standType) ? data.standType : "";
+  // data.numberofplayer = !isEmpty(data.numberofplayer)
+  //   ? data.numberofplayer
+  //   : "";
 
-  if (Validator.isEmpty(data.partisipantName)) {
-    errors.partisipantName = "Name of event is required";
-  }
+  // if (Validator.isEmpty(data.partisipantName)) {
+  //   errors.partisipantName = "Name of event is required";
+  // }
 
-  if (Validator.isEmpty(data.standType)) {
-    errors.standType = "Type of sport field is required";
-  }
+  // if (Validator.isEmpty(data.standType)) {
+  //   errors.standType = "Type of sport field is required";
+  // }
 
   // if(!Validator.isNumeric(data.numberofplayer)){
   //     errors.numberofplayer = 'Must be a number';
@@ -34,11 +34,11 @@ module.exports = function validateProfileInput(data) {
   //     errors.numberofplayer = 'Must be less than 100 players';
   // }
 
-  if (!isEmpty(data.imageURL)) {
-    if (!Validator.isURL(data.imageURL)) {
-      errors.imageURL = "Not a valid URL";
-    }
-  }
+  // if (!isEmpty(data.imageURL)) {
+  //   if (!Validator.isURL(data.imageURL)) {
+  //     errors.imageURL = "Not a valid URL";
+  //   }
+  // }
 
   return {
     errors,

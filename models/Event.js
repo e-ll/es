@@ -14,7 +14,7 @@ const EventSchema = new Schema({
   },
   standType: {
     type: String,
-    required: true,
+    required: false,
   },
   logoUrl: {
     type: String,
@@ -22,22 +22,25 @@ const EventSchema = new Schema({
   youTubeCode: {
     type: String,
   },
-  galeryUrl:{
-    type: Array
+  shopId: {
+    type: String,
+  },
+  galeryUrl: {
+    type: Array,
   },
   numberofplayer: {
     type: Number,
-    required: true,
+    required: false,
   },
   listofplayer: [
     {
       id: {
         type: String,
-        required: true,
+        required: false,
       },
       name: {
         type: String,
-        required: true,
+        required: false,
       },
     },
   ],
@@ -68,7 +71,7 @@ const EventSchema = new Schema({
       },
       text: {
         type: String,
-        required: true,
+        required: false,
       },
       name: {
         type: String,
