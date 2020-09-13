@@ -26,6 +26,7 @@ import NotificationList from "../../notification/NotificationList";
 import UserMenu from "../UserMenu";
 
 import Logo from "../../../img/logo.jpg";
+import meg from "../../../img/MEGA_logo.png"
 
 class Navbar extends Component {
   constructor(props) {
@@ -92,7 +93,7 @@ console.log(this.props);
     const handleDrawerClose = () => {
       this.setState({ toggleDrawer: false });
     };
-const megalogo = "https://logosklad.ru/photo/logos/213/1282272538.jpg";
+const megalogo = "/img/MEGA-logo.png";
     const notificationsList = (
       <Badge
         badgeContent={notifications.unread}
@@ -109,18 +110,13 @@ const megalogo = "https://logosklad.ru/photo/logos/213/1282272538.jpg";
         <Container>
           <Toolbar disableGutters className="toolbar">
             <Link component={RouterLink} to="/">
-              <img
-                src={this.props.event ? this.props.event.logoUrl : megalogo}
-                style={{ height: "50px", width: "50px" }}
-                className="logo"
-                alt="Logo"
-              />
+              <span style={{color: "#D630B1"}} >Festyline</span>
             </Link>
 
             <div className="hiddenDesk">
-              <Link className="white-link" component={RouterLink} to="/events">
+              {/* <Link disable className="white-link" component={RouterLink} to="/events">
                 На карту
-              </Link>
+              </Link> */}
 
               {isAuthenticated ? (
                 <Link
@@ -133,12 +129,12 @@ const megalogo = "https://logosklad.ru/photo/logos/213/1282272538.jpg";
               ) : null}
             </div>
             <div style={{ display: "flex", margin: "0 auto" }}>
-              <Avatar
+              {/* <Avatar
                 src={
-                  "https://upload.wikimedia.org/wikipedia/ru/c/cf/%D0%9B%D0%BE%D0%B1%D0%BE%D1%81_%D0%A3%D0%9F%D0%9D%D0%A4%D0%9C_%28%D0%BB%D0%BE%D0%B3%D0%BE%29.png"
+                  meg
                 }
                 alt={"logo"}
-              />
+              /> */}
               <Typography variant="h4" color="inherit">
                 Mega Green Fest 2020
               </Typography>

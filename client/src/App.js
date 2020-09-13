@@ -20,9 +20,10 @@ import {
   CreateEvent,
   Profile,
   CreateProfile,
-  UserProfile
+  UserProfile,
+  Plug
  } from './components';
- import Plug from './components/home/Plug'
+ 
 
 if(localStorage.jwtToken){
   setAuthToken(localStorage.jwtToken);
@@ -74,6 +75,7 @@ class App extends Component {
                   path="/edit-event/:id"
                   component={CreateEvent}
                 />
+                {/* <Route path="/*" component={Plug} /> */}
               </Switch>
             </Container>
             {/* <Footer /> */}
