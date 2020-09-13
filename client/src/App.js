@@ -22,6 +22,7 @@ import {
   CreateProfile,
   UserProfile
  } from './components';
+ import Plug from './components/home/Plug'
 
 if(localStorage.jwtToken){
   setAuthToken(localStorage.jwtToken);
@@ -43,7 +44,8 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Plug} />
+            <Route exact path="/greenfest" component={Plug} />
             <Container>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
@@ -52,13 +54,29 @@ class App extends Component {
                 <Route exact path="/event/:id" component={Event} />
                 <PrivateRoute exact path="/profile" component={Profile} />
                 <Route exact path="/profile/:id" component={UserProfile} />
-                <PrivateRoute exact path="/create-profile" component={CreateProfile} />
-                <PrivateRoute exact path="/event/:id/newcomment" component={CommentForm} />
-                <PrivateRoute exact path="/create-event" component={CreateEvent} />
-                <PrivateRoute exact path="/edit-event/:id" component={CreateEvent} />
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
+                />
+                <PrivateRoute
+                  exact
+                  path="/event/:id/newcomment"
+                  component={CommentForm}
+                />
+                <PrivateRoute
+                  exact
+                  path="/create-event"
+                  component={CreateEvent}
+                />
+                <PrivateRoute
+                  exact
+                  path="/edit-event/:id"
+                  component={CreateEvent}
+                />
               </Switch>
             </Container>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Router>
       </Provider>

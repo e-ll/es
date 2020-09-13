@@ -6,6 +6,7 @@
   "scripts": {
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
+    "go":"rm -rf node_modules && npm install -g npm@latest && npm i core-util-is && npm run install-client && npm run build",
     "build": "cd client && npm run build",
     "start": "node server.js",
     "server": "nodemon server.js",
@@ -17,6 +18,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "core-util-is": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.16.3",
     "faker": "^5.1.0",

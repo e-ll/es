@@ -1,0 +1,118 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.App {
+  position: relative;
+	min-height: 100%;
+}
+.content {
+padding-bottom: 90px;
+}
+
+.footer {
+  position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+  height: 80px;
+  /* min-height: 75vh;  */
+  /* Player__container___f3NHe */
+  background: #ffffff;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: calc(8px + 1vw);
+  font-feature-settings: "kern" off, "liga" off;
+  color: #1b5f50;
+}
+.footer a {
+  text-decoration: none;
+}
+.footer img {
+  height: 40px;
+  margin-top: 2vh;
+  min-height: 40px; 
+  margin-left: 3vw;
+}
+.footerTitle {
+  max-width: 1400px;
+}
+.orgContact {
+  font-size: calc(8px + 1vw);
+}
+.title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+.fest {
+  margin-left: 12vw;
+  margin-top: 4vh;
+  width: 100%;
+  height: auto;
+}
+.fest img {
+  width: 52vw;
+  height: auto;
+  max-width: 763px;
+}
+.festDate {
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 3.33vh;
+  line-height: 4vh;
+  font-weight: 800;
+  font-feature-settings: "kern" off, "liga" off;
+  color: white;
+
+  margin-left: 13.5vw;
+}
+.count {
+  margin-top: 4vh;
+  margin-left: 13.5vw;
+}
+
+.inputForm {
+  margin-top: 6vh;
+  margin-left: 13.5vw;
+}
+
+.getPost {
+  margin-top: 2vh;
+  margin-left: 13.5vw;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(12px + 1.5vw);
+  line-height: 2.57vw;
+  font-feature-settings: "kern" off, "liga" off;
+  color: #55b563;
+}
+.contacts {
+  margin-left: 13.5vw;
+}
+/* @media only screen and (max-width: 760px) {
+  .hiddenDesk {
+    display: none;
+  }
+
+  .hiddenMobile {
+    display: block;
+  }
+}
+
+.react-transform-component {
+  width: auto !important;
+} */
+/* @media all and (min-width: 960px) {
+  .footer {
+    font-size: 16px;
+    min-height: 5vh;
+  }
+
+  .orgContact {
+    font-size: calc(8px + 1vw);
+  }
+} */
