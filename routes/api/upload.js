@@ -8,7 +8,9 @@ router.options("*", cors());
 
 
   const storage = multer.diskStorage({
-    destination: './uploads/',
+    destination: (req, file, cb) =>{
+      cb(null, "uploads");
+  },
     filename: function (req, file, cb) {
       // Mimetype stores the file type, set extensions according to filetype
       switch (file.mimetype) {
@@ -26,9 +28,10 @@ router.options("*", cors());
       cb(null, file.originalname.slice(0, 4) + Date.now() + ext);
     }
   });
-  const upload = multer({storage: storage});
+  const uploadConfig = multer({storage: storage});
 
-  router.post('/', cors(), upload.single('file'), function (req, res, next) {
+  router.post('/', cors(), uploadConfig.single('file'), function (req, res, next) {
+    console.log(req.body);
     if (req.file && req.file.originalname) {
       console.log(`Received file ${req.file.originalname}`);
     }
