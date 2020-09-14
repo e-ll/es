@@ -6,7 +6,7 @@ const validateEventInput = require("../../validation/event");
 
 const Event = require("../../models/Event");
 const Notification = require("../../models/Notification");
-
+const User = require("../../models/User");
 // GET /api/events/all
 // fetch all events
 router.get("/all", (req, res) => {
@@ -37,7 +37,7 @@ router.get("/:id", (req, res) => {
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
+  async (req, res) => {
     const event_Id = req.body.id;
     console.log(event_Id);
     const { errors, isValid } = validateEventInput(req.body);
@@ -47,20 +47,27 @@ router.post(
 
     const eventFields = {};
     eventFields.user = req.user.id;
+    
+    const user = await User.findById(req.user.id);
+     user.stand = true;
+     await user.save()
+    
 
     if (req.body.partisipantName)
       eventFields.partisipantName = req.body.partisipantName;
-      
-      if (req.body.imageURL) eventFields.imageURL = req.body.imageURL;
+
+    if (req.body.imageURL) eventFields.imageURL = req.body.imageURL;
     // if (req.body.standType) eventFields.standType = req.body.standType;
     // if (req.body.numberofplayer)
     //   eventFields.numberofplayer = req.body.numberofplayer;
-    if (req.body.location) {eventFields.location = req.body.location} else eventFields.location = "Екатеринбург";
+    if (req.body.location) {
+      eventFields.location = req.body.location;
+    } else eventFields.location = "Екатеринбург";
     if (req.body.description) eventFields.description = req.body.description;
-if (req.body.youTubeCode) eventFields.youTubeCode = req.body.youTubeCode;
-if (req.body.gallery) eventFields.gallery = req.body.gallery;
-if (req.body.shopId) eventFields.shopId = req.body.shopId;
-if (req.body.galeryUrl) eventFields.galeryUrl = req.body.galeryUrl;
+    if (req.body.youTubeCode) eventFields.youTubeCode = req.body.youTubeCode;
+    if (req.body.gallery) eventFields.gallery = req.body.gallery;
+    if (req.body.shopId) eventFields.shopId = req.body.shopId;
+    if (req.body.galeryUrl) eventFields.galeryUrl = req.body.galeryUrl;
 
     // if (req.body.start) eventFields.start = req.body.start;
 
@@ -76,9 +83,9 @@ if (req.body.galeryUrl) eventFields.galeryUrl = req.body.galeryUrl;
         if (req.body.description) event.description = req.body.description;
         if (req.body.imageURL) event.imageURL = req.body.imageURL;
         // if (req.body.start) event.start = req.body.start;
-if (req.body.youTubeCode) event.youTubeCode = req.body.youTubeCode;
-if (req.body.galeryUrl) event.galeryUrl = req.body.galeryUrl;
-if (req.body.shopId) event.shopId = req.body.shopId;
+        if (req.body.youTubeCode) event.youTubeCode = req.body.youTubeCode;
+        if (req.body.galeryUrl) event.galeryUrl = req.body.galeryUrl;
+        if (req.body.shopId) event.shopId = req.body.shopId;
         return event.save().then((event) => res.json(event));
       }
       // create a new event
@@ -156,19 +163,16 @@ router.put(
 router.delete(
   "/:id",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Event.findById(req.params.id)
-      .then((event) => {
-        if (event.user.toString() !== req.user.id) {
-          return res.status(401).json({ notauthorized: "User not authorized" });
-        }
-        event.remove().then(() => res.json({ success: true }));
-      })
-      .catch((err) =>
-        res
-          .status(500)
-          .json({ error: "Error in delete api/events/:id. " + err })
-      );
+  async (req, res) => {
+    Event.findById(req.params.id).then((event) => {
+      if (event.user.toString() !== req.user.id) {
+        return res.status(401).json({ notauthorized: "User not authorized" });
+      }
+      event.remove().then(() => res.json({ success: true }));
+    });
+    const user = await User.findById(req.user.id);
+    user.stand = false;
+    await user.save();
   }
 );
 
