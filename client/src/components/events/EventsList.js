@@ -107,7 +107,7 @@ class EventsList extends Component {
                           );
                         })}
                       </div>
-                      {/* <div
+                      <div
                       // style={{
                       //   display: "grid",
                       //   gridTemplateColumns: "repeat(4, auto)",
@@ -143,7 +143,7 @@ class EventsList extends Component {
                             </Tooltip>
                           );
                         })}
-                      </div> */}
+                      </div>
 
                       <Lector />
                     </div>
