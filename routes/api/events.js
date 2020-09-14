@@ -60,6 +60,7 @@ router.post(
 if (req.body.youTubeCode) eventFields.youTubeCode = req.body.youTubeCode;
 if (req.body.gallery) eventFields.gallery = req.body.gallery;
 if (req.body.shopId) eventFields.shopId = req.body.shopId;
+if (req.body.galeryUrl) eventFields.galeryUrl = req.body.galeryUrl;
 
     // if (req.body.start) eventFields.start = req.body.start;
 
@@ -76,7 +77,7 @@ if (req.body.shopId) eventFields.shopId = req.body.shopId;
         if (req.body.imageURL) event.imageURL = req.body.imageURL;
         // if (req.body.start) event.start = req.body.start;
 if (req.body.youTubeCode) event.youTubeCode = req.body.youTubeCode;
-if (req.body.gallery) event.gallery = req.body.gallery;
+if (req.body.galeryUrl) event.galeryUrl = req.body.galeryUrl;
 if (req.body.shopId) event.shopId = req.body.shopId;
         return event.save().then((event) => res.json(event));
       }

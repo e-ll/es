@@ -124,7 +124,7 @@ class EventItem extends Component {
         </Grid>
 
         {/* <Grid container> */}
-        {/* <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6}>
             <Grid container spacing={6}>
               <Grid item xs={6}>
                 <span className={styles.labelInfo}>Type of Sport</span>
@@ -180,7 +180,7 @@ class EventItem extends Component {
                 </Button>
               </ButtonGroup>
             ) : null}
-          </Grid> */}
+          </Grid>
         {/* <Grid container item xs={12} md={6}>
             <img
               className="marginB-1"

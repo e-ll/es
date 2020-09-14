@@ -28,7 +28,7 @@ export default class Example extends React.Component {
     this.callbackArray = [() => console.log("Hi!"), () => console.log("Ho!")];
 
     // Simple callbacks work too, of course
-    this.callback = () => console.log("Hello!");
+    this.callback = (file, {responseText}) => this.props.onChange(file, responseText)
   }
 
   render() {
@@ -38,7 +38,7 @@ export default class Example extends React.Component {
     // For a list of all possible events (there are many), see README.md!
     const eventHandlers = {
       drop: this.callbackArray,
-      addedfile: this.callback,
+      success: this.callback,
     };
 
     return (

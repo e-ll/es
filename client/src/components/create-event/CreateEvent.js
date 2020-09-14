@@ -31,14 +31,15 @@ class CreateEvent extends Component {
       location: "",
       start: "",
       description: "",
-      gallery: null,
+      galeryUrl: [],
       errors: {},
       shopId: null,
 
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
- 
+    this.handlerChangeGallery = this.handlerChangeGallery.bind(this);
+    
   }
 
   
@@ -59,7 +60,7 @@ class CreateEvent extends Component {
         description: event.description,
         logoUrl: event.logoUrl,
         youTubeCode: event.youTubeCode,
-        gallery: event.gallery,
+        galeryUrl: event.galeryUrl,
         shopId: event.shopId,
         files: [],
         imagePreviewUrls: [],
@@ -78,6 +79,7 @@ class CreateEvent extends Component {
 
     const eventData = {
       id: this.state.id,
+      galeryUrl: this.state.galeryUrl ? this.state.galeryUrl : [],
       partisipantName: this.state.partisipantName,
       standType: this.state.standType,
       // numberofplayer: this.state.numberofplayer,
@@ -87,7 +89,7 @@ class CreateEvent extends Component {
       description: this.state.description,
       logoUrl: this.state.logoUrl,
       youTubeCode: this.state.youTubeCode,
-      gallery: this.state.gallery,
+      galeryUrl: this.state.galeryUrl,
       shopId: this.state.shopId,
     };
 
@@ -96,6 +98,13 @@ class CreateEvent extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handlerChangeGallery(file, response) {
+    const galeryUrl = this.state.galeryUrl;
+
+    galeryUrl.push(response);
+    this.setState({galeryUrl})
   }
 
   render() {
@@ -199,7 +208,7 @@ class CreateEvent extends Component {
               Сохранить
             </Button>
           </form>
-          <Drop />
+          <Drop onChange={this.handlerChangeGallery} />
         </Grid>
       </Grid>
     );
