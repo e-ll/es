@@ -9,7 +9,7 @@ import { createEvent } from "../../actions/eventActions";
 import DropzoneComponent from "react-dropzone-component";
 import "react-upload-gallery/dist/style.css";
 import Drop from "./Drop";
-
+import Editor from "../editor/editorgit "
 // import { initialState } from "../upload/data";
 
 // const standList = [
@@ -117,6 +117,7 @@ class CreateEvent extends Component {
             Создайте свой стенд
           </Typography>
           <form onSubmit={this.onSubmit}>
+            <Editor />
             <TextFieldGroup
               label="Название компании или проекта"
               placeholder=""

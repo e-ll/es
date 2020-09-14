@@ -111,7 +111,7 @@ if (isAuthenticated) {
       <Link
         className="white-link"
         component={Link}
-        to={`/edit-event/${event.user._id}`}
+        to={`/`}
       >
         Мой стенд
       </Link>
@@ -125,7 +125,7 @@ if (isAuthenticated) {
                   Создать стенд
                 </Link>)
   }
-} else null
+} 
     return (
       <AppBar position="static" color="default">
         <Container>
