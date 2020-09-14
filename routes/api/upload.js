@@ -2,49 +2,42 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const cors = require("cors");
-const multer = require('multer');
+const multer = require("multer");
 router.options("*", cors());
 
-
-
-  const storage = multer.diskStorage({
-    destination: (req, file, cb) =>{
-      cb(null, "uploads");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
   },
-    filename: function (req, file, cb) {
-      // Mimetype stores the file type, set extensions according to filetype
-      switch (file.mimetype) {
-        case 'image/jpeg':
-          ext = '.jpeg';
-          break;
-        case 'image/png':
-          ext = '.png';
-          break;
-        case 'image/gif':
-          ext = '.gif';
-          break;
-      }
-
-      cb(null, file.originalname.slice(0, 4) + Date.now() + ext);
-    }
-  });
-  const uploadConfig = multer({storage: storage});
-
-  router.post('/', cors(), uploadConfig.single('file'), function (req, res, next) {
-    console.log(req.body);
-    if (req.file && req.file.originalname) {
-      console.log(`Received file ${req.file.originalname}`);
+  filename: function (req, file, cb) {
+    // Mimetype stores the file type, set extensions according to filetype
+    switch (file.mimetype) {
+      case "image/jpeg":
+        ext = ".jpeg";
+        break;
+      case "image/png":
+        ext = ".png";
+        break;
+      case "image/gif":
+        ext = ".gif";
+        break;
     }
 
-    res.send({ responseText: req.file.path }); // You can send any response to the user here
-  });
+    cb(null, file.originalname.slice(0, 4) + Date.now() + ext);
+  },
+});
+const uploadConfig = multer({ storage: storage });
 
-
-
-
-
-
-
+router.post("/", cors(), uploadConfig.single("file"), function (
+  req,
+  res,
+  next
+) {
+  if (req.file && req.file.originalname) {
+    console.log(`Received file ${req.file.originalname}`);
+  }
+  res.send({ responseText: req.file.filename }); // You can send any response to the user here
+});
 
 // const Event = require("../../models/Event");
 // const Notification = require("../../models/Notification");
@@ -53,12 +46,12 @@ router.options("*", cors());
 // // add comment
 // router.post(
 //   "/",
-  
+
 //   (req, res) => {
-    
+
 //           return res.json(req.body);
 //         });
-      
+
 //   router.get(
 //     "/all",
 
@@ -67,8 +60,5 @@ router.options("*", cors());
 //       return res.json("event");
 //     }
 //   );
-
-
-
 
 module.exports = router;

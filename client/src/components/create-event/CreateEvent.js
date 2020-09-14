@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Grid, Typography, Button } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  Button,
+  FormLabel,
+  InputLabel,
+} from "@material-ui/core";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectFieldGroup from "../common/SelectFieldGroup";
 import { createEvent } from "../../actions/eventActions";
 import DropzoneComponent from "react-dropzone-component";
-import "react-upload-gallery/dist/style.css";
 import Drop from "./Drop";
-
+import "react-upload-gallery/dist/style.css";
 // import { initialState } from "../upload/data";
 
 // const standList = [
@@ -34,15 +39,16 @@ class CreateEvent extends Component {
       galeryUrl: [],
       errors: {},
       shopId: null,
-
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handlerChangeGallery = this.handlerChangeGallery.bind(this);
-    
+    this.handlerChangeLogotype = this.handlerChangeLogotype.bind(this);
+    this.handlerDeleteImageFromGallery = this.handlerDeleteImageFromGallery.bind(
+      this
+    );
   }
 
-  
   componentDidMount() {
     window.scrollTo(0, 0);
 
@@ -79,7 +85,7 @@ class CreateEvent extends Component {
 
     const eventData = {
       id: this.state.id,
-      galeryUrl: this.state.galeryUrl ? this.state.galeryUrl : [],
+      galeryUrl: this.state.galeryUrl,
       partisipantName: this.state.partisipantName,
       standType: this.state.standType,
       // numberofplayer: this.state.numberofplayer,
@@ -101,14 +107,28 @@ class CreateEvent extends Component {
   }
 
   handlerChangeGallery(file, response) {
-    const galeryUrl = this.state.galeryUrl;
+    this.setState({ galeryUrl: ["ff", "Ff"] }, ()=>{});
+  }
 
-    galeryUrl.push(response);
-    this.setState({galeryUrl})
+  handlerChangeLogotype(file, response) {
+    const logoUrl = response;
+    this.setState({ logoUrl });
+  }
+
+  handlerDeleteImageFromGallery(image) {
+    const gallery = this.state.galeryUrl;
+     const galeryUrl = gallery.filter((pic) => pic !== image);
+    this.setState({ galeryUrl });
   }
 
   render() {
-    const { errors } = this.state;
+    const {
+      errors,
+      logoUrl,
+      galeryUrl,
+      partisipantName,
+      imageURL,
+    } = this.state;
 
     return (
       <Grid container justify="center" className="marginX-1">
@@ -122,12 +142,12 @@ class CreateEvent extends Component {
               placeholder=""
               name="partisipantName"
               type="name"
-              value={this.state.partisipantName}
+              value={partisipantName}
               onChange={this.onChange}
               error={errors.partisipantName}
             />
-            <Grid container spacing={3}>
-              {/* <Grid item xs={6}>
+            {/* <Grid container spacing={3}> */}
+            {/* <Grid item xs={6}>
                 <SelectFieldGroup
                   label="Type of Sport *"
                   name="standType"
@@ -137,7 +157,7 @@ class CreateEvent extends Component {
                   standList={standList}
                   error={errors.standType}
                 /> */}
-            </Grid>
+            {/* </Grid> */}
             {/* <Grid item xs={6}>
                 <TextFieldGroup
                   label="Number of Player *"
@@ -156,7 +176,7 @@ class CreateEvent extends Component {
               placeholder="EX: https://unsplash.com/photos/-JzHSIzNYnU"
               name="imageURL"
               type="name"
-              value={this.state.imageURL}
+              value={imageURL}
               onChange={this.onChange}
               error={errors.imageURL}
             />
@@ -198,7 +218,37 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.shopId}
             />
-
+            {logoUrl && (
+              <>
+                <FormLabel>Logotype</FormLabel>
+                <img src={`http://localhost:8081/uploads/${logoUrl}`} alt="" />
+                <a href="#" onClick={() => this.setState({ logoUrl: "" })}>
+                  Delete logotype
+                </a>
+              </>
+            )}
+            <FormLabel>{logoUrl ? "Change" : "Add"} Logotype</FormLabel>
+            <Drop onChange={this.handlerChangeLogotype} />
+            {galeryUrl && (
+              <>
+                <InputLabel>Gallery</InputLabel>
+                {galeryUrl.map((image, index) => (
+                  <span key={`gallery-image-${index}`}>
+                    {image && (
+                      <img
+                        src={`http://localhost:8081/uploads/${image}`}
+                        alt=""
+                      />
+                    )}
+                    <div onClick={this.handlerDeleteImageFromGallery(image)}>
+                      Delete logotype
+                    </div>
+                  </span>
+                ))}
+              </>
+            )}
+            <FormLabel>Add Gallery</FormLabel>
+            <Drop onChange={this.handlerChangeGallery} />
             <Button
               className="primary-color marginB-2"
               type="submit"
@@ -208,7 +258,6 @@ class CreateEvent extends Component {
               Сохранить
             </Button>
           </form>
-          <Drop onChange={this.handlerChangeGallery} />
         </Grid>
       </Grid>
     );

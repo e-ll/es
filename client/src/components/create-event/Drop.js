@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DropzoneComponent from "react-dropzone-component";
-import "./drop.css"
+import "./drop.css";
+import "../../../node_modules/react-dropzone-component/styles/filepicker.css";
+import "../../../node_modules/dropzone/dist/min/dropzone.min.css";
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,8 @@ export default class Example extends React.Component {
     this.callbackArray = [() => console.log("Hi!"), () => console.log("Ho!")];
 
     // Simple callbacks work too, of course
-    this.callback = (file, {responseText}) => this.props.onChange(file, responseText)
+    this.callback = (file, { responseText }) =>
+      this.props.onChange(file, responseText);
   }
 
   render() {

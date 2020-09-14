@@ -38,7 +38,7 @@ const {images} = props;
       <GridList className={classes.gridList} cols={2.5}>
         {images.map((image, index) => (
           <GridListTile key={index}>
-            <img src={image} alt="image" />
+            <img src={`http://localhost:8081/uploads/${image}`} alt="image" />
             
           </GridListTile>
         ))}
