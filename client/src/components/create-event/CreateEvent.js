@@ -66,7 +66,7 @@ class CreateEvent extends Component {
         description: event.description,
         logoUrl: event.logoUrl,
         youTubeCode: event.youTubeCode,
-        galeryUrl: event.galeryUrl,
+        galeryUrl: event.galeryUrl ? event.galeryUrl : [],
         shopId: event.shopId,
         files: [],
         imagePreviewUrls: [],
@@ -107,7 +107,13 @@ class CreateEvent extends Component {
   }
 
   handlerChangeGallery(file, response) {
-    this.setState({ galeryUrl: ["ff", "Ff"] }, ()=>{});
+    console.log(response, this.state.galeryUrl);
+    this.setState(prevState => ({
+      galeryUrl: [
+        ...prevState.galeryUrl,
+        response
+      ]
+    }));
   }
 
   handlerChangeLogotype(file, response) {
@@ -116,6 +122,7 @@ class CreateEvent extends Component {
   }
 
   handlerDeleteImageFromGallery(image) {
+    console.log(1);
     const gallery = this.state.galeryUrl;
      const galeryUrl = gallery.filter((pic) => pic !== image);
     this.setState({ galeryUrl });
@@ -220,14 +227,14 @@ class CreateEvent extends Component {
             />
             {logoUrl && (
               <>
-                <FormLabel>Logotype</FormLabel>
+                <InputLabel>Logotype</InputLabel>
                 <img src={`http://localhost:8081/uploads/${logoUrl}`} alt="" />
                 <a href="#" onClick={() => this.setState({ logoUrl: "" })}>
                   Delete logotype
                 </a>
               </>
             )}
-            <FormLabel>{logoUrl ? "Change" : "Add"} Logotype</FormLabel>
+            <InputLabel>{logoUrl ? "Change" : "Add"} Logotype</InputLabel>
             <Drop onChange={this.handlerChangeLogotype} />
             {galeryUrl && (
               <>
@@ -240,7 +247,7 @@ class CreateEvent extends Component {
                         alt=""
                       />
                     )}
-                    <div onClick={this.handlerDeleteImageFromGallery(image)}>
+                    <div onClick={()=>this.handlerDeleteImageFromGallery(image)}>
                       Delete logotype
                     </div>
                   </span>
