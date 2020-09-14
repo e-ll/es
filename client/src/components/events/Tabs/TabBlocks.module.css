@@ -1,0 +1,95 @@
+.tab {
+    border-right: 4px solid rgba(38,55,77,0.1);
+}
+
+.border {
+    border-right: 1px solid #ffffff;
+}
+
+.headline {
+    font-family: Inter;
+font-style: normal;
+font-weight: bold;
+font-size: 1.3333333333333335vw;
+line-height: 22px;
+display: flex;
+width: 105%;
+height: 60px;
+margin: 0 auto;
+background: linear-gradient(180deg, #85C497 8.06%, #85C497 100%);
+box-shadow: 0px 8px 16px rgba(12, 24, 55, 0.05);
+display: flex;
+align-items: center;
+}
+
+.headlineLeft {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+.headlineRight {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+
+.headline p {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.headlineRight p {
+    width: 75%;
+}
+
+.headlineTwoFour p {
+    width: 50%;
+}
+
+.headlineThird p:nth-child(2) {
+    width: 40%;
+}
+
+.headlineThird p {
+    display: flex;
+    justify-content: start;
+    margin-left: 3%;
+}
+
+.headline img {
+    margin-right: 8%;
+    margin-left: 3%;
+    margin-top: -2%;
+    width: 16%;
+}
+
+.clockImg img {
+    width: 20%;
+    margin-right: 0%;
+}
+
+.arrowright img {
+    margin-left: 8%;
+}
+
+/* onClick */
+
+.onClick {
+    width: 65%;
+    height: 72px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #EAF0F5 100%);
+    border-radius: 14px;
+}
+
+
+
+@media(min-width: 1100px) {
+    .headline {
+        font-size: 16px;
+    }
+}
+

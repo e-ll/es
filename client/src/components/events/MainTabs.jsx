@@ -1,4 +1,52 @@
 import React from "react";
+import MainTabsStyles from "./MainTabs.module.css";
+import { TabBlocks } from "./Tabs/TabBlocks";
+
+const { main } = MainTabsStyles;
+
+// arguments for TabBlocks component:
+const headlineArray = [
+  ["Расписание онлайн", "Расписание оффлайн"],
+  "Участники",
+  ["Общий чат", "По темам"],
+  "Трансляция",
+];
+const isTwoHeadlines = true; //if headlines if two
+let numberInArray = null; // what is a number of Component now
+
+const tabsArray4 = headlineArray.map((element, index) => {
+  // 4 blocks in line
+  if (index % 2 == 0) {
+    return (
+      <TabBlocks
+        numberInArray={index}
+        isTwoHeadlines={isTwoHeadlines}
+        headlineArray={headlineArray[index]}
+      />
+    ); //two headlines
+  } else {
+    return (
+      <TabBlocks numberInArray={index} headlineArray={headlineArray[index]} />
+    ); //one headline
+  }
+});
+
+export const MainTabs = () => {
+  const items = [
+    "Мега Екатеринбург",
+    "Ельцин-центр",
+    "Ашан",
+    "Item4",
+    "Item5",
+    "Item6",
+    "Item7",
+  ];
+  return <div className={main}>{tabsArray4}</div>;
+};
+
+/*  LAST CODE
+
+import React from "react";
 import Video from "../event/tabs/Video"
 import {
   Grid,
@@ -16,6 +64,9 @@ import PeopleIcon from "@material-ui/icons/People";
 import ArrowLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
 import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
 import { FixedSizeList } from "react-window";
+import { Tabs } from './Tabs/Tabs';
+import { Tabs } from '@material-ui/core/Tabs';
+import { TabBlocks } from './Tabs/TabBlocks';
 const header = {
   color: "#26374D",
   background: "linear-gradient(180deg, #85C497 8.06%, #85C497 100%)",
@@ -27,10 +78,11 @@ const header = {
   fontWeight: "bold",
   padding: "1vh 0",
 };
-const tabHeight = "200px"
+const tabHeight = "200px";
 const contentList = { padding: 4, overflow: "auto", maxHeight: tabHeight};
 
 export default function UniTable() {
+  
   const items = ["Мега Екатеринбург", "Ельцин-центр", "Ашан", "Item4", "Item5", "Item6", "Item7"];
   
   return (
@@ -88,3 +140,6 @@ export default function UniTable() {
     </div>
   );
 }
+
+
+*/

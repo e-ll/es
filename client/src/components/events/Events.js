@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MainTabs from "./MainTabs"
+import {MainTabs} from "./MainTabs"
 import { connect } from "react-redux";
 import {
   Grid,

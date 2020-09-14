@@ -18,6 +18,14 @@ class EventsList extends Component {
   render() {
     const { events } = this.props;
     // const trans = "translate(index*5, index*5)"
+    const arrCoord = [
+      { l: "832.11px", t: "174px" },
+      { l: "865.11px", t: "154px" },
+      { l: "859.11px", t: "188px" },
+      { l: "893.11px", t: "169px" },
+      { l: "885.11px", t: "203px" },
+      { l: "920.11px", t: "183px" },
+    ];
     return (
       <CssBaseline>
         <div className="conteiner">
@@ -70,7 +78,7 @@ class EventsList extends Component {
                       }}
                     >
                       <div>
-                        {events.map((event, index) => {
+                        {arrCoord.map((event, index) => {
                           const intervalD = 30;
                           const angle = 45;
                           const radian = (Math.PI * angle) / 180;
@@ -87,8 +95,8 @@ class EventsList extends Component {
                                 <IconButton
                                   style={{
                                     position: "absolute",
-                                    left: left,
-                                    top: top,
+                                    left: arrCoord[index].l,
+                                    top: arrCoord[index].t,
                                   }}
                                   aria-label="delete"
                                 >
@@ -99,7 +107,7 @@ class EventsList extends Component {
                           );
                         })}
                       </div>
-                      <div
+                      {/* <div
                       // style={{
                       //   display: "grid",
                       //   gridTemplateColumns: "repeat(4, auto)",
@@ -135,7 +143,7 @@ class EventsList extends Component {
                             </Tooltip>
                           );
                         })}
-                      </div>
+                      </div> */}
 
                       <Lector />
                     </div>

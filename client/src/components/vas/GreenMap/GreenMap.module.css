@@ -1,0 +1,228 @@
+.main {
+    position: absolute;
+    max-width: 1350px;
+    width: 93.75%;
+    height: 423px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 115px;
+    
+border: 1px dashed #000000;
+box-sizing: border-box;
+border-radius: 16px;
+}
+
+.greenBack {
+    position: absolute;
+    width:100%;
+    z-index: 0;
+}
+
+.greenField img {
+    position: absolute;
+width: 95%;
+height: 351px;
+top: 15px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.trees {
+    position: relative;
+    z-index: 1;
+    height: 423px;
+}
+
+.trees div:nth-child(1) {
+    position: absolute;
+    left: 14%;
+    top: 19%;
+}
+
+.trees div:nth-child(2) {
+    position: absolute;
+    left: 26%;
+    top: 17%;
+}
+
+
+.trees div:nth-child(3) {
+    position: absolute;
+    left: 20%;
+    top: 58%;
+}
+
+.trees div:nth-child(4) {
+    position: absolute;
+    left: 15%;
+    top: 56%;
+}
+
+.trees div:nth-child(5) {
+    position: absolute;
+    left: 49%;
+    top: 14%;
+}
+
+.trees div:nth-child(6) {
+    position: absolute;
+    left: 58%;
+    top: 10%;
+}
+
+.trees div:nth-child(7) {
+    position: absolute;
+    left: 90%;
+    top: 20%;
+}
+
+.trees div:nth-child(8) {
+    position: absolute;
+    left: 85%;
+    top: 25%;
+}
+
+.zones {
+    position: absolute;
+    z-index: 3;
+    height: 423px;
+    width: 100%;
+}
+
+.zones div:nth-child(1) {
+    position: absolute;
+    width: 10.7%;
+    height: 141px;
+    left: 32%;
+    top: 33.09%;
+    background: url('../../../img/zone4.svg') no-repeat;
+    background-size: contain;
+}
+
+.zones div:nth-child(2) {
+    position: absolute;
+    width: 10.7%;
+    height: 141px;
+    left: 44%;
+    top: 27.09%;
+    background: url('../../../img/zone3.svg') no-repeat;
+    background-size: contain;
+}
+
+.zones div:nth-child(3) {
+    position: absolute;
+    width: 10.7%;
+    height: 141px;
+    left: 46%;
+    top: 42.09%;
+    background: url('../../../img/zone2.svg') no-repeat;
+    background-size: contain;
+}
+
+.zones div:nth-child(4) {
+    position: absolute;
+    width: 10.7%;
+    height: 141px;
+    left: 55%;
+    top: 33.09%;
+    background: url('../../../img/zone2.svg') no-repeat;
+    background-size: contain;
+}
+
+.zones div:nth-child(5) {
+    position: absolute;
+    width: 10.7%;
+    height: 141px;
+    left: 33%;
+    top: 48.09%;
+    background: url('../../../img/zone1.svg') no-repeat;
+    background-size: contain;
+}
+
+
+
+
+
+/* Media */
+
+@media (min-width: 1000px) {
+    .trees div:nth-child(1) {
+        position: absolute;
+        left: 14%;
+        top: 16%;
+    }
+    
+    .trees div:nth-child(2) {
+        position: absolute;
+        left: 26%;
+        top: 11%;
+    }
+    
+    
+    .trees div:nth-child(3) {
+        position: absolute;
+        left: 20%;
+        top: 66%;
+    }
+    
+    .trees div:nth-child(4) {
+        position: absolute;
+        left: 15%;
+        top: 65%;
+    }
+    
+    .trees div:nth-child(5) {
+        position: absolute;
+        left: 50%;
+        top: 6%;
+    }
+    
+    .trees div:nth-child(6) {
+        position: absolute;
+        left: 58%;
+        top: 4%;
+    }
+    
+    .trees div:nth-child(7) {
+        position: absolute;
+        left: 90%;
+        top: 20%;
+    }
+    
+    .trees div:nth-child(8) {
+        position: absolute;
+        left: 85%;
+        top: 25%;
+    }
+
+
+    .zones div:nth-child(1) {
+        width: 13.7%;
+        left: 30%;
+        top: 25.09%;
+    }
+
+    .zones div:nth-child(2) {
+        width: 13.7%;
+        left: 42.9%;
+        top: 15.09%;
+    }
+
+    .zones div:nth-child(3) {
+        width: 13.7%;
+        left: 44.9%;
+        top: 39.09%;
+    }
+
+    .zones div:nth-child(4) {
+        width: 13.7%;
+        left: 55.9%;
+        top: 22.09%;
+    }
+
+    .zones div:nth-child(5) {
+        width: 13.7%;
+        left: 31%;
+        top: 50.09%;
+    }
+}
