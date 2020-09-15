@@ -68,6 +68,7 @@ router.post(
     if (req.body.gallery) eventFields.gallery = req.body.gallery;
     if (req.body.shopId) eventFields.shopId = req.body.shopId;
     if (req.body.galeryUrl) eventFields.galeryUrl = req.body.galeryUrl;
+    if (req.body.logoUrl) eventFields.logoUrl = req.body.logoUrl;
 
     // if (req.body.start) eventFields.start = req.body.start;
 
@@ -86,6 +87,7 @@ router.post(
         if (req.body.youTubeCode) event.youTubeCode = req.body.youTubeCode;
         if (req.body.galeryUrl) event.galeryUrl = req.body.galeryUrl;
         if (req.body.shopId) event.shopId = req.body.shopId;
+        if (req.body.logoUrl) event.logoUrl = req.body.logoUrl;
         return event.save().then((event) => res.json(event));
       }
       // create a new event

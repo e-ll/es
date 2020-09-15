@@ -1,66 +1,69 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const path = require('path');
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const path = require("path");
 var cors = require("cors");
-const users = require('./routes/api/users');
-const events = require('./routes/api/events');
-const comments = require('./routes/api/comments');
-const profile = require('./routes/api/profile');
-const notification = require('./routes/api/notification');
-const upload = require('./routes/api/upload')
+const users = require("./routes/api/users");
+const events = require("./routes/api/events");
+const comments = require("./routes/api/comments");
+const profile = require("./routes/api/profile");
+const notification = require("./routes/api/notification");
+const upload = require("./routes/api/upload");
 const app = express();
 
 // const db = require('./config/keys').mongoURI;
 const dbLoc = require("./config/keys_dev").prodMongoUrl;
 mongoose
-    .connect(process.env.MONGODB_URI || dbLoc, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
+  .connect(process.env.MONGODB_URI || dbLoc, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD"
+  );
 
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, HEAD');
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization, XMLHttpRequest, XMLHttpRequestUpload"
+  );
 
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization, XMLHttpRequest, XMLHttpRequestUpload"
-    );
+  res.setHeader("Access-Control-Allow-Credentials", true);
 
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    next();
+  next();
 });
 
 app.use(passport.initialize());
-require('./config/passport')(passport);
+require("./config/passport")(passport);
 
-app.use('/api/users', users);
-app.use('/api/events', events);
-app.use('/api/events', comments);
-app.use('/api/profile', profile);
-app.use('/api/notification', notification);
+app.use("/api/users", users);
+app.use("/api/events", events);
+app.use("/api/events", comments);
+app.use("/api/profile", profile);
+app.use("/api/notification", notification);
 app.use("/api/upload", upload);
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
+app.use(express.static("client/build"));
 
-    app.use(express.static('client/build'));
-    
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 let port = 8081;
 
-if(process.env.NODE_ENV === 'production'){
-    port = process.env.PORT;
-
+if (process.env.NODE_ENV === "production") {
+  port = process.env.PORT;
 }
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
