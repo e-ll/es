@@ -40,7 +40,7 @@ class UserProfile extends Component{
     
     return(
         <div>
-          <h1 className="text-center">Profile</h1>
+          <h1 className="text-center">Профиль</h1>
           {profileContent}
         </div>
     );

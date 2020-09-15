@@ -13,7 +13,6 @@ class CreateProfile extends Component{
         this.state = {
             handle: '',
             location: '',
-            favoriteSport: '',
             bio: '',
             errors: {}
         };
@@ -33,7 +32,6 @@ class CreateProfile extends Component{
         const profileData = {
             handle: this.state.handle,
             location: this.state.location,
-            favoriteSport: this.state.favoriteSport,
             bio: this.state.bio
         };
         
@@ -46,53 +44,63 @@ class CreateProfile extends Component{
     render(){
         const {errors} = this.state;
         
-        return(
-            <Grid container justify="center" className="marginX-1">
-                <Grid item xs={12} sm={8} md={6}>
-                    <Typography variant="h3" component="h1" align="center" gutterBottom>
-                        Заполните профиль
-                    </Typography>
-                    <form onSubmit={this.onSubmit}>
-                        <TextFieldGroup
-                            label="Profile Handle *"
-                            placeholder="Profile Handle"
-                            name="handle"
-                            value={this.state.handle}
-                            onChange={this.onChange}
-                            error={errors.handle}
-                            info="A unique handle for your profile URL."
-                        />
-                        <TextFieldGroup
-                            label="Location"
-                            placeholder="Location"
-                            name="location"
-                            value={this.state.location}
-                            onChange={this.onChange}
-                            error={errors.location}
-                        />
-                        <TextFieldGroup
-                            label="Favorite Sports *"
-                            placeholder="Favorite Sports"
-                            name="favoriteSport"
-                            value={this.state.favoriteSport}
-                            onChange={this.onChange}
-                            error={errors.favoriteSport}
-                            info="Please use comma separated values (eg. Baseball,Tennis,Football)"
-                        />
-                        <TextAreaFieldGroup
-                            label="Bio"
-                            placeholder="Short Bio"
-                            name="bio"
-                            value={this.state.bio}
-                            onChange={this.onChange}
-                            error={errors.bio}
-                        />
-                        <Button className="primary-color marginB-2" type="submit" variant="contained" fullWidth>
-                            Create
-                        </Button>
-                    </form>
-                </Grid>
+        return (
+          <Grid container justify="center" className="marginX-1">
+            <Grid item xs={12} sm={8} md={6}>
+              <Typography
+                variant="h3"
+                component="h1"
+                align="center"
+                gutterBottom
+              >
+                Заполните профиль
+              </Typography>
+              <form onSubmit={this.onSubmit}>
+                <TextFieldGroup
+                  label="Название компании или проекта"
+                  placeholder="Название компании или проекта"
+                  name="handle"
+                  value={this.state.handle}
+                  onChange={this.onChange}
+                  error={errors.handle}
+                  info="Название компании или проекта"
+                />
+                <TextFieldGroup
+                  label="Адрес"
+                  placeholder="Адрес"
+                  name="location"
+                  value={this.state.location}
+                  onChange={this.onChange}
+                  error={errors.location}
+                />
+                {/* <TextFieldGroup
+                  label="Favorite Sports *"
+                  placeholder="Favorite Sports"
+                  name="favoriteSport"
+                  value={this.state.favoriteSport}
+                  onChange={this.onChange}
+                  error={errors.favoriteSport}
+                  info="Please use comma separated values (eg. Baseball,Tennis,Football)"
+                /> */}
+                <TextAreaFieldGroup
+                  label="Описание"
+                  placeholder="Короткое описание"
+                  name="bio"
+                  value={this.state.bio}
+                  onChange={this.onChange}
+                  error={errors.bio}
+                />
+                <Button
+                  className="primary-color marginB-2"
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                >
+                  Отправить
+                </Button>
+              </form>
             </Grid>
+          </Grid>
         );
     }
 }

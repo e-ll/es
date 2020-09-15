@@ -84,7 +84,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { isAuthenticated, notifications } = this.props.auth;
+    const { isAuthenticated, notifications, user } = this.props.auth;
 console.log(this.props);
     const handleDrawerOpen = () => {
       this.setState({ toggleDrawer: true });
@@ -104,7 +104,28 @@ const megalogo = "/img/MEGA-logo.png";
         <NotificationsIcon />
       </Badge>
     );
-
+let createButton = null;
+if (isAuthenticated) {
+  if (user.stand) {
+    createButton = (
+      <Link
+        className="white-link"
+        component={Link}
+        to={`/`}
+      >
+        Мой стенд
+      </Link>
+    );
+  } else {
+    createButton = (<Link
+                  className="white-link"
+                  component={RouterLink}
+                  to="/create-event"
+                >
+                  Создать стенд
+                </Link>)
+  }
+} 
     return (
       <AppBar position="static" color="default">
         <Container>
@@ -118,15 +139,10 @@ const megalogo = "/img/MEGA-logo.png";
                 На карту
               </Link> */}
 
-              {isAuthenticated ? (
-                <Link
-                  className="white-link"
-                  component={RouterLink}
-                  to="/create-event"
-                >
-                  Создать стенд
-                </Link>
-              ) : null}
+
+              {createButton}
+
+              
             </div>
             <div style={{ display: "flex", margin: "0 auto" }}>
               {/* <Avatar

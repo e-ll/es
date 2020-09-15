@@ -37,9 +37,9 @@ router.post('/', passport.authenticate('jwt', {session: false}),(req, res) => {
     if(req.body.location) profileFields.location = req.body.location;
     if(req.body.bio) profileFields.bio = req.body.bio;
     
-    if(typeof req.body.favoriteSport !== 'undefined'){
-        profileFields.favoriteSport = req.body.favoriteSport.split(',');
-    }
+    // if(typeof req.body.favoriteSport !== 'undefined'){
+    //     profileFields.favoriteSport = req.body.favoriteSport.split(',');
+    // }
     
     Profile.findOne({user: req.user.id}).then(profile => {
         if(profile){

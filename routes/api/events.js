@@ -6,7 +6,7 @@ const validateEventInput = require("../../validation/event");
 
 const Event = require("../../models/Event");
 const Notification = require("../../models/Notification");
-
+const User = require("../../models/User");
 // GET /api/events/all
 // fetch all events
 router.get("/all", (req, res) => {
@@ -37,7 +37,7 @@ router.get("/:id", (req, res) => {
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
+  async (req, res) => {
     const event_Id = req.body.id;
     console.log(event_Id);
     const { errors, isValid } = validateEventInput(req.body);
@@ -47,6 +47,11 @@ router.post(
 
     const eventFields = {};
     eventFields.user = req.user.id;
+    
+    const user = await User.findById(req.user.id);
+     user.stand = true;
+     await user.save()
+    
 
     if (req.body.partisipantName)
       eventFields.partisipantName = req.body.partisipantName;
@@ -160,19 +165,16 @@ router.put(
 router.delete(
   "/:id",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Event.findById(req.params.id)
-      .then((event) => {
-        if (event.user.toString() !== req.user.id) {
-          return res.status(401).json({ notauthorized: "User not authorized" });
-        }
-        event.remove().then(() => res.json({ success: true }));
-      })
-      .catch((err) =>
-        res
-          .status(500)
-          .json({ error: "Error in delete api/events/:id. " + err })
-      );
+  async (req, res) => {
+    Event.findById(req.params.id).then((event) => {
+      if (event.user.toString() !== req.user.id) {
+        return res.status(401).json({ notauthorized: "User not authorized" });
+      }
+      event.remove().then(() => res.json({ success: true }));
+    });
+    const user = await User.findById(req.user.id);
+    user.stand = false;
+    await user.save();
   }
 );
 

@@ -21,30 +21,59 @@ export const TabBlocks = (props) => {
     let contentData = null;
     // imitation data from server with shedule information and participants
     let dataJSON = {
-        shedule: [{
-            imgSrc: nature,
-            title: "Название",
-            description: "описание - текст",
-            day: "19 сентября",
-            time: "12:00",
-        },{
-            imgSrc: nature,
-            title: "Название",
-            description: "описание - текст",
-            day: "19 сентября",
-            time: "12:00",
-        }],
-        participants: [{
-            imgSrc: image,
-            title: "Название",
-            description: "описание - текст",
+      shedule: [
+        {
+          imgSrc: nature,
+          title: "Название",
+          description: "описание - текст",
+          day: "19 сентября",
+          time: "12:00",
         },
         {
-            imgSrc: image,
-            title: "Название",
-            description: "описание - текст",
-        }]
-    }
+          imgSrc: nature,
+          title: "Название",
+          description: "описание - текст",
+          day: "19 сентября",
+          time: "12:00",
+        },
+        {
+          imgSrc: nature,
+          title: "Название",
+          description: "описание - текст",
+          day: "19 сентября",
+          time: "12:00",
+        },
+        {
+          imgSrc: nature,
+          title: "Название",
+          description: "описание - текст",
+          day: "19 сентября",
+          time: "12:00",
+        },
+      ],
+      participants: [
+        {
+          imgSrc: image,
+          title: "Название",
+          description: "описание - текст",
+        },
+        {
+          imgSrc: image,
+          title: "Название",
+          description: "описание - текст",
+        },
+        {
+          imgSrc: image,
+          title: "Название",
+          description: "описание - текст",
+        },
+        {
+          imgSrc: image,
+          title: "Название",
+          description: "описание - текст",
+        },
+      ],
+    };
 
     let contentShedule = dataJSON.shedule.map((el) => {
         

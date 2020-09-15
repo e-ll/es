@@ -124,7 +124,7 @@ class EventItem extends Component {
         </Grid>
 
         {/* <Grid container> */}
-        <Grid item xs={12} md={6}>
+        {/* <Grid item xs={12} md={6}>
             <Grid container spacing={6}>
               <Grid item xs={6}>
                 <span className={styles.labelInfo}>Type of Sport</span>
@@ -153,13 +153,13 @@ class EventItem extends Component {
             </p>
 
             <span className={styles.labelInfo}>Description</span>
-            <p>{event.description ? event.description : "None"}</p>
+            <p>{event.description ? event.description : "None"}</p> */}
 
-            <Typography display="inline">
+            {/* <Typography display="inline">
               <Link to={`/profile/${event.user._id}`}>
                 Host By {event.user.name}
               </Link>
-            </Typography>
+            </Typography> */}
 
             {event.user._id === auth.user.id ? (
               <ButtonGroup className="marginL-1">
@@ -180,7 +180,7 @@ class EventItem extends Component {
                 </Button>
               </ButtonGroup>
             ) : null}
-          </Grid>
+          {/* </Grid> */}
         {/* <Grid container item xs={12} md={6}>
             <img
               className="marginB-1"
@@ -222,7 +222,7 @@ class EventItem extends Component {
               />
             );
           })}
-        </div>
+        </div>*/}
         <DeleteDialog
           onDeleteClick={this.onDeleteClick.bind(this, event._id)}
           openDeleteDialog={this.state.openDeleteDialog}
@@ -251,7 +251,7 @@ class EventItem extends Component {
             </React.Fragment>
           }
         />
-        <FullWidthTabs event={event} /> */}
+        {/* <FullWidthTabs event={event} /> */}
       </Paper>
     );
   }
