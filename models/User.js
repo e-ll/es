@@ -21,6 +21,10 @@ const UserSchema = new Schema({
     stand: {
         type: Boolean,
         default: false
+    },
+    confirmed: {
+        type: Boolean,
+        default: false
     }
 });
 

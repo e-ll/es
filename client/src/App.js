@@ -23,6 +23,9 @@ import {
   UserProfile,
   Plug
  } from './components';
+import Confirm from './components/Confirm/Confirm';
+import Forgot from './components/auth/Forgot';
+import ChangePassword from './components/auth/ChangePassword';
  
 
 if(localStorage.jwtToken){
@@ -50,6 +53,10 @@ class App extends Component {
             <Container>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/forgot" component={Forgot} />
+              <Route exact path="/change-password/:id" component={ChangePassword} />
+              <Route exact path="/confirm" component={Confirm} />
+              <Route exact path="/confirm/:id" component={Confirm} />
               <Switch>
                 <Route exact path="/events" component={Events} />
                 <Route exact path="/event/:id" component={Event} />
