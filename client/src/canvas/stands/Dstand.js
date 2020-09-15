@@ -1,7 +1,8 @@
 import React from "react";
 
 function Icon(props) {
-  const {name, logoUrl} =props;
+  const {name, logoUrl} = props;
+  console.log(logoUrl);
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

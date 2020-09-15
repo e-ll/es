@@ -118,7 +118,7 @@ arrS.push(newStand)
                       //   position: "relative",
                       // }}
                       >
-                        {events.map((event, index) => {
+                        {events.slice(0,7).map((event, index) => {
                           const intervalD = 2;
                           const angle = 30;
                           const radian = (Math.PI * angle) / 180;
@@ -128,6 +128,7 @@ arrS.push(newStand)
                           const yCoordinate = intervalD * Math.sin(radian);
                           const left = index * xCoordinate;
                           const top = index * yCoordinate;
+                         
 
                           return (
                             <Tooltip title={`Стенд № ${event._id}`} interactive>
@@ -135,6 +136,8 @@ arrS.push(newStand)
                                 <div>
                                   <Dstand
                                     index={index}
+                                    name={event.partisipantName}
+                                    logoUrl={event.imageURL}
                                     style={{
                                       position: "absolute",
                                       left: left,
