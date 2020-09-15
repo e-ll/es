@@ -13,6 +13,7 @@ import Lector from "../../canvas/Lector";
 
 import Market from "../../canvas/market";
 import Foodtrack from "../../canvas/foodtrack";
+import mapMain from "../../canvas/mapMain.svg";
 
 class EventsList extends Component {
   render() {
@@ -48,10 +49,7 @@ class EventsList extends Component {
             }) => (
               <>
                 <div className="tools">
-                  <ButtonGroup
-                    
-                    variant="text"
-                  >
+                  <ButtonGroup variant="text">
                     <Button variant="outlined" onClick={zoomIn}>
                       Увеличить +
                     </Button>
@@ -77,6 +75,19 @@ class EventsList extends Component {
                         height: "400px",
                       }}
                     >
+                     
+                      <img
+                        src={mapMain}
+                        style={{
+                          position: "absolute",
+                          top: "35%",
+                          left: "50%",
+                          marginRight: "-50%",
+                          transform: "translate(-50%, -50%)",
+                          height: "200%",
+                          zIndex: "-10",
+                        }}
+                      />
                       <div>
                         {arrCoord.map((event, index) => {
                           const intervalD = 30;
@@ -88,7 +99,7 @@ class EventsList extends Component {
                           const yCoordinate = intervalD * Math.sin(radian);
                           const left = index * xCoordinate;
                           const top = index * yCoordinate;
-                          
+
                           return (
                             <Tooltip title={`Стенд № ${index}`} interactive>
                               <Link to={`/event/${event._id}`}>
@@ -125,7 +136,7 @@ class EventsList extends Component {
                           const yCoordinate = intervalD * Math.sin(radian);
                           const left = index * xCoordinate;
                           const top = index * yCoordinate;
-                          
+
                           return (
                             <Tooltip title={`Стенд № ${event._id}`} interactive>
                               <Link to={`/event/${event._id}`}>
@@ -144,8 +155,6 @@ class EventsList extends Component {
                           );
                         })}
                       </div>
-
-                      <Lector />
                     </div>
                   </TransformComponent>
                 </div>
