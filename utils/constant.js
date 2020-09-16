@@ -8,7 +8,7 @@ const CONSTANT = {
   CLIENT_ORIGIN:
     process.env.NODE_ENV === "production"
       ? process.env.CLIENT_ORIGIN
-      : "http://5.45.122.126",
+      : "http://festyline.com",
     
 };
 console.log(process.env.CLIENT_ORIGIN);
