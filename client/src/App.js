@@ -6,6 +6,7 @@ import { setCurrentUser, logoutUser  } from './actions/authActions';
 import { Provider } from 'react-redux';
 import { Container } from '@material-ui/core';
 import store from './store';
+import MUICookieConsent from "material-ui-cookie-consent";
 
 import { 
   PrivateRoute,
@@ -47,6 +48,11 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
+            <MUICookieConsent
+              cookieName="mySiteCookieConsent"
+              // componentType="Dialog" // default value is Snackbar
+              message="Мы как и все используем Cookies"
+            />
             <Navbar />
             <Route exact path="/" component={Plug} />
             <Route exact path="/greenfest" component={Plug} />
@@ -54,7 +60,11 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/forgot" component={Forgot} />
-              <Route exact path="/change-password/:id" component={ChangePassword} />
+              <Route
+                exact
+                path="/change-password/:id"
+                component={ChangePassword}
+              />
               <Route exact path="/confirm" component={Confirm} />
               <Route exact path="/confirm/:id" component={Confirm} />
               <Switch>

@@ -24,9 +24,9 @@ const SideDrawer = ({ isAuthenticated, logout }) => {
         <ListItem button component={RouterLink} to="/login" color="textPrimary">
           <ListItemText primary="Login" />
         </ListItem>
-        <ListItem button component={RouterLink} to="/register" color="textPrimary">
+        {/* <ListItem button component={RouterLink} to="/register" color="textPrimary">
           <ListItemText primary="Get Started" />
-        </ListItem>
+        </ListItem> */}
       </div>
     );
     

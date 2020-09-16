@@ -1,24 +1,24 @@
 const CONSTANT = {
-  REGISTER_USER: "GREAT YOU REGISTERED",
-  CONFIRM_EMAIL: "Confirm Email",
-  FORGOT_PASSWORD: "Forgot Password",
+  REGISTER_USER: "Поздравляем, вы зарегистрировались в Festyline!",
+  CONFIRM_EMAIL: "Подтверждение почты",
+  FORGOT_PASSWORD: "Восстановление пароля",
   STATUS_REGISTER: "register",
   STATUS_LOGIN: "login",
   STATUS_FORGOT_PASSWORD: "forgot_password",
   CLIENT_ORIGIN:
     process.env.NODE_ENV === "production"
       ? process.env.CLIENT_ORIGIN
-      : "http://localhost:3000",
+      : "http://5.45.122.126",
     
 };
-
+console.log(process.env.CLIENT_ORIGIN);
 const EMAIL_MSGS = 
     {
-    confirm: 'Email sent, please check your inbox to confirm',
-    confirmed: 'Your email is confirmed!',
-    resend: 'Confirmation email resent, maybe check your spam?',
-    couldNotFind: 'Could not find you!',
-    alreadyConfirmed: 'Your email was already confirmed'
+    confirm: 'Письмо отправлено, проверьте ваш почтовый ящик, иногда оно попадает в спам',
+    confirmed: 'Ура! Ваша почта подтверждена!',
+    resend: 'Мы переслали вам письмо еще раз, проверьте все папки, в том числе папку Спам',
+    couldNotFind: 'Мы не смогли найти такого пользователя, попробуйте еще раз',
+    alreadyConfirmed: 'Ваша почта уже подтверждена!'
   }
 
 module.exports = { CONSTANT, EMAIL_MSGS };

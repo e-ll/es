@@ -25,9 +25,9 @@ const Desktop = ({ isAuthenticated, notificationsUnread, onShowNotification, onS
             <Link className="white-link" component={RouterLink} to="/login">
                 Войти
             </Link>
-            <Button className="secondary-color white-link" component={RouterLink} to="/register" variant="contained">
+            {/* <Button className="secondary-color white-link" component={RouterLink} to="/register" variant="contained">
                 Зарегистрироваться
-            </Button>
+            </Button> */}
         </div>
     );
     

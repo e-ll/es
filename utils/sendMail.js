@@ -13,6 +13,7 @@ const buildMessage = (recipients, html, subject) => {
   let res = [];
 
   recipients.forEach((recipient) => {
+    console.log(html);
     const message = {
       From: {
         Email: "hello@festyline.info",

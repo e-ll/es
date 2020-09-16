@@ -90,9 +90,9 @@ class Login extends Component{
                     <Typography variant="subtitle2" className={login__info}>
                       <Link to="/forgot">Забыли пароль?</Link>
                     </Typography>
-                    <Typography variant="subtitle2" className={login__info}>
+                    {/* <Typography variant="subtitle2" className={login__info}>
                       У вас еще нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
-                    </Typography>
+                    </Typography> */}
                   </CardContent>
                 </Card>
               </Grid>
