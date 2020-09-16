@@ -241,7 +241,8 @@ class CreateEvent extends Component {
             {logoUrl && (
               <>
                 <InputLabel>Logotype</InputLabel>
-                <img src={`http://localhost:8081/uploads/${logoUrl}`} alt="" />
+                {/* <img src={`http://localhost:8081/uploads/${logoUrl}`} alt="" /> */}
+                <img src={`http://festyline.com/uploads/${logoUrl}`} alt="" />
                 <a href="#" onClick={() => this.setState({ logoUrl: "" })}>
                   Delete logotype
                 </a>
@@ -256,7 +257,8 @@ class CreateEvent extends Component {
                   <span key={`gallery-image-${index}`}>
                     {image && (
                       <img
-                        src={`http://localhost:8081/uploads/${image}`}
+                        // src={`http://localhost:8081/uploads/${image}`}
+                        src={`http://festyline.com/uploads/${image}`}
                         alt=""
                       />
                     )}

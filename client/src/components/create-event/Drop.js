@@ -22,7 +22,8 @@ export default class Example extends React.Component {
     this.componentConfig = {
       iconFiletypes: [".jpg", ".png", ".gif"],
       showFiletypeIcon: true,
-      postUrl: "http://localhost:8081/api/upload",
+      // "postUrl: "http://localhost:8081/api/upload","
+      postUrl: "http://festyline.com/api/upload",
     };
 
     // If you want to attach multiple callbacks, simply
