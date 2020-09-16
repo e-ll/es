@@ -1,34 +1,57 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Typography, Button } from '@material-ui/core';
+import React, { Component } from "react";
 
-import Spinner from '../common/Spinner';
-import ProfileAbout from './ProfileAbout';
-import { getCurrentProfile  } from '../../actions/profileActions';
-import styles from './Profile.module.css';
+import { connect } from "react-redux";
+import { Typography, Button, Link, Grid } from "@material-ui/core";
+import EventItem from "../event/EventItem.js";
 
-class Profile extends Component{
-  componentDidMount(){
-     this.props.getCurrentProfile(this.props.match.params.id);
+import Spinner from "../common/Spinner";
+import ProfileAbout from "./ProfileAbout";
+import { getCurrentProfile } from "../../actions/profileActions";
+import styles from "./Profile.module.css";
+
+class Profile extends Component {
+  componentDidMount() {
+    this.props.getCurrentProfile(this.props.match.params.id);
   }
-    
-  render(){
-    const {user} = this.props.auth;
-    const {profile, loading} = this.props.profile;
-    
+
+  render() {
+    const { user } = this.props.auth;
+    const { events, profile, loading } = this.props.profile;
+
+    const snackbarMessage = "Hello";
     let profileContent;
-    
-    if(profile === null || loading){
-        profileContent = <Spinner />;
-    }
-    else{
-      if(Object.keys(profile).length > 0){
+
+    if (profile === null || loading) {
+      profileContent = <Spinner />;
+    } else {
+      if (Object.keys(profile).length > 0) {
         profileContent = (
-          <ProfileAbout profile={profile} />
+          <>
+            <ProfileAbout profile={profile} />
+            <Typography>Ссылки на ваши стенды:</Typography>
+            <div className="links">
+              {profile.events ? (
+                profile.events.map(
+                  (event) => (
+                    // <li style={{listStyleType:"none"}}>
+                    <Button color="primary" href={`/event/${event._id}`}>
+                      {event.partisipantName}
+                    </Button>
+                  )
+                  // </li>
+                )
+              ) : (
+                <Typography>У вас пока не создан стенд</Typography>
+              )}
+            </div>
+            {/* <EventItem
+              event={event}
+              snackbarMessage={snackbarMessage}
+              auth={this.props.auth}
+            /> */}
+          </>
         );
-      }
-      else{
+      } else {
         profileContent = (
           <div className={styles.profile}>
             <Typography variant="overline" component="p" gutterBottom>
@@ -38,26 +61,31 @@ class Profile extends Component{
               Вы еще не заполнили профиль
             </Typography>
             <p></p>
-            <Button className="primary-color marginB-2" component={Link} variant="contained" to="/create-profile">
+            <Button
+              className="primary-color marginB-2"
+              component={Link}
+              variant="contained"
+              to="/create-profile"
+            >
               Создать профиль
             </Button>
           </div>
         );
       }
     }
-    
-    return(
-        <div>
-          <h1 className="text-center">Профиль</h1>
-          {profileContent}
-        </div>
+
+    return (
+      <div>
+        <h1 className="text-center">Профиль</h1>
+        {profileContent}
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.profile,
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, {getCurrentProfile})(Profile); 
+export default connect(mapStateToProps, { getCurrentProfile })(Profile);

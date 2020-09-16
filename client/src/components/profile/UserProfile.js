@@ -16,6 +16,8 @@ class UserProfile extends Component{
     //const {user} = this.props.auth;
     const {profile, loading} = this.props.profile;
     
+    const { events } = this.props.profile;
+    
     let profileContent;
     
     if(profile === null || loading){

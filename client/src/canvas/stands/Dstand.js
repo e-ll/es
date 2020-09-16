@@ -1,6 +1,6 @@
 import React from "react";
 
-function Icon(props) {
+export function Dstand(props) {
   const {name, logoUrl} = props;
   console.log(logoUrl);
   return (
@@ -837,4 +837,4 @@ function Icon(props) {
   );
 }
 
-export default Icon;
+

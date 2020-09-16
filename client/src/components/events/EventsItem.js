@@ -14,7 +14,7 @@ import {
 import GroupIcon from "@material-ui/icons/Group";
 import SportsBasketballIcon from "@material-ui/icons/SportsBasketball";
 
-import sportImage from "../../img/noImage.svg";
+
 
 class EventsItem extends Component {
   render() {
@@ -26,20 +26,20 @@ class EventsItem extends Component {
           <Link to={`/event/${event._id}`}>
             <img
               style={{ width: "100%", height: "220px" }}
-              src={event.imageURL ? event.imageURL : sportImage}
+              // src={event.imageURL ? event.imageURL : sportImage}
               alt="Sport"
             />
           </Link>
           <CardHeader className="padB-0" title={event.partisipantName} />
           <CardContent>
-            <Typography
+            {/* <Typography
               className="marginB-1"
               variant="body2"
               color="textSecondary"
               component="p"
-            >
+            > */}
               {event.description}
-            </Typography>
+            {/* </Typography> */}
             <Chip icon={<SportsBasketballIcon />} label={event.standType} />
             <Chip icon={<GroupIcon />} label={event.numberofplayer} />
           </CardContent>

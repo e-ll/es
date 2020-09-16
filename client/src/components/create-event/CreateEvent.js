@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   Grid,
   Typography,
@@ -41,6 +43,7 @@ class CreateEvent extends Component {
       errors: {},
       shopId: null,
     };
+    this.handleChange = this.handleChange.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handlerChangeGallery = this.handlerChangeGallery.bind(this);
@@ -102,6 +105,9 @@ class CreateEvent extends Component {
 
     this.props.createEvent(eventData, this.props.history);
   }
+  handleChange(value) {
+    this.setState({ description: value });
+  }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -109,11 +115,8 @@ class CreateEvent extends Component {
 
   handlerChangeGallery(file, response) {
     console.log(response, this.state.galeryUrl);
-    this.setState(prevState => ({
-      galeryUrl: [
-        ...prevState.galeryUrl,
-        response
-      ]
+    this.setState((prevState) => ({
+      galeryUrl: [...prevState.galeryUrl, response],
     }));
   }
 
@@ -125,7 +128,7 @@ class CreateEvent extends Component {
   handlerDeleteImageFromGallery(image) {
     console.log(1);
     const gallery = this.state.galeryUrl;
-     const galeryUrl = gallery.filter((pic) => pic !== image);
+    const galeryUrl = gallery.filter((pic) => pic !== image);
     this.setState({ galeryUrl });
   }
 
@@ -145,7 +148,6 @@ class CreateEvent extends Component {
             Создайте свой стенд
           </Typography>
           <form onSubmit={this.onSubmit}>
-            <Editor />
             <TextFieldGroup
               label="Название компании или проекта"
               placeholder=""
@@ -180,7 +182,7 @@ class CreateEvent extends Component {
               </Grid> */}
             {/* </Grid> */}
 
-            <TextFieldGroup
+            {/* <TextFieldGroup
               label="Ссылка на изображение"
               placeholder="EX: https://unsplash.com/photos/-JzHSIzNYnU"
               name="imageURL"
@@ -188,7 +190,7 @@ class CreateEvent extends Component {
               value={imageURL}
               onChange={this.onChange}
               error={errors.imageURL}
-            />
+            /> */}
 
             <TextFieldGroup
               label="Адрес для карты"
@@ -199,8 +201,17 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.location}
             />
+            <ReactQuill
+              theme="snow"
+              value={this.state.description}
+              onChange={this.handleChange}
+              name="description"
+              error={errors.description}
+              label="Описание компании или проекта"
+              placeholder="Описание своего проекта"
+            />
 
-            <TextAreaFieldGroup
+            {/* <TextAreaFieldGroup
               label="Описание компании или проекта"
               placeholder="Details about this event"
               name="description"
@@ -208,7 +219,7 @@ class CreateEvent extends Component {
               value={this.state.description}
               onChange={this.onChange}
               error={errors.description}
-            />
+            /> */}
             <TextFieldGroup
               label="Код Youtube видео или трансляции для показа (если есть)"
               placeholder="например I_GMll3HJpM"
@@ -249,7 +260,9 @@ class CreateEvent extends Component {
                         alt=""
                       />
                     )}
-                    <div onClick={()=>this.handlerDeleteImageFromGallery(image)}>
+                    <div
+                      onClick={() => this.handlerDeleteImageFromGallery(image)}
+                    >
                       Delete logotype
                     </div>
                   </span>

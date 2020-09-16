@@ -6,11 +6,13 @@ import isEmpty from '../../validation/is-empty';
 
 class ProfileAbout extends Component{
     render(){
-        const {profile} = this.props;
+      console.log(this.props);
+        const {profile} = this.props.profile;
+        const {events} = this.props.profile
         
-        const favoriteSport = profile.favoriteSport.map((sport, index) => (
-          <Chip key={index} label={sport}/>
-        ));
+        // const favoriteSport = profile.favoriteSport.map((sport, index) => (
+        //   <Chip key={index} label={sport}/>
+        // ));
         
         return(
           <Grid className="marginB-2" container spacing={4}>

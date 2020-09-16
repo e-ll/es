@@ -1,7 +1,7 @@
 import React from "react";
 
-function Icon(props) {
-  const {name, logoUrl}
+export function Cstand(props) {
+  const {name, logoUrl} = props
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1204,4 +1204,4 @@ function Icon(props) {
   );
 }
 
-export default Icon;
+

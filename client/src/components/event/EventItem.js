@@ -103,7 +103,13 @@ class EventItem extends Component {
             ) : null}
           </Grid>
           <Grid item xs={6}>
-            <Grid>{event.description}</Grid>
+            <Grid style={{ marginLeft: "30px"}}
+              dangerouslySetInnerHTML={{
+                __html: event.description,
+              }}
+            >
+              
+            </Grid>
             <Grid container direction="row" justify="space-around">
               <Grid style={{ width: "50%" }} item>
                 <Typography style={header}>Чат с участником</Typography>
@@ -155,32 +161,32 @@ class EventItem extends Component {
             <span className={styles.labelInfo}>Description</span>
             <p>{event.description ? event.description : "None"}</p> */}
 
-            {/* <Typography display="inline">
+        {/* <Typography display="inline">
               <Link to={`/profile/${event.user._id}`}>
                 Host By {event.user.name}
               </Link>
             </Typography> */}
 
-            {event.user._id === auth.user.id ? (
-              <ButtonGroup className="marginL-1">
-                <Button
-                  component={Link}
-                  to={`/edit-event/${event.user._id}`}
-                  variant="contained"
-                  color="primary"
-                >
-                  Edit
-                </Button>
-                <Button
-                  onClick={this.handleClickOpen.bind(this)}
-                  variant="contained"
-                  color="secondary"
-                >
-                  Delete
-                </Button>
-              </ButtonGroup>
-            ) : null}
-          {/* </Grid> */}
+        {event.user._id === auth.user.id ? (
+          <ButtonGroup className="marginL-1">
+            <Button
+              component={Link}
+              to={`/edit-event/${event.user._id}`}
+              variant="contained"
+              color="primary"
+            >
+              Edit
+            </Button>
+            <Button
+              onClick={this.handleClickOpen.bind(this)}
+              variant="contained"
+              color="secondary"
+            >
+              Delete
+            </Button>
+          </ButtonGroup>
+        ) : null}
+        {/* </Grid> */}
         {/* <Grid container item xs={12} md={6}>
             <img
               className="marginB-1"

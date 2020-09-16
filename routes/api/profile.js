@@ -3,12 +3,14 @@ const router = express.Router();
 const passport = require('passport');
 
 const Profile = require('../../models/Profile');
+const Event = require('../../models/Event')
 const validateProfileInput = require('../../validation/profile');
 
 // GET /api/profile
 // fetch the player profile
-router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
+router.get('/', passport.authenticate('jwt', {session: false}),async (req, res) => {
     const errors = {};
+    const events = await Event.find({user:req.user.id});
     Profile.findOne({user: req.user.id})
         .populate('user', ['name'])
         .then(profile => {
@@ -16,7 +18,7 @@ router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
                 errors.noprofile = 'There is no profile for this user';
                 return res.status(404).json(errors);
             }
-            res.json(profile);
+            res.json({profile, events});
         })
         .catch(err => res.status(500).json(err));
 });
@@ -62,9 +64,9 @@ router.post('/', passport.authenticate('jwt', {session: false}),(req, res) => {
 
 // GET /api/profile/user/<:user_id>
 // fetch player profile by Id
-router.get('/user/:user_id', (req, res) => {
+router.get('/user/:user_id', async (req, res) => {
     const errors = {};
-    
+    const events = await Event.find({user:req.params.user_id})
     Profile.findOne({user: req.params.user_id})
         .populate('user', ['name'])
         .then(profile => {
@@ -72,7 +74,7 @@ router.get('/user/:user_id', (req, res) => {
                 errors.noprofile = 'This user does not exist';
                 res.status(404).json(errors);
             }
-            res.json(profile);
+            res.json(profile, events);
         })
         .catch(err => 
             res.status(500).json({ errors: err })

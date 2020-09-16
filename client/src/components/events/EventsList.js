@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import EventsItem from "./EventsItem";
-import Rows from "./Rows"
-
+import Show from "../../components/map/show"
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import { Link } from "react-router-dom";
 import {
@@ -16,7 +15,7 @@ import Lector from "../../canvas/Lector";
 import Market from "../../canvas/market";
 import Foodtrack from "../../canvas/foodtrack";
 import mapMain from "../../canvas/mainMap.jpg";
-import Estand from "../../canvas/stands/Estand"
+import Estand from "../../canvas/stands/Estand";
 import Dstand from "../../canvas/stands/Dstand";
 
 class EventsList extends Component {
@@ -27,14 +26,15 @@ class EventsList extends Component {
     //leftside
     const lStart = 55.0262;
     const tStart = 19.13;
-    const lIndex = 1.965
-    const tIndex = 1.551
+    const lIndex = 1.965;
+    const tIndex = 1.551;
+    
 
-    for (let i=0;i<1;i++) {
-      let l = lStart + i*lIndex;
-      let t = tStart + i*tIndex;
-let newStand = {l:String(l)+"%", t:String(t)+"%"}
-arrS.push(newStand)
+    for (let i = 0; i < 1; i++) {
+      let l = lStart + i * lIndex;
+      let t = tStart + i * tIndex;
+      let newStand = { l: String(l) + "%", t: String(t) + "%" };
+      arrS.push(newStand);
     }
     const arrCoord = [
       { l: "55.0262%", t: "19.13%" },
@@ -81,7 +81,7 @@ arrS.push(newStand)
                 <div
                   className="element"
                   style={{
-                    width: "100%",
+                    // width: "100%",
                     border: "1px dashed #000000",
                   }}
                 >
@@ -90,6 +90,7 @@ arrS.push(newStand)
                       className="coverf"
                       style={{
                         height: "400px",
+                        width: "621.34px",
                       }}
                     >
                       <img
@@ -105,51 +106,8 @@ arrS.push(newStand)
                           zIndex: "-10",
                         }}
                       />
-                      <div>
-                        
-                        
-                      </div>
-                      <div
+                      <Show events={events}/>
 
-                      // style={{
-                      //   display: "grid",
-                      //   gridTemplateColumns: "repeat(4, auto)",
-                      //   gridGap: "2",
-                      //   position: "relative",
-                      // }}
-                      >
-                        {events.slice(0,7).map((event, index) => {
-                          const intervalD = 2;
-                          const angle = 30;
-                          const radian = (Math.PI * angle) / 180;
-                          const startX = 0;
-                          const startY = 0;
-                          const xCoordinate = intervalD * Math.cos(radian);
-                          const yCoordinate = intervalD * Math.sin(radian);
-                          const left = index * xCoordinate;
-                          const top = index * yCoordinate;
-                         
-
-                          return (
-                            <Tooltip title={`Стенд № ${event._id}`} interactive>
-                              <Link to={`/event/${event._id}`}>
-                                <div>
-                                  <Dstand
-                                    index={index}
-                                    name={event.partisipantName}
-                                    logoUrl={event.imageURL}
-                                    style={{
-                                      position: "absolute",
-                                      left: left,
-                                      top: top,
-                                    }}
-                                  />
-                                </div>
-                              </Link>
-                            </Tooltip>
-                          );
-                        })}
-                      </div>
                     </div>
                   </TransformComponent>
                 </div>
