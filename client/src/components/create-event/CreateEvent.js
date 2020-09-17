@@ -18,6 +18,7 @@ import DropzoneComponent from "react-dropzone-component";
 import Drop from "./Drop";
 import "react-upload-gallery/dist/style.css";
 import Editor from "../editor/editor"
+import Up from "../firebase/Up"
 // import { initialState } from "../upload/data";
 
 // const standList = [
@@ -148,6 +149,7 @@ class CreateEvent extends Component {
           <Typography variant="h3" component="h1" align="center" gutterBottom>
             Создайте свой стенд
           </Typography>
+          <Up />
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup
               required
