@@ -43,6 +43,7 @@ router.post("/register", (req, res) => {
         try {
           await transport.sendRegisterMail(newUser);
           await transport.sendConfirmEmail(newUser);
+          console.log(newUser);
         } catch (e) {
           console.log(e);
         }

@@ -11,13 +11,15 @@ const validateProfileInput = require('../../validation/profile');
 router.get('/', passport.authenticate('jwt', {session: false}),async (req, res) => {
     const errors = {};
     const events = await Event.find({user:req.user.id});
-    Profile.findOne({user: req.user.id})
+    console.log(await events);
+    const file = await Profile.findOne({user: req.user.id})
         .populate('user', ['name'])
         .then(profile => {
             if(!profile){
                 errors.noprofile = 'There is no profile for this user';
-                return res.status(404).json(errors);
+                return res.status(404).json({events, errors});
             }
+            
             res.json({profile, events});
         })
         .catch(err => res.status(500).json(err));

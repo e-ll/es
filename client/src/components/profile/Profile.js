@@ -23,8 +23,9 @@ class Profile extends Component {
 
     if (profile === null || loading) {
       profileContent = <Spinner />;
-    } else {
+    } else { 
       if (Object.keys(profile).length > 0) {
+        
         profileContent = (
           <>
             <ProfileAbout profile={profile} />
@@ -65,10 +66,26 @@ class Profile extends Component {
               className="primary-color marginB-2"
               component={Link}
               variant="contained"
-              to="/create-profile"
+              href="/create-profile"
             >
               Создать профиль
             </Button>
+            <Typography>Ссылки на ваши стенды:</Typography>
+            <div className="links">
+              {profile.events ? (
+                profile.events.map(
+                  (event) => (
+                    // <li style={{listStyleType:"none"}}>
+                    <Button color="primary" href={`/event/${event._id}`}>
+                      {event.partisipantName}
+                    </Button>
+                  )
+                  // </li>
+                )
+              ) : (
+                <Typography>У вас пока не создан стенд</Typography>
+              )}
+            </div>
           </div>
         );
       }

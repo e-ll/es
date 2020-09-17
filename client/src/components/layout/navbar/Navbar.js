@@ -12,7 +12,6 @@ import {
   Avatar,
   Typography,
   Button,
-
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import MapIcon from "@material-ui/icons/Map";
@@ -26,7 +25,7 @@ import NotificationList from "../../notification/NotificationList";
 import UserMenu from "../UserMenu";
 
 import Logo from "../../../img/logo.jpg";
-import meg from "../../../img/MEGA_logo.png"
+import meg from "../../../img/MEGA_logo.png";
 
 class Navbar extends Component {
   constructor(props) {
@@ -85,7 +84,7 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, notifications, user } = this.props.auth;
-console.log(this.props);
+    console.log(this.props);
     const handleDrawerOpen = () => {
       this.setState({ toggleDrawer: true });
     };
@@ -93,7 +92,7 @@ console.log(this.props);
     const handleDrawerClose = () => {
       this.setState({ toggleDrawer: false });
     };
-const megalogo = "/img/MEGA-logo.png";
+    const megalogo = "/img/MEGA-logo.png";
     const notificationsList = (
       <Badge
         badgeContent={notifications.unread}
@@ -104,34 +103,32 @@ const megalogo = "/img/MEGA-logo.png";
         <NotificationsIcon />
       </Badge>
     );
-let createButton = null;
-if (isAuthenticated) {
-  if (user.stand) {
-    createButton = (
-      <Link
-        className="white-link"
-        component={Link}
-        to={`/`}
-      >
-        Мой стенд
-      </Link>
-    );
-  } else {
-    createButton = (<Link
-                  className="white-link"
-                  component={RouterLink}
-                  to="/create-event"
-                >
-                  Создать стенд
-                </Link>)
-  }
-} 
+    let createButton = null;
+    if (isAuthenticated) {
+      if (user.stand) {
+        createButton = (
+          <Button className="white-link" href={`/profile`}>
+            Мой стенд
+          </Button>
+        );
+      } else {
+        createButton = (
+          <Link
+            className="white-link"
+            component={RouterLink}
+            to="/create-event"
+          >
+            Создать стенд
+          </Link>
+        );
+      }
+    }
     return (
       <AppBar position="static" color="default">
         <Container>
           <Toolbar disableGutters className="toolbar">
             <Link component={RouterLink} to="/">
-              <span style={{color: "#D630B1"}} >Festyline</span>
+              <span style={{ color: "#D630B1" }}>Festyline</span>
             </Link>
 
             <div className="hiddenDesk">
@@ -139,10 +136,7 @@ if (isAuthenticated) {
                 На карту
               </Link> */}
 
-
               {createButton}
-
-              
             </div>
             <div style={{ display: "flex", margin: "0 auto" }}>
               {/* <Avatar
