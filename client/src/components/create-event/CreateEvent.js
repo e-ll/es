@@ -149,6 +149,7 @@ class CreateEvent extends Component {
           </Typography>
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup
+            required
               label="Название компании или проекта"
               placeholder=""
               name="partisipantName"
@@ -193,6 +194,7 @@ class CreateEvent extends Component {
             /> */}
 
             <TextFieldGroup
+            required
               label="Адрес для карты"
               placeholder="пример: Екатеринбург, ул.Бориса Ельцина, д.1"
               name="location"
@@ -238,41 +240,7 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.shopId}
             />
-            {logoUrl && (
-              <>
-                <InputLabel>Logotype</InputLabel>
-                {/* <img src={`http://localhost:8081/uploads/${logoUrl}`} alt="" /> */}
-                <img src={`http://festyline.com/uploads/${logoUrl}`} alt="" />
-                <a href="#" onClick={() => this.setState({ logoUrl: "" })}>
-                  Delete logotype
-                </a>
-              </>
-            )}
-            <InputLabel>{logoUrl ? "Change" : "Add"} Logotype</InputLabel>
-            <Drop onChange={this.handlerChangeLogotype} />
-            {galeryUrl && (
-              <>
-                <InputLabel>Gallery</InputLabel>
-                {galeryUrl.map((image, index) => (
-                  <span key={`gallery-image-${index}`}>
-                    {image && (
-                      <img
-                        // src={`http://localhost:8081/uploads/${image}`}
-                        src={`http://festyline.com/uploads/${image}`}
-                        alt=""
-                      />
-                    )}
-                    <div
-                      onClick={() => this.handlerDeleteImageFromGallery(image)}
-                    >
-                      Delete logotype
-                    </div>
-                  </span>
-                ))}
-              </>
-            )}
-            <FormLabel>Add Gallery</FormLabel>
-            <Drop onChange={this.handlerChangeGallery} />
+            
             <Button
               className="primary-color marginB-2"
               type="submit"

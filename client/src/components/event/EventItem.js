@@ -88,10 +88,10 @@ class EventItem extends Component {
             <Grid>
               <Plug />
             </Grid>
-            <Typography>Галерея</Typography>
+            {/* <Typography>Галерея</Typography>
             <Grid>
               <Gallery images={event.galeryUrl} />
-            </Grid>
+            </Grid> */}
             {/* event.shopId */}
             {event.shopId ? (
               <>
