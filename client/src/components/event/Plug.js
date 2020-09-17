@@ -8,7 +8,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FrameDeferring() {
+export default function FrameDeferring(props) {
+  const {videoId} = props
   const classes = useStyles();
   const [state, setState] = React.useState({ open: false, defer: false });
 
@@ -16,7 +17,7 @@ export default function FrameDeferring() {
     <div>
       <div className={classes.container}>
         {state.open ? (
-          <Video videoId={"DOpiwINoROQ"} />
+          <Video videoId={videoId} />
         ) : (
           <img
             style={{ width: "100%", height: "100%" }}

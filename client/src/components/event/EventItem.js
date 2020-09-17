@@ -86,7 +86,7 @@ class EventItem extends Component {
         <Grid container>
           <Grid item xs={6}>
             <Grid>
-              <Plug />
+              {event.youTubeCode ? (<Plug videoId={event.youTubeCode}/>): (null)}
             </Grid>
             {/* <Typography>Галерея</Typography>
             <Grid>
