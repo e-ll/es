@@ -57,7 +57,7 @@ router.post(
       eventFields.partisipantName = req.body.partisipantName;
 
     if (req.body.imageURL) eventFields.imageURL = req.body.imageURL;
-    // if (req.body.standType) eventFields.standType = req.body.standType;
+    if (req.body.standType) eventFields.standType = req.body.standType;
     // if (req.body.numberofplayer)
     //   eventFields.numberofplayer = req.body.numberofplayer;
     if (req.body.location) {
@@ -77,7 +77,7 @@ router.post(
       if (event) {
         if (req.body.partisipantName)
           event.partisipantName = req.body.partisipantName;
-        // if (req.body.standType) event.standType = req.body.standType;
+        if (req.body.standType) event.standType = req.body.standType;
         // if (req.body.numberofplayer)
         //   event.numberofplayer = req.body.numberofplayer;
         if (req.body.location) event.location = req.body.location;

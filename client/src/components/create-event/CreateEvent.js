@@ -139,6 +139,7 @@ class CreateEvent extends Component {
       galeryUrl,
       partisipantName,
       imageURL,
+      standType,
     } = this.state;
 
     return (
@@ -149,7 +150,7 @@ class CreateEvent extends Component {
           </Typography>
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup
-            required
+              required
               label="Название компании или проекта"
               placeholder=""
               name="partisipantName"
@@ -158,6 +159,16 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.partisipantName}
             />
+            <TextFieldGroup
+              label="Если вам сказали  номер стенда то впишите его в это поле"
+              placeholder="например E8_2"
+              name="standType"
+              type="name"
+              value={standType}
+              onChange={this.onChange}
+              error={errors.standType}
+            />
+
             {/* <Grid container spacing={3}> */}
             {/* <Grid item xs={6}>
                 <SelectFieldGroup
@@ -194,7 +205,7 @@ class CreateEvent extends Component {
             /> */}
 
             <TextFieldGroup
-            required
+              required
               label="Адрес для карты"
               placeholder="пример: Екатеринбург, ул.Бориса Ельцина, д.1"
               name="location"
@@ -240,7 +251,7 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.shopId}
             />
-            
+
             <Button
               className="primary-color marginB-2"
               type="submit"
