@@ -11,8 +11,8 @@ import {
 } from "@material-ui/core";
 import Lector from "../../canvas/Lector";
 
-import Market from "../../canvas/market";
-import Foodtrack from "../../canvas/foodtrack";
+// import Market from "../../canvas/market";
+// import Foodtrack from "../../canvas/foodtrack";
 
 class EventsList extends Component {
   render() {
@@ -92,7 +92,7 @@ class EventsList extends Component {
                                   }}
                                   aria-label="delete"
                                 >
-                                  <Market />
+                                  {/* <Market /> */}
                                 </IconButton>
                               </Link>
                             </Tooltip>

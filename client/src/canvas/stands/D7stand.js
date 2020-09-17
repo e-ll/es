@@ -1,8 +1,8 @@
 import React from "react";
 
-export function Dstand(props) {
+export default function D7stand(props) {
   const {name, logoUrl} = props;
-  console.log(logoUrl);
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

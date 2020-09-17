@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Cstand(props) {
+export default function C5stand(props) {
   const {name, logoUrl} = props
   return (
     <svg

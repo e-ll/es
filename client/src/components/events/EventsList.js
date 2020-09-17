@@ -10,13 +10,14 @@ import {
   ButtonGroup,
   CssBaseline,
 } from "@material-ui/core";
+import data from "./data"
 import Lector from "../../canvas/Lector";
 
-import Market from "../../canvas/market";
-import Foodtrack from "../../canvas/foodtrack";
+// import Market from "../../canvas/market";
+// import Foodtrack from "../../canvas/foodtrack";
 import mapMain from "../../canvas/mainMap.jpg";
-import Estand from "../../canvas/stands/Estand";
-import Dstand from "../../canvas/stands/Dstand";
+import Estand from "../../canvas/stands/E8stand";
+import Dstand from "../../canvas/stands/D7stand";
 
 class EventsList extends Component {
   render() {
@@ -106,8 +107,9 @@ class EventsList extends Component {
                           zIndex: "-10",
                         }}
                       />
-                      <Show events={events}/>
-
+                      {data.map((stand, index)=>(
+                      <Show event={events[5]} stand={stand} key={index} />
+                      ))}
                     </div>
                   </TransformComponent>
                 </div>
