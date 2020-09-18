@@ -7,23 +7,26 @@ import config from "./config";
 import {getSizedParentNode} from "leaflet/src/dom/DomUtil";
 import styles from "./up.module.css";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Gallery from '../event/galery/Gallery'
 
 // Setup Firebase
-//firebase.initializeApp(config);
+// firebase.initializeApp(config);
 import {firebase} from '../create-event/CreateEvent'
 
-export default class Up extends React.Component {
-  state = {
-    filenames: [],
-    downloadURLs: [],
-    isUploading: false,
-    uploadProgress: 0,
-  };
+
+export default class UpLogo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filenames: [],
+      downloadURLs: [],
+      isUploading: false,
+      uploadProgress: 0,
+    }
+  }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    if (this.state.downloadURLs.length === 0) {
-      this.setState({downloadURLs: this.props.currentGallery})
+    if (this.state.downloadURLs.length === 0 && this.props.currentLogo && this.props.currentLogo.length > 0) {
+      this.setState({downloadURLs: [this.props.currentLogo]})
     }
   }
 
@@ -53,26 +56,30 @@ export default class Up extends React.Component {
       .child(filename)
       .getDownloadURL();
 
+    console.log([downloadURL])
     this.setState((oldState) => ({
       filenames: [...oldState.filenames, filename],
-      downloadURLs: [...oldState.downloadURLs, downloadURL],
+//      downloadURLs: [...oldState.downloadURLs, downloadURL],
+      downloadURLs: [downloadURL],
       uploadProgress: 100,
       isUploading: false,
     }));
-    this.props.changeGalery(this.state.downloadURLs);
+    this.props.changeLogo(this.state.downloadURLs);
     // this.props.changeGalery({galleryUrl: this.state.downloadURLs});
   };
 
   deleteImage = (index) => {
     const oldUrls = this.state.downloadURLs;
     const downloadURLs = oldUrls.filter((url, i) => i !== index);
+    console.log('DELETE', downloadURLs)
     const oldFilenames = this.state.filenames;
     const filenames = oldFilenames.filter((filename, i) => i !== index);
     this.setState({downloadURLs, filenames});
-    this.props.changeGalery(downloadURLs);
+    this.props.changeLogo(downloadURLs);
   };
 
   render() {
+    console.log('HEEEEERE', this.state)
     return (
       <>
         <label
@@ -86,7 +93,7 @@ export default class Up extends React.Component {
             cursor: "pointer",
           }}
         >
-          Загрузить изображения
+          Загрузить логотип
           <FileUploader
             accept="image/*"
             name="image-uploader-multiple"
@@ -107,17 +114,18 @@ export default class Up extends React.Component {
         {/* {this.state.filenames.length > 0 && <p>Файлы: </p>}
         {this.state.filenames.length > 0 &&
           this.state.filenames.map((fileName) => <p>{fileName}</p>)} */}
-        <div className={styles.imageGallery}>
-          {this.state.downloadURLs.map((downloadURL, index) => {
+
+        <div className={styles.imageGalleryLogo}>
+          {this.state.downloadURLs && this.state.downloadURLs.map((downloadURL, index) => {
             return (
               <div key={downloadURL} className={styles.image}>
                 <img style={{height: "100%"}} src={downloadURL}/>
                 <div className={styles.deleteIcon}>
-                  <IconButton style={{display: 'inline-block'}}
-                              onClick={() => this.deleteImage(index)}
-                              aria-label="delete"
+                  <IconButton
+                    onClick={() => this.deleteImage(index)}
+                    aria-label="delete"
                   >
-                    <DeleteIcon fontSize="small"/>
+                    <DeleteIcon fontSize="medium"/>
                   </IconButton>
                 </div>
                 {/* <span
