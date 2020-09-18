@@ -7,7 +7,7 @@ import {
   CircularProgress,
   LinearProgress,
 } from "@material-ui/core";
-
+import PositionLabel from "../cursor/PositionLabel"
 import EventsList from "./EventsList";
 import SelectFieldGroup from "../common/SelectFieldGroup";
 import Spinner from "../common/Spinner";

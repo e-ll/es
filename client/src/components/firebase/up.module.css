@@ -1,0 +1,32 @@
+.imageGallery {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.image {
+  display: inline-block;
+  height: 250px;
+  flex-basis: 24%;
+  position: relative;
+  margin: 10px;
+}
+
+.deleteIcon {
+  position: absolute;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.deleteIcon:hover {
+  cursor: pointer;
+}

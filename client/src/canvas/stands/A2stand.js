@@ -1,6 +1,6 @@
 import React from "react";
 
-function Icon(props) {
+function A2stand(props) {
   const { name, logoUrl } = props;
   return (
     <svg
@@ -826,4 +826,4 @@ function Icon(props) {
   );
 }
 
-export default Icon;
+export default A2stand;

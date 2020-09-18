@@ -88,10 +88,10 @@ class EventItem extends Component {
             <Grid>
               {event.youTubeCode ? (<Plug videoId={event.youTubeCode}/>): (null)}
             </Grid>
-            {/* <Typography>Галерея</Typography>
+            <Typography>Галерея</Typography>
             <Grid>
               <Gallery images={event.galeryUrl} />
-            </Grid> */}
+            </Grid>
             {/* event.shopId */}
             {event.shopId ? (
               <>

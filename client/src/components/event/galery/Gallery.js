@@ -6,7 +6,6 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -29,17 +28,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Gallery(props) {
   const classes = useStyles();
-const {images} = props;
+  const { images } = props;
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
         {images.map((image, index) => (
-          <GridListTile key={index}>
+          <GridListTile key={image}>
             {/* <img src={`http://localhost:8081/uploads/${image}`} alt="image" /> */}
-            <img src={`http://festyline.com/uploads/${image}`} alt="image" />
+            <img src={image} alt={`изображение стенда Nr. ${index + 1}`} />
           </GridListTile>
         ))}
       </GridList>

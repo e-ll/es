@@ -58,7 +58,7 @@
   { type: 16, name: "K14_1", left: "77.841%", top: "36.848%" },
   { type: 16, name: "K14_2", left: "89.060%", top: "26.260%" },
   { type: 16, name: "K14_3", left: "89.170%", top: "32.350%" },
-  { type: 16, name: "K14_4", left: "89.170%", top: "38.450%" },
+  { type: 16, name: "K14_4", top: "89.170%", left: "38.450%" },
 ];
 
 export default data

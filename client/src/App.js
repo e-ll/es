@@ -55,6 +55,7 @@ class App extends Component {
             />
             <Navbar />
             <Route exact path="/" component={Plug} />
+            <Route exact path="/admin" component={Events} />
             <Route exact path="/greenfest" component={Plug} />
             <Container>
               <Route exact path="/register" component={Register} />

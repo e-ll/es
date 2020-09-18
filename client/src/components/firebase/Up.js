@@ -2,7 +2,10 @@ import React from "react";
 
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
-import config from "./con"
+import CustomUploadButton from "react-firebase-file-uploader/lib/CustomUploadButton";
+import config from "./con";
+import { getSizedParentNode } from "leaflet/src/dom/DomUtil";
+import styles from "./up.module.css";
 
 // Setup Firebase
 firebase.initializeApp(config);
@@ -47,35 +50,70 @@ export default class Up extends React.Component {
       uploadProgress: 100,
       isUploading: false,
     }));
+    this.props.changeGalery(this.state.downloadURLs);
+  };
+
+  deleteImage = (index) => {
+    const oldUrls = this.state.downloadURLs;
+    const downloadURLs = oldUrls.filter((url, i) => i !== index);
+    const oldFilenames = this.state.filenames;
+    const filenames = oldFilenames.filter((filename, i) => i !== index);
+    this.setState({ downloadURLs, filenames });
+    this.props.changeGalery(downloadURLs);
   };
 
   render() {
     return (
-      <div>
-        <FileUploader
-          accept="image/*"
-          name="image-uploader-multiple"
-          randomizeFilename
-          storageRef={firebase.storage().ref("images")}
-          onUploadStart={this.handleUploadStart}
-          onUploadError={this.handleUploadError}
-          onUploadSuccess={this.handleUploadSuccess}
-          onProgress={this.handleProgress}
-          multiple
-        />
+      <>
+        <label
+          style={{
+            backgroundColor: "steelblue",
+            color: "white",
+            padding: 10,
+            display: "inline-block",
+            marginBottom: 20,
+            borderRadius: 4,
+            cursor: "pointer",
+          }}
+        >
+          Добавить изображения стэнда
+          <FileUploader
+            accept="image/*"
+            name="image-uploader-multiple"
+            randomizeFilename
+            storageRef={firebase.storage().ref("images")}
+            onUploadStart={this.handleUploadStart}
+            onUploadError={this.handleUploadError}
+            onUploadSuccess={this.handleUploadSuccess}
+            onProgress={this.handleProgress}
+            multiple
+            maxHeight={800}
+            maxWidth={800}
+            hidden
+          ></FileUploader>
+        </label>
+        {this.state.isUploading && <p>Progress: {this.state.uploadProgress}</p>}
 
-        <p>Progress: {this.state.uploadProgress}</p>
+        {this.state.filenames.length > 0 && <p>Файлы: </p>}
+        {this.state.filenames.length > 0 &&
+          this.state.filenames.map((fileName) => <p>{fileName}</p>)}
 
-        <p>Filenames: {this.state.filenames.join(", ")}</p>
-
-        <div>
-          {this.state.downloadURLs.map((downloadURL, i) => {
-            return <img key={i} src={downloadURL} />;
+        <div className={styles.imageGallery}>
+          {this.state.downloadURLs.map((downloadURL, index) => {
+            return (
+              <div key={downloadURL} className={styles.image}>
+                <img style={{ height: "100%" }} src={downloadURL} />
+                <span
+                  className={styles.deleteIcon}
+                  onClick={() => this.deleteImage(index)}
+                >
+                  X
+                </span>
+              </div>
+            );
           })}
         </div>
-      </div>
+      </>
     );
   }
 }
-
-

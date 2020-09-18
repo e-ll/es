@@ -31,6 +31,10 @@ import {
 
 export default function Show(props) {
   const { event, stand } = props;
+   function std(types, snand, {}) {
+
+     return types[index]
+   }
   const types = [
     A1stand({
       name: event.partisipantName,
@@ -108,7 +112,7 @@ export default function Show(props) {
         "https://sun9-8.userapi.com/c853620/v853620963/13b4d5/aFszB8VaQCY.jpg",
     }),
     K16stand({
-      name: event.partisipantName,
+      name: "MEGA",
       logoUrl:
         "https://sun9-8.userapi.com/c853620/v853620963/13b4d5/aFszB8VaQCY.jpg",
     }),

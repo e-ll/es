@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EventsItem from "./EventsItem";
-import Show from "../../components/map/show"
+import Sshow from "../../components/map/Sshow";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import { Link } from "react-router-dom";
 import {
@@ -10,18 +10,22 @@ import {
   ButtonGroup,
   CssBaseline,
 } from "@material-ui/core";
-import data from "./data"
+import data from "./data";
+import ReactCursorPosition from "react-cursor-position";
 import Lector from "../../canvas/Lector";
-
-// import Market from "../../canvas/market";
-// import Foodtrack from "../../canvas/foodtrack";
+import PositionLabel from "../cursor/PositionLabel";
 import mapMain from "../../canvas/mainMap.jpg";
 import Estand from "../../canvas/stands/E8stand";
 import Dstand from "../../canvas/stands/D7stand";
+import Basic from "../cursor/Basic";
 
 class EventsList extends Component {
+  toggleSetting = (type) => {
+    this.setState((p) => ({ [type]: !p[type] }));
+  };
   render() {
     const { events } = this.props;
+
     // const trans = "translate(index*5, index*5)"
     const arrS = [];
     //leftside
@@ -29,7 +33,6 @@ class EventsList extends Component {
     const tStart = 19.13;
     const lIndex = 1.965;
     const tIndex = 1.551;
-    
 
     for (let i = 0; i < 1; i++) {
       let l = lStart + i * lIndex;
@@ -46,55 +49,69 @@ class EventsList extends Component {
       { l: "920.11px", t: "183px" },
     ];
     return (
-      <CssBaseline>
-        <div className="conteiner">
-          <TransformWrapper
-            wheel={{
-              step: 10,
-            }}
-            defaultScale={1}
-            defaultPositionX={0}
-            defaultPositionY={0}
-          >
-            {({
-              zoomIn,
-              zoomOut,
-              resetTransform,
-              positionX,
-              positionY,
-              scale,
-              previousScale,
-            }) => (
-              <>
-                <div className="tools">
-                  <ButtonGroup variant="text">
-                    <Button variant="outlined" onClick={zoomIn}>
-                      Увеличить +
-                    </Button>
-                    <Button variant="outlined" onClick={zoomOut}>
-                      Уменьшить -
-                    </Button>
-                    <Button variant="outlined" onClick={resetTransform}>
-                      Сбросить
-                    </Button>
-                  </ButtonGroup>
-                </div>
-                <div
-                  className="element"
-                  style={{
-                    // width: "100%",
-                    border: "1px dashed #000000",
-                  }}
-                >
+      <div className="conteiner">
+        <TransformWrapper
+          wheel={{
+            step: 10,
+          }}
+          defaultScale={1}
+          defaultPositionX={0}
+          defaultPositionY={0}
+        >
+          {({
+            zoomIn,
+            zoomOut,
+            resetTransform,
+            positionX,
+            positionY,
+            scale,
+            previousScale,
+            options: { limitToBounds, transformEnabled, disabled },
+            ...rest
+          }) => (
+            <>
+              <div className="tools">
+                {/* <span className="badge badge-secondary">
+                    Position x : {positionX}px
+                  </span>
+                  <span className="badge badge-secondary">
+                    Position y : {positionY}px
+                  </span>
+                  <span className="badge badge-secondary">Scale : {scale}</span>
+                  <span className="badge badge-secondary">
+                    Previous scale : {previousScale}
+                  </span> */}
+                <ButtonGroup variant="text">
+                  <Button variant="outlined" onClick={zoomIn}>
+                    Увеличить +
+                  </Button>
+                  <Button variant="outlined" onClick={zoomOut}>
+                    Уменьшить -
+                  </Button>
+                  <Button variant="outlined" onClick={resetTransform}>
+                    Сбросить
+                  </Button>
+                </ButtonGroup>
+              </div>
+              <div
+                className="element"
+                style={{
+                  // width: "100%",
+                  border: "1px dashed #000000",
+                }}
+              >
+                <ReactCursorPosition>
                   <TransformComponent>
                     <div
                       className="coverf"
                       style={{
-                        height: "400px",
-                        width: "621.34px",
+                        height: "418px",
+                        width: "1342px",
+                        
                       }}
                     >
                       <img
+                        className="mapa"
                         src={mapMain}
                         style={{
                           position: "absolute",
@@ -107,32 +124,19 @@ class EventsList extends Component {
                           zIndex: "-10",
                         }}
                       />
-                      {data.map((stand, index)=>(
-                      <Show event={events[5]} stand={stand} key={index} />
+
+                      {data.map((stand, index) => (
+                        <Sshow event={events[5]} stand={stand} key={index} />
                       ))}
                     </div>
                   </TransformComponent>
-                </div>
-                {/* <div className="info">
-                <h3>State</h3>
-                <h5>
-                  <span className="badge badge-secondary">
-                    Position x : {positionX}px
-                  </span>
-                  <span className="badge badge-secondary">
-                    Position y : {positionY}px
-                  </span>
-                  <span className="badge badge-secondary">Scale : {scale}</span>
-                  <span className="badge badge-secondary">
-                    Previous scale : {previousScale}
-                  </span>
-                </h5>
-              </div> */}
-              </>
-            )}
-          </TransformWrapper>
-        </div>
-      </CssBaseline>
+                  <PositionLabel />
+                </ReactCursorPosition>
+              </div>
+            </>
+          )}
+        </TransformWrapper>
+      </div>
     );
   }
 }
