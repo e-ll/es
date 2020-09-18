@@ -1,51 +1,3 @@
-// import React from "react";
-// import MainTabsStyles from "./MainTabs.module.css";
-// import { TabBlocks } from "./Tabs/TabBlocks";
-
-// const { main } = MainTabsStyles;
-
-// // arguments for TabBlocks component:
-// const headlineArray = [
-//   ["Расписание онлайн", "Расписание оффлайн"],
-//   "Участники",
- 
-//   "Трансляция",
-// ];
-// const isTwoHeadlines = true; //if headlines if two
-// let numberInArray = null; // what is a number of Component now
-
-// const tabsArray4 = headlineArray.map((element, index) => {
-//   // 4 blocks in line
-//   if (index % 2 == 0) {
-//     return (
-//       <TabBlocks
-//         numberInArray={index}
-//         isTwoHeadlines={isTwoHeadlines}
-//         headlineArray={headlineArray[index]}
-//       />
-//     ); //two headlines
-//   } else {
-//     return (
-//       <TabBlocks numberInArray={index} headlineArray={headlineArray[index]} />
-//     ); //one headline
-//   }
-// });
-
-// export const MainTabs = () => {
-//   const items = [
-//     "Мега Екатеринбург",
-//     "Ельцин-центр",
-//     "Ашан",
-//     "Item4",
-//     "Item5",
-//     "Item6",
-//     "Item7",
-//   ];
-//   return <div className={main}>{tabsArray4}</div>;
-// };
-
-//  LAST CODE
-
 import React from "react";
 import Video from "../event/tabs/Video"
 import {
@@ -125,10 +77,10 @@ export default function MainTabs(props) {
             </ListItem>
           ))}
         </Grid>
-        <Grid item xs={3}>
+        {/* <Grid item xs={3}>
           <Paper style={header}>Общий чат</Paper>
           <div>hello</div>
-        </Grid>
+        </Grid> */}
         <Grid item xs={3}>
           <Paper style={header}>
             <div style={{ display: "flex" }}>

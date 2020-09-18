@@ -5,7 +5,7 @@
 }
 .image {
   display: inline-block;
-  height: 250px;
+  height: 10vh;
   flex-basis: 24%;
   position: relative;
   margin: 10px;
@@ -14,13 +14,13 @@
 .deleteIcon {
   position: absolute;
   display: inline-block;
-  width: 25px;
-  height: 25px;
-  font-size: 25px;
+  width: 4vh;
+  height: 4vh;
+  font-size: 2vh;
   text-align: center;
   font-weight: bold;
   padding: 5px;
-  top: 10px;
+  top: 2vh;
   right: 10px;
   border-radius: 50%;
   border: 1px solid black;

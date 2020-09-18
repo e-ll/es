@@ -1,11 +1,12 @@
 import React from "react";
-
+import {IconButton} from "@material-ui/core"
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import CustomUploadButton from "react-firebase-file-uploader/lib/CustomUploadButton";
 import config from "./con";
 import { getSizedParentNode } from "leaflet/src/dom/DomUtil";
 import styles from "./up.module.css";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 // Setup Firebase
 firebase.initializeApp(config);
@@ -51,6 +52,7 @@ export default class Up extends React.Component {
       isUploading: false,
     }));
     this.props.changeGalery(this.state.downloadURLs);
+    // this.props.changeGalery({galleryUrl: this.state.downloadURLs});
   };
 
   deleteImage = (index) => {
@@ -76,7 +78,7 @@ export default class Up extends React.Component {
             cursor: "pointer",
           }}
         >
-          Добавить изображения стэнда
+          Загрузить изображения
           <FileUploader
             accept="image/*"
             name="image-uploader-multiple"
@@ -94,21 +96,27 @@ export default class Up extends React.Component {
         </label>
         {this.state.isUploading && <p>Progress: {this.state.uploadProgress}</p>}
 
-        {this.state.filenames.length > 0 && <p>Файлы: </p>}
+        {/* {this.state.filenames.length > 0 && <p>Файлы: </p>}
         {this.state.filenames.length > 0 &&
-          this.state.filenames.map((fileName) => <p>{fileName}</p>)}
+          this.state.filenames.map((fileName) => <p>{fileName}</p>)} */}
 
         <div className={styles.imageGallery}>
           {this.state.downloadURLs.map((downloadURL, index) => {
             return (
               <div key={downloadURL} className={styles.image}>
                 <img style={{ height: "100%" }} src={downloadURL} />
-                <span
+                <IconButton
+                  onClick={() => this.deleteImage(index)}
+                  aria-label="delete"
+                >
+                  <DeleteIcon fontSize="small" />
+                </IconButton>
+                {/* <span
                   className={styles.deleteIcon}
                   onClick={() => this.deleteImage(index)}
                 >
                   X
-                </span>
+                </span> */}
               </div>
             );
           })}

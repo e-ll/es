@@ -19,6 +19,7 @@ import Drop from "./Drop";
 import "react-upload-gallery/dist/style.css";
 import Editor from "../editor/editor";
 import Up from "../firebase/Up";
+import Gallery from "../event/galery/Gallery"
 // import { initialState } from "../upload/data";
 
 // const standList = [
@@ -124,6 +125,10 @@ class CreateEvent extends Component {
   changeGalery = (updatedArray) => {
     this.setState({ galeryUrl: updatedArray });
   };
+// changeGalery = (changeobj) => {
+//      this.setState(changeobj);
+//   };
+
 
   handlerChangeLogotype(file, response) {
     const logoUrl = response;
@@ -145,6 +150,7 @@ class CreateEvent extends Component {
       partisipantName,
       imageURL,
       standType,
+      shopId
     } = this.state;
 
     return (
@@ -154,6 +160,10 @@ class CreateEvent extends Component {
             Создайте свой стенд
           </Typography>
           <Up changeGalery={this.changeGalery} />
+          {this.state.galery ?(<Typography variant="h6" component="h4" align="center" gutterBottom>
+            Добавленные изображения
+          </Typography>):null}
+          <Gallery images={galeryUrl} />
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup
               required
@@ -165,6 +175,7 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.partisipantName}
             />
+            {/* <Up > */}
             <TextFieldGroup
               label="Если вам сказали  номер стенда то впишите его в это поле"
               placeholder="например E8_2"
@@ -175,30 +186,6 @@ class CreateEvent extends Component {
               error={errors.standType}
             />
 
-            {/* <Grid container spacing={3}> */}
-            {/* <Grid item xs={6}>
-                <SelectFieldGroup
-                  label="Type of Sport *"
-                  name="standType"
-                  type="name"
-                  value={this.state.standType}
-                  onChange={this.onChange}
-                  standList={standList}
-                  error={errors.standType}
-                /> */}
-            {/* </Grid> */}
-            {/* <Grid item xs={6}>
-                <TextFieldGroup
-                  label="Number of Player *"
-                  placeholder="2-100 Players"
-                  name="numberofplayer"
-                  type="number"
-                  value={this.state.numberofplayer}
-                  onChange={this.onChange}
-                  error={errors.numberofplayer}
-                />
-              </Grid> */}
-            {/* </Grid> */}
 
             {/* <TextFieldGroup
               label="Ссылка на изображение"
@@ -230,15 +217,7 @@ class CreateEvent extends Component {
               placeholder="Описание своего проекта"
             />
 
-            {/* <TextAreaFieldGroup
-              label="Описание компании или проекта"
-              placeholder="Details about this event"
-              name="description"
-              type="name"
-              value={this.state.description}
-              onChange={this.onChange}
-              error={errors.description}
-            /> */}
+            
             <TextFieldGroup
               label="Код Youtube видео или трансляции для показа (если есть)"
               placeholder="например I_GMll3HJpM"
@@ -253,7 +232,7 @@ class CreateEvent extends Component {
               placeholder="например 34300034"
               name="shopID"
               type="name"
-              value={this.state.shopId}
+              value={shopId}
               onChange={this.onChange}
               error={errors.shopId}
             />
