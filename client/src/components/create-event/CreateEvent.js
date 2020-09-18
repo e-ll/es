@@ -230,7 +230,7 @@ class CreateEvent extends Component {
             <TextFieldGroup
               label="Код магазина в Ecwid (если есть)"
               placeholder="например 34300034"
-              name="shopID"
+              name="shopId"
               type="name"
               value={shopId}
               onChange={this.onChange}

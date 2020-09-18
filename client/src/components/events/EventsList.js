@@ -107,7 +107,7 @@ class EventsList extends Component {
                       style={{
                         height: "418px",
                         width: "1342px",
-                        
+                   
                       }}
                     >
                       <img

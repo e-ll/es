@@ -116,8 +116,10 @@ body {
   .hiddenMobile {
     display: block;
   }
+  
 }
+    .react-transform-component {
+      width: auto !important;
+    }
 
-.react-transform-component {
-  width: auto !important;
-}
+

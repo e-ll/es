@@ -74,7 +74,7 @@ class Events extends Component {
           </Grid> */}
         {/* </Grid> */}
         {events.length ? eventContent : <LinearProgress />}
-      <MainTabs />
+      <MainTabs events={events}/>
       </>
     );
   }
