@@ -27,7 +27,7 @@ import Gallery from "../event/galery/Gallery"
 //   "",
 //
 // ];
-import config from "../firebase/config";
+import config from "../firebase/con";
 import firebase from "firebase";
 
 firebase.initializeApp(config);

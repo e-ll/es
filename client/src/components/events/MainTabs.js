@@ -20,6 +20,7 @@ import { FixedSizeList } from "react-window";
 // import { Tabs } from './Tabs/Tabs';
 import { Tabs } from "@material-ui/core/Tabs";
 import { TabBlocks } from "./Tabs/TabBlocks";
+import styles from "./MainTabs.module.css";
 const header = {
   display: "flex",
   margin: "auto",
@@ -57,8 +58,8 @@ export default function MainTabs(props) {
         marginTop: "1vh",
       }}
     >
-      <Grid container spacing={1}>
-        <Grid item xs={4} style={contentList}>
+      <Grid className={styles.tabsContainer} container spacing={1}>
+        <Grid item sm={4} style={contentList}>
           <Paper style={header}>Расписание онлайн</Paper>
           {items.map((item) => (
             <ListItem button>
@@ -67,7 +68,7 @@ export default function MainTabs(props) {
             </ListItem>
           ))}
         </Grid>
-        <Grid item xs={4} style={contentList}>
+        <Grid item sm={4} style={contentList}>
           <Paper>
             <Grid spacing={2}>
               {/* <PeopleIcon
@@ -90,11 +91,11 @@ export default function MainTabs(props) {
           <Paper style={header}>Общий чат</Paper>
           <div>hello</div>
         </Grid> */}
-        <Grid item xs={4}>
+        <Grid sm={4} item>
           <Paper style={header}>
-            <div >
+            <div>
               {/* <ArrowLeftRoundedIcon /> */}
-              <Typography style={header} >Трансляция</Typography>
+              <Typography style={header}>Трансляция</Typography>
               {/* <ArrowRightRoundedIcon /> */}
             </div>
           </Paper>

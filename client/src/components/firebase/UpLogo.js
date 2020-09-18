@@ -3,7 +3,7 @@ import {IconButton} from "@material-ui/core"
 //import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import CustomUploadButton from "react-firebase-file-uploader/lib/CustomUploadButton";
-import config from "./config";
+import config from "./con";
 import {getSizedParentNode} from "leaflet/src/dom/DomUtil";
 import styles from "./up.module.css";
 import DeleteIcon from "@material-ui/icons/Delete";
