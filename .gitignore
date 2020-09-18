@@ -3,3 +3,7 @@ package-lock.json
 /config/keys_dev.js
 .DS_Store
 .env
+
+/.idea
+.idea/
+**/.idea
