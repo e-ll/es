@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {
@@ -13,12 +13,13 @@ import {
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectFieldGroup from "../common/SelectFieldGroup";
-import { createEvent } from "../../actions/eventActions";
+import {createEvent} from "../../actions/eventActions";
 import DropzoneComponent from "react-dropzone-component";
 import Drop from "./Drop";
 import "react-upload-gallery/dist/style.css";
 import Editor from "../editor/editor";
 import Up from "../firebase/Up";
+import UpLogo from "../firebase/UpLogo";
 import Gallery from "../event/galery/Gallery"
 // import { initialState } from "../upload/data";
 
@@ -26,6 +27,11 @@ import Gallery from "../event/galery/Gallery"
 //   "",
 //
 // ];
+import config from "../firebase/config";
+import firebase from "firebase";
+
+firebase.initializeApp(config);
+export {firebase}
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -82,7 +88,7 @@ class CreateEvent extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      this.setState({errors: nextProps.errors});
     }
   }
 
@@ -101,18 +107,17 @@ class CreateEvent extends Component {
       description: this.state.description,
       logoUrl: this.state.logoUrl,
       youTubeCode: this.state.youTubeCode,
-      galeryUrl: this.state.galeryUrl,
       shopId: this.state.shopId,
     };
-
     this.props.createEvent(eventData, this.props.history);
   }
+
   handleChange(value) {
-    this.setState({ description: value });
+    this.setState({description: value});
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({[e.target.name]: e.target.value});
   }
 
   handlerChangeGallery(file, response) {
@@ -123,47 +128,50 @@ class CreateEvent extends Component {
   }
 
   changeGalery = (updatedArray) => {
-    this.setState({ galeryUrl: updatedArray });
+    this.setState({galeryUrl: updatedArray});
   };
 // changeGalery = (changeobj) => {
 //      this.setState(changeobj);
 //   };
-
+  changeLogo = (logosArray) => {
+    this.setState({logoUrl: logosArray[0] ? logosArray[0] : ""});
+  };
 
   handlerChangeLogotype(file, response) {
     const logoUrl = response;
-    this.setState({ logoUrl });
+    this.setState({logoUrl});
   }
 
   handlerDeleteImageFromGallery(image) {
     console.log(1);
     const gallery = this.state.galeryUrl;
     const galeryUrl = gallery.filter((pic) => pic !== image);
-    this.setState({ galeryUrl });
+    this.setState({galeryUrl});
   }
 
   render() {
     const {
       errors,
-      logoUrl,
+      logoUrl = [],
       galeryUrl,
       partisipantName,
-      imageURL,
+      imageURL= [],
       standType,
       shopId
     } = this.state;
-
     return (
       <Grid container justify="center" className="marginX-1">
         <Grid item xs={12} sm={8} md={6}>
           <Typography variant="h3" component="h1" align="center" gutterBottom>
             Создайте свой стенд
           </Typography>
-          <Up changeGalery={this.changeGalery} />
-          {this.state.galery ?(<Typography variant="h6" component="h4" align="center" gutterBottom>
-            Добавленные изображения
+          <UpLogo changeLogo={this.changeLogo} currentLogo={this.state.logoUrl}/>
+          <Up changeGalery={this.changeGalery} currentGallery={this.state.galeryUrl}/>
+
+          {/*  {this.state.galery ?(<Typography variant="h6" component="h4" align="center" gutterBottom>
+              Добавленные изображения
           </Typography>):null}
-          <Gallery images={galeryUrl} />
+          <Gallery images={galeryUrl} />*/}
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup
               required
@@ -217,7 +225,7 @@ class CreateEvent extends Component {
               placeholder="Описание своего проекта"
             />
 
-            
+
             <TextFieldGroup
               label="Код Youtube видео или трансляции для показа (если есть)"
               placeholder="например I_GMll3HJpM"
@@ -257,6 +265,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { createEvent })(
+export default connect(mapStateToProps, {createEvent})(
   withRouter(CreateEvent)
 );

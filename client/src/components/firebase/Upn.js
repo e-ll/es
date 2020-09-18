@@ -2,7 +2,7 @@ import React from "react";
 
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
-import config from "./con";
+import config from "./config";
 
 // Setup Firebase
 firebase.initializeApp(config);

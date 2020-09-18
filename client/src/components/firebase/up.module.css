@@ -1,17 +1,33 @@
 .imageGallery {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.imageGalleryLogo {
+  display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 .image {
   display: inline-block;
-  height: 10vh;
-  flex-basis: 24%;
+  height: 25vh;
   position: relative;
   margin: 10px;
 }
 
 .deleteIcon {
+  position: absolute;
+  display: inline-block;
+  width: 4vh;
+  height: 4vh;
+  font-size: 2vh;
+  padding: 5px;
+  bottom: 0;
+  right: -4vh;
+}
+
+.deleteIconOld {
   position: absolute;
   display: inline-block;
   width: 4vh;
