@@ -171,7 +171,7 @@ class EventItem extends Component {
           <ButtonGroup className="marginL-1">
             <Button
               component={Link}
-              to={`/edit-event/${event.user._id}`}
+              to={`/edit-event/${event._id}`}
               variant="contained"
               color="primary"
             >
