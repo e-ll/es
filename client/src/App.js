@@ -51,7 +51,7 @@ class App extends Component {
             <MUICookieConsent
               cookieName="mySiteCookieConsent"
               // componentType="Dialog" // default value is Snackbar
-              message="Мы как и все используем Cookies"
+              message="Мы, как и все используем Cookies"
             />
             <Navbar />
             <Route exact path="/" component={Plug} />

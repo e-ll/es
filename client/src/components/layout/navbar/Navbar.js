@@ -92,7 +92,7 @@ class Navbar extends Component {
     const handleDrawerClose = () => {
       this.setState({ toggleDrawer: false });
     };
-    const megalogo = "/img/MEGA-logo.png";
+    
     const notificationsList = (
       <Badge
         badgeContent={notifications.unread}
@@ -145,13 +145,13 @@ class Navbar extends Component {
                 }
                 alt={"logo"}
               /> */}
-              <Typography variant="h4" color="inherit">
+              <Typography style={{fontSize: "2vw", fontsize: "calc( (100vw - 480px)/(1280 - 480) * (24 - 16) + 16px)"}} color="inherit">
                 Mega Green Fest 2020
               </Typography>
             </div>
-            <Button variant="outlined" color="default" startIcon={<MapIcon />}>
+            {/* <Button variant="outlined" color="default" startIcon={<MapIcon />}>
               Offline карта
-            </Button>
+            </Button> */}
             <div className="toolbarRight">
               <Desktop
                 isAuthenticated={isAuthenticated}
@@ -188,11 +188,11 @@ class Navbar extends Component {
           />
         </Drawer>
 
-        <NotificationList
+        {/* <NotificationList
           notifications={notifications.notification}
           anchorEl={this.state.anchorEl1}
           onClose={this.onHideNotification}
-        />
+        /> */}
         <UserMenu
           anchorEl={this.state.anchorEl2}
           onClose={this.onHideUserMenu}

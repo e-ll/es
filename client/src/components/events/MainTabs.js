@@ -1,50 +1,50 @@
-import React from "react";
-import MainTabsStyles from "./MainTabs.module.css";
-import { TabBlocks } from "./Tabs/TabBlocks";
+// import React from "react";
+// import MainTabsStyles from "./MainTabs.module.css";
+// import { TabBlocks } from "./Tabs/TabBlocks";
 
-const { main } = MainTabsStyles;
+// const { main } = MainTabsStyles;
 
-// arguments for TabBlocks component:
-const headlineArray = [
-  ["Расписание онлайн", "Расписание оффлайн"],
-  "Участники",
-  ["Общий чат", "По темам"],
-  "Трансляция",
-];
-const isTwoHeadlines = true; //if headlines if two
-let numberInArray = null; // what is a number of Component now
+// // arguments for TabBlocks component:
+// const headlineArray = [
+//   ["Расписание онлайн", "Расписание оффлайн"],
+//   "Участники",
+ 
+//   "Трансляция",
+// ];
+// const isTwoHeadlines = true; //if headlines if two
+// let numberInArray = null; // what is a number of Component now
 
-const tabsArray4 = headlineArray.map((element, index) => {
-  // 4 blocks in line
-  if (index % 2 == 0) {
-    return (
-      <TabBlocks
-        numberInArray={index}
-        isTwoHeadlines={isTwoHeadlines}
-        headlineArray={headlineArray[index]}
-      />
-    ); //two headlines
-  } else {
-    return (
-      <TabBlocks numberInArray={index} headlineArray={headlineArray[index]} />
-    ); //one headline
-  }
-});
+// const tabsArray4 = headlineArray.map((element, index) => {
+//   // 4 blocks in line
+//   if (index % 2 == 0) {
+//     return (
+//       <TabBlocks
+//         numberInArray={index}
+//         isTwoHeadlines={isTwoHeadlines}
+//         headlineArray={headlineArray[index]}
+//       />
+//     ); //two headlines
+//   } else {
+//     return (
+//       <TabBlocks numberInArray={index} headlineArray={headlineArray[index]} />
+//     ); //one headline
+//   }
+// });
 
-export const MainTabs = () => {
-  const items = [
-    "Мега Екатеринбург",
-    "Ельцин-центр",
-    "Ашан",
-    "Item4",
-    "Item5",
-    "Item6",
-    "Item7",
-  ];
-  return <div className={main}>{tabsArray4}</div>;
-};
+// export const MainTabs = () => {
+//   const items = [
+//     "Мега Екатеринбург",
+//     "Ельцин-центр",
+//     "Ашан",
+//     "Item4",
+//     "Item5",
+//     "Item6",
+//     "Item7",
+//   ];
+//   return <div className={main}>{tabsArray4}</div>;
+// };
 
-/*  LAST CODE
+//  LAST CODE
 
 import React from "react";
 import Video from "../event/tabs/Video"
@@ -64,7 +64,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import ArrowLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
 import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
 import { FixedSizeList } from "react-window";
-import { Tabs } from './Tabs/Tabs';
+// import { Tabs } from './Tabs/Tabs';
 import { Tabs } from '@material-ui/core/Tabs';
 import { TabBlocks } from './Tabs/TabBlocks';
 const header = {
@@ -81,7 +81,7 @@ const header = {
 const tabHeight = "200px";
 const contentList = { padding: 4, overflow: "auto", maxHeight: tabHeight};
 
-export default function UniTable() {
+export default function MainTabs(props) {
   
   const items = ["Мега Екатеринбург", "Ельцин-центр", "Ашан", "Item4", "Item5", "Item6", "Item7"];
   
@@ -90,6 +90,9 @@ export default function UniTable() {
       style={{
         width: "100%",
         marginTop: "1vh",
+        marginLeft: "1vw",
+        marginRight: "1vw"
+
       }}
     >
       <Grid container spacing={1}>
@@ -142,4 +145,4 @@ export default function UniTable() {
 }
 
 
-*/
+
