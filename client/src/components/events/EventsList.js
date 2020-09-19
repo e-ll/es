@@ -9,7 +9,6 @@ import {
   IconButton,
   ButtonGroup,
   CssBaseline,
-  StylesProvider,
 } from "@material-ui/core";
 import data from "./data";
 import ReactCursorPosition from "react-cursor-position";
@@ -19,7 +18,6 @@ import mapMain from "../../canvas/mainMap.jpg";
 import Estand from "../../canvas/stands/E8stand";
 import Dstand from "../../canvas/stands/D7stand";
 import Basic from "../cursor/Basic";
-import styles from "./EventsList.module.css";
 
 class EventsList extends Component {
   toggleSetting = (type) => {
@@ -104,7 +102,14 @@ class EventsList extends Component {
               >
                 <ReactCursorPosition>
                   <TransformComponent>
-                    <div className={styles.mapContainer}>
+                    <div
+                      className="coverf"
+                      style={{
+                        height: "418px",
+                        width: "1342px",
+                   
+                      }}
+                    >
                       <img
                         className="mapa"
                         src={mapMain}

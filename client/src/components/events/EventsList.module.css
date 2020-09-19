@@ -1,10 +1,4 @@
-@media (max-width: 600px) {
-  .mapContainer {
-    width: 600px;
-  }
-}
-
 .mapContainer {
   height: 418px;
-  width: 1342px;
+  max-width: 100%;
 }

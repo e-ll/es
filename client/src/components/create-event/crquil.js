@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {
@@ -13,16 +13,16 @@ import {
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectFieldGroup from "../common/SelectFieldGroup";
-import {createEvent} from "../../actions/eventActions";
+import { createEvent } from "../../actions/eventActions";
 import DropzoneComponent from "react-dropzone-component";
 import Drop from "./Drop";
 import "react-upload-gallery/dist/style.css";
-// import Editor from "../editor/editor";
+import Editor from "../editor/editor";
 import Up from "../firebase/Up";
 import UpLogo from "../firebase/UpLogo";
-import Gallery from "../event/galery/Gallery"
+import Gallery from "../event/galery/Gallery";
 // import { initialState } from "../upload/data";
-import RichTextEditor from 'react-rte';
+
 // const standList = [
 //   "",
 //
@@ -31,7 +31,7 @@ import config from "../firebase/con";
 import firebase from "firebase";
 
 firebase.initializeApp(config);
-export {firebase}
+export { firebase };
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -59,7 +59,6 @@ class CreateEvent extends Component {
     this.handlerDeleteImageFromGallery = this.handlerDeleteImageFromGallery.bind(
       this
     );
-    this.handleChangeEditor = this.handleChangeEditor.bind(this);
   }
 
   componentDidMount() {
@@ -112,15 +111,7 @@ class CreateEvent extends Component {
     };
     this.props.createEvent(eventData, this.props.history);
   }
-  handleChangeEditor = (value) => {
-    this.setState({description: value });
-    // if (this.props.onChange) {
-    //   // Send the changes up to the parent component as an HTML string.
-    //   // This is here to demonstrate using `.toString()` but in a real app it
-    //   // would be better to avoid generating a string on each change.
-    //   this.props.onChange(value.toString("html"));
-    // }
-  };
+
   handleChange(value) {
     this.setState({ description: value });
   }
@@ -229,11 +220,10 @@ class CreateEvent extends Component {
               onChange={this.onChange}
               error={errors.location}
             />
-            {/* <RichTextEditor */}
-            <TextAreaFieldGroup
+            <ReactQuill
+              theme="snow"
               value={this.state.description}
-            
-              onChange={this.onChange}
+              onChange={this.handleChange}
               name="description"
               error={errors.description}
               label="Описание компании или проекта"
@@ -279,6 +269,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, {createEvent})(
+export default connect(mapStateToProps, { createEvent })(
   withRouter(CreateEvent)
 );

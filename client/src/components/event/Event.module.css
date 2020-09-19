@@ -5,3 +5,14 @@
     color: white;
     font-size: 1rem;
 }
+
+@media (max-width: 768px) {
+    buttons {
+        font-size: "2vw"
+    }
+    first {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

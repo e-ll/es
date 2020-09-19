@@ -31,7 +31,7 @@ const TextFieldGroup = ({
 };
 
 TextFieldGroup.defaultProps = {
-    type: 'text'
+    type: "text"
 };
 
 export default TextFieldGroup;

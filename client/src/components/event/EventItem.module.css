@@ -1,0 +1,23 @@
+/* .header{
+      color: #26374D;
+      background: linear-gradient(180deg, #85C497 8.06%, #85C497 100%);
+      box-sizing: border-box;
+      border-radius:8px;
+      font-size: 2.3vh;
+      height: 5vh;
+      text-align: center;
+      font-style: normal;
+      font-weight: bold;
+      padding: 1vh 0;
+    }; */
+
+    @media (max-width: 600px) {
+
+    .buttons {
+        font-size: "2vw"
+    }
+    .first {
+       flex-direction: column;
+    }
+
+}

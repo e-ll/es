@@ -6,8 +6,9 @@ import { useRef, useEffect } from 'react';
 function Store(props) {
 	const storeDiv = useRef(null);
 	const scriptRef = useRef(null);
-const { event, ...other } = props;
+const { shopId, ...other } = props;
 const mag = 34300034;
+// const mag = shopId
 const mySearch = `my-search-${mag}`
 const myCat = `my-categories-${mag}`
 const myStore = `my-store-${mag}`
@@ -49,9 +50,9 @@ const myStore = `my-store-${mag}`
 	});
 
 	return (
-    <div style={{ height: "300px" }}>
+    <div style={{ height: "100%", overflow: "auto" }}>
       <div id={mySearch}></div>
-      <div style={{ height: "300px" }}  id={myCat}></div>
+      {/* <div style={{ height: "100%" }} id={myCat}></div> */}
       <div id={myStore} ref={storeDiv}></div>
       <div className="ec-cart-widget"></div>
     </div>

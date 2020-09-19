@@ -14,6 +14,9 @@ import {
   ButtonGroup,
   Button,
   Typography,
+  Menu,
+  MenuItem,
+  Fade
 } from "@material-ui/core";
 import Gallery from "./galery/Gallery";
 import Store from "./store/Store";
@@ -22,11 +25,12 @@ import CloseIcon from "@material-ui/icons/Close";
 import FullWidthTabs from "./tabs/FullWidthTabs";
 import MapView from "./map/MapView";
 import DeleteDialog from "../common/DeleteDialog";
-import styles from "./Event.module.css";
+import styles from "./EventItem.module.css"
 import sportImage from "../../img/noImage.svg";
 import { deleteEvent, joinEvent } from "../../actions/eventActions";
 import Plug from "./Plug.js";
-import { JitsiMeet } from "./conference/JitsiMeet"
+import { JitsiMeet } from "./conference/JitsiMeet";
+
 
 class EventItem extends Component {
   constructor() {
@@ -35,8 +39,11 @@ class EventItem extends Component {
       openDeleteDialog: false,
       openSnackbar: false,
       openVideo: false,
+      
     };
   }
+ 
+ 
   handleClickOpen() {
     this.setState({ openDeleteDialog: true });
   }
@@ -73,7 +80,7 @@ class EventItem extends Component {
       color: "#26374D",
       background: "linear-gradient(180deg, #85C497 8.06%, #85C497 100%)",
       boxSizing: "border-box",
-      borderRadius:"8px",
+      borderRadius: "8px",
       fontSize: "2.3vh",
       height: "5vh",
       textAlign: "center",
@@ -81,154 +88,111 @@ class EventItem extends Component {
       fontWeight: "bold",
       padding: "1vh 0",
     };
+    const styles = {
+      buttons : {
+        fontSize: "2vw"
+      }
+    }
     return (
       <Paper className="pad-2">
-        <Grid container>
-          <Grid item xs={6}>
-            <Grid>
-              {event.youTubeCode ? (<Plug videoId={event.youTubeCode}/>): (null)}
-            </Grid>
-            <Typography>Галерея</Typography>
-            <Grid>
-              <Gallery images={event.galeryUrl} />
-            </Grid>
-            {/* event.shopId */}
-            {event.shopId ? (
-              <>
-                <Typography>Интернет-магазин</Typography>
-                <Grid style={{ maxHeight: "300px" }}>
-                  <Store />
-                </Grid>
-              </>
+        <Grid container className={styles.container}>
+          <Grid
+            item
+            style={{ display: "flex", justifyContent: "flex-end" }}
+            xs={12}
+          >
+            {event.user._id === auth.user.id ? (
+              <ButtonGroup className={styles.buttons}>
+                <Button
+                  component={Link}
+                  to={`/edit-event/${event._id}`}
+                  variant="contained"
+                  color="primary"
+                >
+                  Изменить
+                </Button>
+                <Button
+                  onClick={this.handleClickOpen.bind(this)}
+                  variant="contained"
+                  color="secondary"
+                >
+                  Удалить
+                </Button>
+              </ButtonGroup>
             ) : null}
           </Grid>
+          <Grid item xs={6} className={styles.first}>
+            <Grid>
+              {event.youTubeCode ? (
+                <Plug videoId={event.youTubeCode} />
+              ) : (
+                <img
+                  style={{ width: "100%", height: "auto" }}
+                  src="/img/greenfestPlug.jpg"
+                />
+              )}
+            </Grid>
+          </Grid>
           <Grid item xs={6}>
-            <Grid style={{ marginLeft: "30px"}}
+            <Typography style={header}>О нас</Typography>
+            <Grid
+              style={{ marginLeft: "30px", height: "100%" }}
               dangerouslySetInnerHTML={{
                 __html: event.description,
               }}
-            >
-              
+            ></Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography style={header}>Галерея</Typography>
+            <Grid>
+              <Gallery images={event.galeryUrl} />
             </Grid>
-            <Grid container direction="row" justify="space-around">
-              <Grid style={{ width: "50%" }} item>
-                <Typography style={header}>Чат с участником</Typography>
+          </Grid>
+          <Grid container direction="row" justify="space-around">
+            <Grid style={{ width: "50%" }}>
+              <Grid
+                style={{
+                  textAlign: "center",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
+                <Typography style={header}>Видеочат с участником</Typography>
                 <JitsiMeet
                   roomName={event.partisipantName}
                   style={{ height: "300px" }}
                 />
-              </Grid>
-              <Grid item style={{ width: "50%" }}>
-                <Typography style={header}>Как нас найти</Typography>
-                <MapView
-                  coordinates={event.address.coordinates}
-                  location={event.location}
+                <img
+                  src="/img/call.jpg"
+                  style={{
+                    width: "50%",
+                    height: "auto",
+                    borderRadius: "30px",
+                    marginTop: "5%",
+                  }}
                 />
               </Grid>
             </Grid>
-          </Grid>
-        </Grid>
-
-        {/* <Grid container> */}
-        {/* <Grid item xs={12} md={6}>
-            <Grid container spacing={6}>
-              <Grid item xs={6}>
-                <span className={styles.labelInfo}>Type of Sport</span>
-                <p>{event.standType}</p>
-              </Grid>
-
-              <Grid item xs={6}>
-                <span className={styles.labelInfo}>Number of Player</span>
-                <p>
-                  <i className="fas fa-users"></i>
-                  {event.numberofplayer}
-                </p>
-              </Grid>
-            </Grid>
-
-            <span className={styles.labelInfo}>Location</span>
-            <p>{event.location ? event.location : "To Be Announced"}</p>
-
-            <span className={styles.labelInfo}>Start Date</span>
-            <p>
-              {event.start ? (
-                <Moment format="MM/DD/YYYY">{event.start}</Moment>
-              ) : (
-                "To Be Announced"
-              )}
-            </p>
-
-            <span className={styles.labelInfo}>Description</span>
-            <p>{event.description ? event.description : "None"}</p> */}
-
-        {/* <Typography display="inline">
-              <Link to={`/profile/${event.user._id}`}>
-                Host By {event.user.name}
-              </Link>
-            </Typography> */}
-
-        {event.user._id === auth.user.id ? (
-          <ButtonGroup className="marginL-1">
-            <Button
-              component={Link}
-              to={`/edit-event/${event._id}`}
-              variant="contained"
-              color="primary"
-            >
-              Edit
-            </Button>
-            <Button
-              onClick={this.handleClickOpen.bind(this)}
-              variant="contained"
-              color="secondary"
-            >
-              Delete
-            </Button>
-          </ButtonGroup>
-        ) : null}
-        {/* </Grid> */}
-        {/* <Grid container item xs={12} md={6}>
-            <img
-              className="marginB-1"
-              style={{ width: "100%" }}
-              src={event.imageURL ? event.imageURL : sportImage}
-              alt="Sport"
-            />
-          </Grid>
-        </Grid>
-        {event.address ? (
-          <MapView
-            coordinates={event.address.coordinates}
-            location={event.location}
-          />
-        ) : null}
-        <hr />
-        <Box display="flex">
-          <Button
-            className="primary-color"
-            onClick={this.onJoinClick.bind(this, event._id)}
-            variant="contained"
-            color="primary"
-          >
-            {auth.isAuthenticated ? "Join This Event" : "Login to Join"}
-          </Button>
-          <p className="marginL-1">
-            {event.numberofplayer - event.listofplayer.length} spots left
-          </p>
-        </Box>
-        <div className="marginT-1">
-          {event.listofplayer.map((player, index) => {
-            return (
-              <Chip
-                key={player._id}
-                className="marginR-1 marginX-1"
-                avatar={<Avatar>{index + 1}</Avatar>}
-                label={player.name}
-                variant="outlined"
+            <Grid item style={{ width: "50%" }}>
+              <Typography style={header}>Как нас найти</Typography>
+              <MapView
+                coordinates={event.address.coordinates}
+                location={event.location}
               />
-            );
-          })}
-        </div>*/}
+            </Grid>
+          </Grid>
+
+          {/* event.shopId */}
+          {event.shopId ? (
+          
+              <Grid style={{ maxHeight: "100%" }}>
+              <Typography style={header}>Интернет-магазин</Typography>
+                <Store shopId={event.shopId} />
+              </Grid>
+           
+          ) : null}
+        </Grid>
+
         <DeleteDialog
           onDeleteClick={this.onDeleteClick.bind(this, event._id)}
           openDeleteDialog={this.state.openDeleteDialog}
@@ -257,7 +221,6 @@ class EventItem extends Component {
             </React.Fragment>
           }
         />
-        {/* <FullWidthTabs event={event} /> */}
       </Paper>
     );
   }

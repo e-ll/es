@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Paper, List, IconButton, Grid } from "@material-ui/core";
+import {
+  Paper,
+  List,
+  IconButton,
+  Grid,
+  Avatar,
+  Typography,
+} from "@material-ui/core";
 
 import Spinner from "../common/Spinner";
 import EventItem from "../event/EventItem";
@@ -9,7 +16,7 @@ import Comments from "./comments/Comments";
 import CommentForm from "./comments/CommentForm";
 import { getEvent } from "../../actions/eventActions";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-
+import "./Event.module.css"
 class Event extends Component {
   componentDidMount() {
     this.props.getEvent(this.props.match.params.id);
@@ -50,17 +57,34 @@ class Event extends Component {
     }
 
     return (
-      <div className="post">
-        <div className="container">
-          <Grid container direction="row" spacing={3}>
-            <IconButton component={Link} to="/events">
-              <ArrowBackIcon />
-            </IconButton>
-            <h1>{event.partisipantName}</h1>{" "}
-          </Grid>
+      <div className="post" style={{ marginTop: "1.5vh" }}>
+        <Grid container direction="row" spacing={3}>
+          <IconButton component={Link} to="/events">
+            <ArrowBackIcon />
+          </IconButton>
+          <div container style={{ display: "flex", justifyContent: "flex-end",  }}>
+            <div style={{with: "20%", height:"100%"}}>
+              {event.logoUrl ? <Avatar src={event.logoUrl}></Avatar> : (null)}
+            </div>
+            <Typography
+              style={{
+                
+                marginLeft:"10%",
+                paddingTop:"0.5em",
+                
+          
+                fontFamily: "Inter",
+                width:"20%",
+                
+                
+              }}
+            >
+              {event.partisipantName}
+            </Typography>
+          </div>
+        </Grid>
 
-          <List>{eventContent}</List>
-        </div>
+        <List>{eventContent}</List>
       </div>
     );
   }
