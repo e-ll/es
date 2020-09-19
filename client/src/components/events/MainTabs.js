@@ -35,7 +35,7 @@ const header = {
   fontWeight: "bold",
   // padding: "1vh 0",
 };
-const tabHeight = "200px";
+const tabHeight = "300px";
 const contentList = { padding: 4, overflow: "auto", maxHeight: tabHeight };
 
 export default function MainTabs(props) {

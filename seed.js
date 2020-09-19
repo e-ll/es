@@ -13,8 +13,11 @@ async function createBase() {
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log(err));
-  
-for (i=0;i<data.lenght; i++)
+  const events = await Event.find()
+
+for (i=0;i<events.lenght; i++) {
+  if events[i]
+}
 
 
   // placemarkColors = [

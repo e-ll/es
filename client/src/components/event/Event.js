@@ -63,9 +63,9 @@ class Event extends Component {
             <ArrowBackIcon />
           </IconButton>
           <div container style={{ display: "flex", justifyContent: "flex-end",  }}>
-            <div style={{with: "20%", height:"100%"}}>
-              {event.logoUrl ? <Avatar src={event.logoUrl}></Avatar> : (null)}
-            </div>
+            {/* <div style={{with: "20%", height:"100%"}}>
+              {/* {event.logoUrl ? <Avatar src={event.logoUrl}></Avatar> : (null)} */}
+            {/* </div> */}
             <Typography
               style={{
                 
