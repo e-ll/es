@@ -12,3 +12,4 @@ export { default as Profile } from './profile/Profile';
 export { default as CreateProfile } from './create-profile/CreateProfile';
 export { default as UserProfile } from './profile/UserProfile';
 export { default as Plug } from "./home/Plug";
+export { default as Test } from "./test/Test";

@@ -15,14 +15,21 @@ const PositionLabel = (props) => {
   return (
     <div
       className={props.className}
-      style={{ display: "inline-block", top: 0, bottom: 0, left: 0, right: 0, fontSize: "10px"}}
+      style={{
+        display: "inline-block",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        fontSize: "10px",
+      }}
     >
-      {`x: ${Math.round((x / width) * 100 * 100) / 100}`}
-
-      {`y: ${Math.round((y / height) * 100 * 100) / 100}`}
-
-      {`width: ${Math.round(width)}`}
-      {`height: ${Math.round(height)}`}
+      {`left%: ${Math.round((x / width) * 100 * 100) / 100}     `}
+      {`top%: ${Math.round((y / height) * 100 * 100) / 100}     `}
+      {`w: ${Math.round(width)}     `}
+      {`h: ${Math.round(height)} `}
+      {`x: ${x} `}
+      {`y: ${y} `}
     </div>
   );
 };

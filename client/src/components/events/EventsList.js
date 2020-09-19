@@ -105,46 +105,49 @@ class EventsList extends Component {
                 }}
               >
                 <ReactCursorPosition>
-                  <TransformComponent>
-                    <div
-                      className="coverf"
-                      style={{
-                        height: "400px",
-                        width: "621.6px",
-                      }}
-                    >
-                      <img
-                        className="mapa"
-                        src={newCard}
-                        style={{
-                          position: "absolute",
-                          top: "50%",
-                          left: "50%",
-                          marginRight: "-50%",
-                          transform: "translate(-50%, -50%)",
-                          height: "100%",
-                          width: "auto",
-                          zIndex: "-10",
-                        }}
-                      />
-                      <Typography
-                        style={{
-                          position: "absolute",
-                          top: "50%",
-                          left: "30%",
-                        }}
-                      >
-                        Карта участников скоро появится
-                      </Typography>
-                      
-                      {/* {events.filter((event)=>(event.standType), data).map((event, index) => (
-                        
-                        <Sshow event={event} stands={stands} key={index} />
+                {/* <TransformComponent> */}
+                <div
+                  className="coverf"
+                  style={{
+                    
+                    height: "400px",
+                    width: "621.6px",
+                  }}
+                >
+                  <img
+                    className="mapa"
+                    src={newCard}
+                    style={{
+                      // position: "absolute",
+                      // top: "50%",
+                      // left: "50%",
+                      // marginRight: "-50%",
+                      // transform: "translate(-50%, -50%)",
+                      // height: "100%",
+                      // width: "auto",
+                      // zIndex: "-10",
+                      position: "absolute",
+                      width: "100%", height:"auto"
+                    }}
+                  />
+                  {/* <Typography
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "30%",
+                    }}
+                  >
+                    Карта участников скоро появится
+                  </Typography> */}
 
-))} */}
-                    </div>
-                  </TransformComponent>
-                  {/* <PositionLabel /> */}
+                  {events
+                    .filter((event) => event.standType, data)
+                    .map((event, index) => (
+                      <Sshow event={event} stands={stands} key={index} />
+                    ))}
+                </div>
+                {/* </TransformComponent> */}
+                <PositionLabel />
                 </ReactCursorPosition>
               </div>
             </>

@@ -15,7 +15,7 @@ import  H13stand  from "../../canvas/stands/H13stand";
 import  I14stand  from "../../canvas/stands/I14stand";
 import  I15stand  from "../../canvas/stands/I15stand";
 import  K16stand  from "../../canvas/stands/K16stand";
-
+import {Rnd} from 'react-rnd'
 
 import { Link } from "react-router-dom";
 
@@ -98,29 +98,40 @@ switch(stand.type) {
       const top = String(topStart + (index-k) * topStep) + "%"; */
   const height = Number(stand.height.slice(0, -1)) / 3 + "%";
   console.log(height);
+const x = Number(stand.left.slice(0,-1))*620/100
+const y = (Number(stand.top.slice(0, -1)) * 400) / 100;
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: stand.left,
-        top: stand.top,
-        height: height,
-        width: "auto",
+    <Rnd
+    default={{
+    x: x,
+    y: y,}}
+      onDragStop={(e, d, x, y) => {
+        console.log(d.x, d.y, d.x/620*100, d.y/400*100);
       }}
     >
-      <Tooltip title={event.partisipantName} interactive>
+      <div
+        style={{
+          position: "absolute",
+          left: stand.left,
+          top: stand.top,
+          height: height,
+          width: "auto",
+        }}
+      >
+        {/* <Tooltip title={event.partisipantName} interactive>
         <Link to={`/event/${event._id}`}>
-          <IconButton >
-            {/* <Dstand
+          <IconButton > */}
+        {/* <Dstand
               name={event.partisipantName}
               logoUrl="https://sun9-8.userapi.com/c853620/v853620963/13b4d5/aFszB8VaQCY.jpg"
             /> */}
-            {ast}
-          </IconButton>
+        {ast}
+        {/* </IconButton>
         </Link>
-      </Tooltip>
-    </div>
+      </Tooltip> */}
+      </div>
+    </Rnd>
   );
   // })}
   // </div>

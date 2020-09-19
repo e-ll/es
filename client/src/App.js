@@ -11,6 +11,7 @@ import MUICookieConsent from "material-ui-cookie-consent";
 import { 
   PrivateRoute,
   Navbar,
+  Test,
   Footer,
   Home,
   Events,
@@ -55,7 +56,7 @@ class App extends Component {
             />
             <Navbar />
             <Route exact path="/" component={Events} />
-            {/* <Route exact path="/admin" component={Events} /> */}
+            <Route exact path="/admin" component={Test} />
             <Route exact path="/greenfest" component={Events} />
             <Container>
               <Route exact path="/register" component={Register} />
