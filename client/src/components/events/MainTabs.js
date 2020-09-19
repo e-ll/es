@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Video from "../event/tabs/Video";
+import {Link} from "@material-ui/core"
 import {
   Grid,
   Paper,
@@ -49,7 +50,7 @@ export default function MainTabs(props) {
     // "Item5",
     // "Item6",
     // "Item7",
-    "Скоро здесь будет онлайн расписание"
+    "Онлайн расписание"
   ];
 
   return (
@@ -63,10 +64,12 @@ export default function MainTabs(props) {
         <Grid item sm={4} style={contentList}>
           <Paper style={header}>Расписание онлайн</Paper>
           {items.map((item) => (
-            <ListItem button>
-              <Avatar src="https://w7.pngwing.com/pngs/862/497/png-transparent-green-circle-miscellaneous-atmosphere-sphere.png" />
-              <Typography>{item}</Typography>
-            </ListItem>
+            <Link href="https://docs.google.com/document/u/1/d/e/2PACX-1vQStLV49nC112_Z6z0mMiFjRHZgc4yNrXOqGis0q5iMm39bF4MuAqMk9b6Y5o-UIF12RGUbXudBXxIS/pub">
+              <ListItem button>
+                <Avatar src="https://w7.pngwing.com/pngs/862/497/png-transparent-green-circle-miscellaneous-atmosphere-sphere.png" />
+                <Typography>{item}</Typography>
+              </ListItem>
+            </Link>
           ))}
         </Grid>
         <Grid item sm={4} style={contentList}>
