@@ -100,7 +100,7 @@ switch(stand.type) {
         position: "absolute",
         left: stand.left,
         top: stand.top,
-        height: "3.95%",
+        height: stand.height,
         width: "auto",
       }}
     >

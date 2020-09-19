@@ -9,13 +9,14 @@ import {
   IconButton,
   ButtonGroup,
   CssBaseline,
+  Typography
 } from "@material-ui/core";
 import data from "./data";
 import ReactCursorPosition from "react-cursor-position";
 import Lector from "../../canvas/Lector";
 import PositionLabel from "../cursor/PositionLabel";
 import mapMain from "../../canvas/mainMap.jpg";
-import newCard from "../../canvas/newCard.png"
+import newCard from "../../canvas/newCard.png";
 import Estand from "../../canvas/stands/E8stand";
 import Dstand from "../../canvas/stands/D7stand";
 import Basic from "../cursor/Basic";
@@ -106,9 +107,8 @@ class EventsList extends Component {
                     <div
                       className="coverf"
                       style={{
-                        height: "906px",
-                        width: "1408px",
-                   
+                        height: "400px",
+                        width: "621.6px",
                       }}
                     >
                       <img
@@ -125,13 +125,21 @@ class EventsList extends Component {
                           zIndex: "-10",
                         }}
                       />
-
-                      {data.map((stand, index) => (
-                        <Sshow event={events[5]} stand={stand} key={index} />
-                      ))}
+                      <Typography
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "30%",
+                        }}
+                      >
+                        Карта участников скоро появится
+                      </Typography>
+                      {/* {data.map((stand, index) => (
+                        <Sshow event={events[0]} stand={stand} key={index} />
+                      ))} */}
                     </div>
                   </TransformComponent>
-                  <PositionLabel />
+                  {/* <PositionLabel /> */}
                 </ReactCursorPosition>
               </div>
             </>

@@ -28,10 +28,23 @@ const EventSchema = new Schema({
   galeryUrl: {
     type: Array,
   },
+  standNum:{
+    type: Number,
+  },
+  left: {
+    type:String
+  }, 
+  top: {
+    type:String
+  },
+  height: {
+    type:String
+  },
   numberofplayer: {
     type: Number,
     required: false,
   },
+
   listofplayer: [
     {
       id: {

@@ -42,13 +42,14 @@ export default function MainTabs(props) {
   const { events } = props;
 
   const items = [
-    "Мега Екатеринбург",
-    "Ельцин-центр",
-    "Ашан",
-    "Item4",
-    "Item5",
-    "Item6",
-    "Item7",
+    // "Мега Екатеринбург",
+    // "Ельцин-центр",
+    // "Ашан",
+    // "Item4",
+    // "Item5",
+    // "Item6",
+    // "Item7",
+    "Скоро здесь будет онлайн расписание"
   ];
 
   return (
@@ -63,7 +64,7 @@ export default function MainTabs(props) {
           <Paper style={header}>Расписание онлайн</Paper>
           {items.map((item) => (
             <ListItem button>
-              <Avatar src="https://static.rfstat.com/renderforest/images/v2/logo-homepage/flat_3.png" />
+              <Avatar src="https://w7.pngwing.com/pngs/862/497/png-transparent-green-circle-miscellaneous-atmosphere-sphere.png" />
               <Typography>{item}</Typography>
             </ListItem>
           ))}
@@ -99,7 +100,7 @@ export default function MainTabs(props) {
               {/* <ArrowRightRoundedIcon /> */}
             </div>
           </Paper>
-          <Video videoId="Vp5ANvd88x0" width="300px" height={tabHeight} />
+          <Video videoId="QKXMD_MIQ4U" width="300px" height={tabHeight} />
         </Grid>
       </Grid>
     </div>

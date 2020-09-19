@@ -54,9 +54,9 @@ class App extends Component {
               message="Мы, как и все используем Cookies"
             />
             <Navbar />
-            <Route exact path="/" component={Plug} />
-            <Route exact path="/admin" component={Events} />
-            <Route exact path="/greenfest" component={Plug} />
+            <Route exact path="/" component={Events} />
+            {/* <Route exact path="/admin" component={Events} /> */}
+            <Route exact path="/greenfest" component={Events} />
             <Container>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
@@ -69,7 +69,7 @@ class App extends Component {
               <Route exact path="/confirm" component={Confirm} />
               <Route exact path="/confirm/:id" component={Confirm} />
               <Switch>
-                <Route exact path="/events" component={Plug} /> //Events
+                <Route exact path="/events" component={Events} /> //Events
                 <Route exact path="/event/:id" component={Event} />
                 <PrivateRoute exact path="/profile" component={Profile} />
                 <Route exact path="/profile/:id" component={UserProfile} />
