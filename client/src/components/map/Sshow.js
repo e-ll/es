@@ -96,7 +96,8 @@ switch(stand.type) {
 
       const left = String(leftStart + (index-k) * leftStep) + "%";
       const top = String(topStart + (index-k) * topStep) + "%"; */
-  
+  const height = Number(stand.height.slice(0, -1)) / 3 + "%";
+  console.log(height);
 
   return (
     <div
@@ -104,7 +105,7 @@ switch(stand.type) {
         position: "absolute",
         left: stand.left,
         top: stand.top,
-        height: stand.height,
+        height: height,
         width: "auto",
       }}
     >

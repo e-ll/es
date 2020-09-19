@@ -127,7 +127,7 @@ class EventsList extends Component {
                           zIndex: "-10",
                         }}
                       />
-                      {/* <Typography
+                      <Typography
                         style={{
                           position: "absolute",
                           top: "50%",
@@ -135,12 +135,13 @@ class EventsList extends Component {
                         }}
                       >
                         Карта участников скоро появится
-                      </Typography> */}
-                      {events.filter((event)=>(event.standType), data).map((event, index) => (
+                      </Typography>
+                      
+                      {/* {events.filter((event)=>(event.standType), data).map((event, index) => (
                         
                         <Sshow event={event} stands={stands} key={index} />
 
-))}
+))} */}
                     </div>
                   </TransformComponent>
                   {/* <PositionLabel /> */}
