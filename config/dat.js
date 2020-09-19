@@ -1,4 +1,4 @@
-const data = [
+ const data = [
   {
     type: 0,
     name: "A1_1",
@@ -481,4 +481,4 @@ const data = [
   },
 ];
 
-export default data;
+module.exports = data;

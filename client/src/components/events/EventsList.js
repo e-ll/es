@@ -21,6 +21,7 @@ import Estand from "../../canvas/stands/E8stand";
 import Dstand from "../../canvas/stands/D7stand";
 import Basic from "../cursor/Basic";
 
+
 class EventsList extends Component {
   toggleSetting = (type) => {
     this.setState((p) => ({ [type]: !p[type] }));
@@ -50,6 +51,7 @@ class EventsList extends Component {
       { l: "885.11px", t: "203px" },
       { l: "920.11px", t: "183px" },
     ];
+    const stands = data
     return (
       <div className="conteiner">
         <TransformWrapper
@@ -125,7 +127,7 @@ class EventsList extends Component {
                           zIndex: "-10",
                         }}
                       />
-                      <Typography
+                      {/* <Typography
                         style={{
                           position: "absolute",
                           top: "50%",
@@ -133,10 +135,12 @@ class EventsList extends Component {
                         }}
                       >
                         Карта участников скоро появится
-                      </Typography>
-                      {/* {data.map((stand, index) => (
-                        <Sshow event={events[0]} stand={stand} key={index} />
-                      ))} */}
+                      </Typography> */}
+                      {events.filter((event)=>(event.standType), data).map((event, index) => (
+                        
+                        <Sshow event={event} stands={stands} key={index} />
+
+))}
                     </div>
                   </TransformComponent>
                   {/* <PositionLabel /> */}

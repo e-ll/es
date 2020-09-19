@@ -17,7 +17,7 @@ import  I15stand  from "../../canvas/stands/I15stand";
 import  K16stand  from "../../canvas/stands/K16stand";
 
 
-
+import { Link } from "react-router-dom";
 
 
 import {
@@ -26,51 +26,55 @@ import {
   IconButton,
   ButtonGroup,
   CssBaseline,
-  Link,
+  // Link,
 } from "@material-ui/core";
 
 export default function Sshow(props) {
-  const { event, stand } = props;
-   
+  const { event, stands } = props;
+  // console.log(stands);
+  // console.log(event, stands);
+   const stand = stands.find((stand) => (event.standType == stand.name))
+  //  console.log(stand);
   let ast = null
+  if (stand) {
 switch(stand.type) {
-    case 0 : ast = <A1stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 0 : ast = <A1stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 1 : ast = <A2stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 1 : ast = <A2stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 2 : ast = <B3stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 2 : ast = <B3stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 3 : ast = <B4stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 3 : ast = <B4stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 4 : ast = <C5stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 4 : ast = <C5stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 5 : ast = <C6stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 5 : ast = <C6stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 6 : ast = <D7stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 6 : ast = <D7stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 7 : ast = <A1stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 7 : ast = <A1stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 8 : ast = <E8stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 8 : ast = <E8stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 9 : ast = <F9stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 9 : ast = <F9stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 10 : ast = <F10stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 10 : ast = <F10stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 11 : ast = <G11stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 11 : ast = <G11stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 12 : ast = <G12stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 12 : ast = <G12stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 13 : ast = <H13stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 13 : ast = <H13stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 14 : ast = <I15stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 14 : ast = <I15stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 15 : ast = <I14stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 15 : ast = <I14stand name={event.partisipantName} logoUrl={null}/>
     break
-    case 16 : ast = <K16stand name={event.partisipantName} logoUrl={event.logoUrl}/>
+    case 16 : ast = <K16stand name={event.partisipantName} logoUrl={null}/>
     break
 
 }
- 
+
 
 
 
@@ -104,7 +108,7 @@ switch(stand.type) {
         width: "auto",
       }}
     >
-      <Tooltip title={`Стенд № ${event._id}`} interactive>
+      <Tooltip title={event.partisipantName} interactive>
         <Link to={`/event/${event._id}`}>
           <IconButton >
             {/* <Dstand
@@ -120,4 +124,5 @@ switch(stand.type) {
   // })}
   // </div>
   // )
+          } else return null
 }

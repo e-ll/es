@@ -5,19 +5,70 @@ const data=require("./config/dat.js")
 const db = require("./config/keys_dev").prodMongoUrl;
 // mongoose.pluralize(null);
 const User = require("./models/User");
-
+const Stand = require("./models/Stand");
 const Event = require("./models/Event");
 
 async function createBase() {
   await mongoose
-    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(db, {
+      useFindAndModify:false, useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log(err));
   const events = await Event.find()
 
-for (i=0;i<events.lenght; i++) {
-  if events[i]
+  for (j=0;j<data.length;j++) {
+for (i=8;i<events.length; i++) {
+  // console.log(events[i].standType);
+// // console.log(data[j].name);
+  const ev = new String(events[i].standType);
+  const da = new String(data[j].name);
+  if (JSON.stringify(ev) === JSON.stringify(da)) {
+
+// const stand = await new 
+
+await Stand.create({
+  type: data[j].standType,
+  name: data[j].name,
+
+  
+  left: data[j].left,  
+  top: data[j].top,
+  height:  data[j].height,
+  eventId: events[i]._id,
+  userId: events[i].userId,
+  eventName: events[i].partisipantName,
+  logoUrl: events[i].logoUrl,
+});
+
+// stand.save
+
+// if (events[i].standType == "M_12") {
+  // console.log(events[i], i);
+  // await Event.findOneAndUpdate(
+  //   { _id: events[i]._id },
+  //   {$push:
+  //     {standNum: data[j].type}}
+      
+  // ).then(await Event.findOneAndUpdate(
+  //   { _id: events[i]._id },
+  //   {$push:{left: data[j].left}}).then(await Event.findOneAndUpdate(
+  //   { _id: events[i]._id },
+  //   {$push:{top: data[j].top}})).then(await Event.findOneAndUpdate(
+  //   { _id: events[i]._id },
+  //   {$push:{height: data[j].height}}))
+
+  //   )
+    }
+      
+  }
 }
+
+
+
+  
+
 
 
   // placemarkColors = [
@@ -67,8 +118,8 @@ for (i=0;i<events.lenght; i++) {
 //       comments: [],
 //       date: Date.now(),
 //       start: await faker.date.future(),
-//     });
-  }
+    // });
+  // }
 
   await mongoose.disconnect();
 }
