@@ -15,6 +15,7 @@ import ReactCursorPosition from "react-cursor-position";
 import Lector from "../../canvas/Lector";
 import PositionLabel from "../cursor/PositionLabel";
 import mapMain from "../../canvas/mainMap.jpg";
+import newCard from "../../canvas/newCard.png"
 import Estand from "../../canvas/stands/E8stand";
 import Dstand from "../../canvas/stands/D7stand";
 import Basic from "../cursor/Basic";
@@ -105,21 +106,21 @@ class EventsList extends Component {
                     <div
                       className="coverf"
                       style={{
-                        height: "418px",
-                        width: "1342px",
+                        height: "906px",
+                        width: "1408px",
                    
                       }}
                     >
                       <img
                         className="mapa"
-                        src={mapMain}
+                        src={newCard}
                         style={{
                           position: "absolute",
                           top: "50%",
                           left: "50%",
                           marginRight: "-50%",
                           transform: "translate(-50%, -50%)",
-                          height: "200%",
+                          height: "100%",
                           width: "auto",
                           zIndex: "-10",
                         }}
