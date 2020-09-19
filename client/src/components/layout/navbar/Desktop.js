@@ -21,14 +21,18 @@ const Desktop = ({ isAuthenticated, notificationsUnread, onShowNotification, onS
     );
     
     const guestLinks = (
-        <div className="hiddenDesk">
-            <Link className="white-link" component={RouterLink} to="/login">
-                Войти
-            </Link>
-            {/* <Button className="secondary-color white-link" component={RouterLink} to="/register" variant="contained">
+      <div className="hiddenDesk">
+        <Link className="white-link" href="https://yandex.ru/maps/54/yekaterinburg/?ll=60.640971%2C56.854188&mode=usermaps&source=constructorLink&um=constructor%3A22fa8454936361f900b9580234b923c0596ec191920f478543730d53c11fa881&z=13"
+            >
+          Ofline карта
+        </Link>
+        <Link className="white-link" component={RouterLink} to="/login">
+          Войти
+        </Link>
+        {/* <Button className="secondary-color white-link" component={RouterLink} to="/register" variant="contained">
                 Зарегистрироваться
             </Button> */}
-        </div>
+      </div>
     );
     
     return isAuthenticated ? authLinks : guestLinks;

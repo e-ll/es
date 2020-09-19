@@ -7,8 +7,8 @@ function Store(props) {
 	const storeDiv = useRef(null);
 	const scriptRef = useRef(null);
 const { shopId, ...other } = props;
-const mag = 34300034;
-// const mag = shopId
+// const mag = 34300034;
+const mag = shopId
 const mySearch = `my-search-${mag}`
 const myCat = `my-categories-${mag}`
 const myStore = `my-store-${mag}`
