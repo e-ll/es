@@ -1,10 +1,10 @@
 /node_modules
 package-lock.json
-/config/keys_dev.js
+# config/keys_dev.js
 .DS_Store
 .env
 
 /.idea
 .idea/
 **/.idea
-**/config.js
+# /config.js
