@@ -9,7 +9,7 @@ import {
   IconButton,
   ButtonGroup,
   CssBaseline,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import data from "./data";
 import ReactCursorPosition from "react-cursor-position";
@@ -20,7 +20,6 @@ import newCard from "../../canvas/newCard.png";
 import Estand from "../../canvas/stands/E8stand";
 import Dstand from "../../canvas/stands/D7stand";
 import Basic from "../cursor/Basic";
-
 
 class EventsList extends Component {
   toggleSetting = (type) => {
@@ -51,7 +50,7 @@ class EventsList extends Component {
       { l: "885.11px", t: "203px" },
       { l: "920.11px", t: "183px" },
     ];
-    const stands = data
+    const stands = data;
     return (
       <div className="conteiner">
         <TransformWrapper
@@ -104,33 +103,33 @@ class EventsList extends Component {
                   border: "1px dashed #000000",
                 }}
               >
-                {/* <ReactCursorPosition> */}
-                <TransformComponent>
-                <div
-                  className="coverf"
-                  style={{
-                    
-                    height: "400px",
-                    width: "621.6px",
-                  }}
-                >
-                  <img
-                    className="mapa"
-                    src={newCard}
+                <ReactCursorPosition>
+                  {/* <TransformComponent> */}
+                  <div
+                    className="coverf"
                     style={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      marginRight: "-50%",
-                      transform: "translate(-50%, -50%)",
-                      height: "100%",
-                      width: "auto",
-                      zIndex: "-10",
-                      // position: "absolute",
-                      // width: "100%", height:"auto"
+                      height: "620",
+                      width: "400px",
                     }}
-                  />
-                  <Typography
+                  >
+                    <img
+                      className="mapa"
+                      src={newCard}
+                      style={{
+                        // position: "absolute",
+                        // top: "50%",
+                        // left: "50%",
+                        // marginRight: "-50%",
+                        // transform: "translate(-50%, -50%)",
+                        // height: "100%",
+                        // width: "auto",
+                        // zIndex: "-10",
+                        position: "absolute",
+                        width: "100%",
+                        height: "auto",
+                      }}
+                    />
+                    {/* <Typography
                     style={{
                       position: "absolute",
                       top: "50%",
@@ -138,17 +137,21 @@ class EventsList extends Component {
                     }}
                   >
                     Карта участников скоро появится
-                  </Typography>
+                  </Typography> */}
 
-                  {/* {events
+                    {/* {events
                     .filter((event) => event.standType, data)
                     .map((event, index) => (
                       <Sshow event={event} stands={stands} key={index} />
                     ))} */}
-                </div>
-                </TransformComponent>
-                {/* <PositionLabel /> */}
-                {/* </ReactCursorPosition> */}
+
+                    {data.map((stand) => (
+                      <Sshow stand={stand} />
+                    ))}
+                  </div>
+                  {/* </TransformComponent> */}
+                  <PositionLabel />
+                </ReactCursorPosition>
               </div>
             </>
           )}
