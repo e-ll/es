@@ -1,7 +1,7 @@
 import React from "react";
 
 function A2stand(props) {
-  const { name, logoUrl } = props;
+  const { name, logoUrl, id } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -816,7 +816,7 @@ function A2stand(props) {
           <use transform="scale(.00167)" xlinkHref="#image0"></use>
         </pattern>
         <image
-          id="image0"
+          id={id}
           width="600"
           height="600"
           xlinkHref={logoUrl}

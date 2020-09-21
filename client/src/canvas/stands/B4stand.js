@@ -1,7 +1,7 @@
 import React from "react";
 
 function Icon(props) {
-  const { name, logoUrl } = props;
+  const { name, logoUrl, id } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -265,7 +265,7 @@ function Icon(props) {
           <stop offset="0.891" stopColor="#3E8AF8"></stop>
           <stop offset="1" stopColor="#408EFF"></stop>
         </linearGradient>
-        <image id="image0" width="600" height="600" xlinkHref={logoUrl}></image>
+        <image id={id} width="600" height="600" xlinkHref={logoUrl}></image>
       </defs>
     </svg>
   );

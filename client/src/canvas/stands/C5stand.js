@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function C5stand(props) {
-  const {name, logoUrl} = props
+  const {name, logoUrl, id} = props
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1193,10 +1193,9 @@ export default function C5stand(props) {
           <use transform="scale(.00167)" xlinkHref="#image0"></use>
         </pattern>
         <image
-          id="image0"
+          id={id}
           width="600"
-          height="600"
-          data-name="H1nJStOE6Lk.jpg"
+          height="600"          
           xlinkHref={logoUrl}
         ></image>
       </defs>

@@ -30,47 +30,45 @@ import {
 } from "@material-ui/core";
 
 export default function Sshow(props) {
-  const { event, stands } = props;
-  // console.log(stands);
-  // console.log(event, stands);
+  const { event, stands, key } = props;
    const stand = stands.find((stand) => (event.standType == stand.name))
-  //  console.log(stand);
+   console.log(stand ? event.logoUrl : null);
   let ast = null
   if (stand) {
 switch(stand.type) {
-    case 0 : ast = <A1stand name={event.partisipantName} logoUrl={null}/>
+    case 0 : ast = <A1stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 1 : ast = <A2stand name={event.partisipantName} logoUrl={null}/>
+    case 1 : ast = <A2stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 2 : ast = <B3stand name={event.partisipantName} logoUrl={null}/>
+    case 2 : ast = <B3stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 3 : ast = <B4stand name={event.partisipantName} logoUrl={null}/>
+    case 3 : ast = <B4stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 4 : ast = <C5stand name={event.partisipantName} logoUrl={null}/>
+    case 4 : ast = <C5stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 5 : ast = <C6stand name={event.partisipantName} logoUrl={null}/>
+    case 5 : ast = <C6stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 6 : ast = <D7stand name={event.partisipantName} logoUrl={null}/>
+    case 6 : ast = <D7stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 7 : ast = <A1stand name={event.partisipantName} logoUrl={null}/>
+    case 7 : ast = <A1stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 8 : ast = <E8stand name={event.partisipantName} logoUrl={null}/>
+    case 8 : ast = <E8stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 9 : ast = <F9stand name={event.partisipantName} logoUrl={null}/>
+    case 9 : ast = <F9stand  id={key} name={event.partisipantName} logoUrl={null}/>
     break
-    case 10 : ast = <F10stand name={event.partisipantName} logoUrl={null}/>
+    case 10 : ast = <F10stand id={key}  name={event.partisipantName} logoUrl={null}/>
     break
-    case 11 : ast = <G11stand name={event.partisipantName} logoUrl={null}/>
+    case 11 : ast = <G11stand id={key}  name={event.partisipantName} logoUrl={null}/>
     break
-    case 12 : ast = <G12stand name={event.partisipantName} logoUrl={null}/>
+    case 12 : ast = <G12stand id={key}  name={event.partisipantName} logoUrl={null}/>
     break
-    case 13 : ast = <H13stand name={event.partisipantName} logoUrl={null}/>
+    case 13 : ast = <H13stand id={key}  name={event.partisipantName} logoUrl={null}/>
     break
-    case 14 : ast = <I15stand name={event.partisipantName} logoUrl={null}/>
+    case 14 : ast = <I15stand id={key}  name={event.partisipantName} logoUrl={null}/>
     break
-    case 15 : ast = <I14stand name={event.partisipantName} logoUrl={null}/>
+    case 15 : ast = <I14stand id={key}  name={event.partisipantName} logoUrl={null}/>
     break
-    case 16 : ast = <K16stand name={event.partisipantName} logoUrl={null}/>
+    case 16 : ast = <K16stand id={key}  name={event.partisipantName} logoUrl={null}/>
     break
 
 }
@@ -97,7 +95,7 @@ switch(stand.type) {
       const left = String(leftStart + (index-k) * leftStep) + "%";
       const top = String(topStart + (index-k) * topStep) + "%"; */
   const height = Number(stand.height.slice(0, -1)) / 3 + "%";
-  console.log(height);
+  
 const x = Number(stand.left.slice(0,-1))*620/100
 const y = (Number(stand.top.slice(0, -1)) * 400) / 100;
 
@@ -111,13 +109,13 @@ const y = (Number(stand.top.slice(0, -1)) * 400) / 100;
       }}
     >
       <div
-        style={{
-          position: "absolute",
-          left: stand.left,
-          top: stand.top,
-          height: height,
-          width: "auto",
-        }}
+        // style={{
+        //   position: "absolute",
+        //   left: stand.left,
+        //   top: stand.top,
+        //   height: height,
+        //   width: "auto",
+        // }}
       >
         {/* <Tooltip title={event.partisipantName} interactive>
         <Link to={`/event/${event._id}`}>

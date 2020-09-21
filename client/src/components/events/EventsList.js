@@ -20,6 +20,7 @@ import newCard from "../../canvas/newCard.png";
 import Estand from "../../canvas/stands/E8stand";
 import Dstand from "../../canvas/stands/D7stand";
 import Basic from "../cursor/Basic";
+import map2 from "../../canvas/map2.png"
 
 
 class EventsList extends Component {
@@ -116,7 +117,7 @@ class EventsList extends Component {
                 >
                   <img
                     className="mapa"
-                    src={newCard}
+                    src={map2}
                     style={{
                       position: "absolute",
                       top: "50%",
@@ -130,7 +131,7 @@ class EventsList extends Component {
                       // width: "100%", height:"auto"
                     }}
                   />
-                  <Typography
+                  {/* <Typography
                     style={{
                       position: "absolute",
                       top: "50%",
@@ -138,7 +139,7 @@ class EventsList extends Component {
                     }}
                   >
                     Карта участников скоро появится
-                  </Typography>
+                  </Typography> */}
 
                   {/* {events
                     .filter((event) => event.standType, data)
