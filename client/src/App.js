@@ -55,9 +55,9 @@ class App extends Component {
               message="Мы, как и все используем Cookies"
             />
             <Navbar />
-            <Route exact path="/" component={Events} />
-            <Route exact path="/admin" component={Test} />
-            <Route exact path="/greenfest" component={Events} />
+            <Route exact path="/" component={Plug} />
+            <Route exact path="/admin" component={Plug} />
+            <Route exact path="/greenfest" component={Plug} />
             <Container>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />

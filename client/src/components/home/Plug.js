@@ -90,7 +90,7 @@ function Plug() {
           <span className="festDate">19-20 СЕНТЯБРЯ</span>
 
           <div className="count">
-            <Countdown date={`${year}-09-19T10:00:00`} />
+            <Countdown date={`${year+1}-09-19T10:00:00`} />
           </div>
           {/* <Timer /> */}
           {/* <div className="form"> */}
